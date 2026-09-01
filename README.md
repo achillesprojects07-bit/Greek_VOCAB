@@ -1,4 +1,4 @@
-# Greek Mastery A1–A2
+# Greek Mastery  A1–A2
 
 An offline-first Modern Greek learning app built around a fixed grammar-led A1→A2 pathway.
 
