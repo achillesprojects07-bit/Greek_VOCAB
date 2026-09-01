@@ -75,7 +75,12 @@ export default function HomePage() {
 
   useEffect(() => {
     const restoreTimer = window.setTimeout(() => { setProgress(safeLoad()); setHydrated(true); }, 0);
-    if ("serviceWorker" in navigator) navigator.serviceWorker.register(new URL("sw.js", window.location.href).pathname).catch(() => undefined);
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register(new URL("sw.js", window.location.href).pathname, { updateViaCache: "none" })
+        .then((registration) => registration.update())
+        .catch(() => undefined);
+    }
     return () => window.clearTimeout(restoreTimer);
   }, []);
   useEffect(() => { if (hydrated) window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }, [progress, hydrated]);
@@ -106,7 +111,7 @@ export default function HomePage() {
     </aside>
 
     <main className="main-area">
-      <header className="topbar"><div className="mobile-brand"><Brand compact /></div><div className="topbar-context"><span>PHASE 0 • v0.1.0</span><strong>A1 • Unit 2 of 23</strong></div><div className="top-actions"><button className="icon-button" aria-label="Search vocabulary" onClick={() => setSearchOpen(true)}><Search /></button><button className="icon-button" aria-label="Run app check" onClick={() => setQaOpen(true)}><ShieldCheck /></button></div></header>
+      <header className="topbar"><div className="mobile-brand"><Brand compact /></div><div className="topbar-context"><span>PHASE 0 • v0.1.1</span><strong>A1 • Unit 2 of 23</strong></div><div className="top-actions"><button className="icon-button" aria-label="Search vocabulary" onClick={() => setSearchOpen(true)}><Search /></button><button className="icon-button" aria-label="Run app check" onClick={() => setQaOpen(true)}><ShieldCheck /></button></div></header>
       <div className="content-wrap">{lessonOpen ? <LessonView stage={stage} setStage={setStage} progress={progress} setProgress={setProgress} questionIndex={questionIndex} setQuestionIndex={setQuestionIndex} score={score} allSubmitted={allSubmitted} lessonPercent={lessonPercent} onBack={() => setLessonOpen(false)} onFinish={finishLesson} /> : <>
         {tab === "today" && <TodayScreen progress={progress} onOpenLesson={openLesson} />}
         {tab === "path" && <PathScreen progress={progress} onOpenLesson={openLesson} />}
