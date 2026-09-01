@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Λέξεις — Greek words &amp; phrases</title>
+<meta name="theme-color" content="#E6E3DA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Fira+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stone:#E6E3DA;
+  --card:#F3F1EA;
+  --ink:#1B2A30;
+  --ink-2:#5A6A70;
+  --line:#CFCBBF;
+  --m:#B0552A;      /* ο  masculine */
+  --f:#2E7D6B;      /* η  feminine  */
+  --n:#7A5C8E;      /* το neuter    */
+  --ok:#2E7D6B;
+  --no:#B0552A;
+  --serif:"Alegreya","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Fira Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--stone);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.5;
+  padding:0 18px calc(28px + env(safe-area-inset-bottom));
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:560px;margin:0 auto}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--f);outline-offset:2px;border-radius:2px}
+
+/* ---------- header ---------- */
+header{display:flex;align-items:baseline;gap:12px;padding:22px 0 14px}
+.mark{font-family:var(--serif);font-size:25px;font-weight:700;letter-spacing:.01em}
+.mark span{color:var(--f)}
+.due{margin-left:auto;font-size:13px;color:var(--ink-2)}
+.due b{color:var(--ink);font-weight:600}
+
+.back{font-size:14px;color:var(--ink-2);padding:6px 0;display:inline-block}
+.back:hover{color:var(--ink)}
+
+h1{font-family:var(--serif);font-size:29px;font-weight:400;line-height:1.25;margin:6px 0 4px}
+h2{font-family:var(--serif);font-size:22px;font-weight:500;margin:26px 0 10px}
+.sub{color:var(--ink-2);font-size:14.5px;margin:0 0 20px}
+
+/* ---------- home ---------- */
+.menu{display:grid;gap:10px;margin-top:18px}
+.tile{
+  display:flex;align-items:baseline;gap:14px;text-align:left;
+  background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:15px 16px;
+}
+.tile:hover{border-color:var(--ink-2)}
+.tile .gr{font-family:var(--serif);font-size:22px;min-width:118px}
+.tile .en{font-size:14px;color:var(--ink-2)}
+.tile .n{margin-left:auto;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.tile.hot{border-color:var(--f);border-left-width:4px}
+
+/* ---------- lists ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
+.chip{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13.5px;color:var(--ink-2);background:var(--card)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+input[type=search]{
+  width:100%;font:inherit;padding:10px 12px;background:var(--card);
+  border:1px solid var(--line);border-radius:3px;color:var(--ink);
+}
+input[type=search]::placeholder{color:var(--ink-2)}
+
+.item{border-bottom:1px solid var(--line);padding:13px 0;cursor:pointer;display:block;width:100%;text-align:left}
+.item:last-child{border-bottom:none}
+.gr{font-family:var(--serif);font-size:21px;line-height:1.3}
+.art{font-weight:400}
+.m .art{color:var(--m)} .f .art{color:var(--f)} .n .art{color:var(--n)}
+.en{font-size:14.5px;color:var(--ink-2);margin-top:1px}
+.detail{margin-top:9px;padding:11px 13px;background:var(--card);border-left:3px solid var(--line);border-radius:0 3px 3px 0}
+.detail .exgr{font-family:var(--serif);font-size:18px}
+.detail .exen{font-size:14px;color:var(--ink-2);margin-top:2px}
+.pos{font-size:12px;color:var(--ink-2);margin-top:8px}
+.speak{font-size:13px;color:var(--f);border:1px solid var(--line);border-radius:999px;padding:3px 11px;margin-top:10px;background:var(--stone)}
+
+/* ---------- study card ---------- */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:30px 22px;text-align:center;min-height:210px;
+  display:flex;flex-direction:column;justify-content:center;gap:8px;margin-top:16px;
+}
+.card .prompt{font-size:15px;color:var(--ink-2)}
+.card .big{font-family:var(--serif);font-size:36px;line-height:1.2}
+.card .bigen{font-family:var(--sans);font-size:26px;font-weight:500;line-height:1.25}
+.card .ex{font-family:var(--serif);font-size:18px;color:var(--ink-2);margin-top:10px}
+.reveal{animation:rise .22s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.reveal{animation:none}}
+
+.actions{display:grid;gap:9px;margin-top:14px}
+.two{grid-template-columns:1fr 1fr}
+.btn{border:1px solid var(--ink);border-radius:3px;padding:13px;font-size:15px;background:var(--ink);color:var(--card)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.good{border-color:var(--ok);color:var(--ok);background:transparent}
+.btn.again{border-color:var(--no);color:var(--no);background:transparent}
+.choices{display:grid;gap:9px;margin-top:14px}
+.choice{border:1px solid var(--line);background:var(--card);border-radius:3px;padding:13px 15px;text-align:left;font-size:16px}
+.choice.right{border-color:var(--ok);color:var(--ok)}
+.choice.wrong{border-color:var(--no);color:var(--no)}
+.counter{font-size:13px;color:var(--ink-2);text-align:center;margin-top:14px;font-variant-numeric:tabular-nums}
+
+/* ---------- patterns ---------- */
+.pat{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:15px 16px;margin-bottom:11px}
+.pat .form{font-family:var(--serif);font-size:23px}
+.slot{border-bottom:2px dotted var(--f);padding:0 16px}
+.pat ul{margin:11px 0 0;padding-left:18px}
+.pat li{font-family:var(--serif);font-size:18px;margin-bottom:5px}
+.pat li small{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);display:block}
+
+/* ---------- progress ---------- */
+.bar{height:7px;background:var(--line);border-radius:999px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--f)}
+.row{margin-bottom:16px}
+.row .lab{display:flex;justify-content:space-between;font-size:14.5px}
+.row .lab b{font-weight:500;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.legend{display:flex;gap:16px;font-size:13.5px;color:var(--ink-2);margin:18px 0 4px;flex-wrap:wrap}
+.legend b{font-family:var(--serif);font-size:17px}
+footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-2)}
+.empty{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:22px;text-align:center;color:var(--ink-2);font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark">Λέ<span>ξ</span>εις</div>
+    <div class="due" id="dueTag"></div>
+  </header>
+  <main id="app"></main>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+/* ============================================================
+   1. CONTENT  —  edit or extend this section to grow the app
+   ============================================================ */
+
+// g: m = ο (masculine), f = η (feminine), n = το (neuter), x = no article
+const WORDS = [
+ // --- food & drink ---
+ {gr:"καφές",art:"ο",g:"m",en:"coffee",pos:"noun",ex:"Θα ήθελα έναν καφέ, παρακαλώ.",exEn:"I would like a coffee, please.",tags:["cafe"]},
+ {gr:"νερό",art:"το",g:"n",en:"water",pos:"noun",ex:"Ένα μπουκάλι νερό, παρακαλώ.",exEn:"A bottle of water, please.",tags:["cafe","restaurant"]},
+ {gr:"ψωμί",art:"το",g:"n",en:"bread",pos:"noun",ex:"Θέλω ψωμί από τον φούρνο.",exEn:"I want bread from the bakery.",tags:["bakery"]},
+ {gr:"τυρόπιτα",art:"η",g:"f",en:"cheese pie",pos:"noun",ex:"Μία τυρόπιτα, παρακαλώ.",exEn:"One cheese pie, please.",tags:["bakery"]},
+ {gr:"φούρνος",art:"ο",g:"m",en:"bakery",pos:"noun",ex:"Ο φούρνος είναι κοντά.",exEn:"The bakery is nearby.",tags:["bakery"]},
+ {gr:"γάλα",art:"το",g:"n",en:"milk",pos:"noun",ex:"Πού είναι το γάλα;",exEn:"Where is the milk?",tags:["grocery"]},
+ {gr:"τυρί",art:"το",g:"n",en:"cheese",pos:"noun",ex:"Θέλω τυρί φέτα.",exEn:"I want feta cheese.",tags:["grocery"]},
+ {gr:"κρέας",art:"το",g:"n",en:"meat",pos:"noun",ex:"Δεν τρώω κρέας.",exEn:"I don't eat meat.",tags:["restaurant"]},
+ {gr:"ψάρι",art:"το",g:"n",en:"fish",pos:"noun",ex:"Το ψάρι είναι φρέσκο.",exEn:"The fish is fresh.",tags:["restaurant"]},
+ {gr:"σαλάτα",art:"η",g:"f",en:"salad",pos:"noun",ex:"Μία ελληνική σαλάτα.",exEn:"One Greek salad.",tags:["restaurant"]},
+ {gr:"λαχανικά",art:"τα",g:"n",en:"vegetables",pos:"noun",ex:"Αγοράζω λαχανικά κάθε μέρα.",exEn:"I buy vegetables every day.",tags:["grocery"]},
+ {gr:"φρούτο",art:"το",g:"n",en:"fruit",pos:"noun",ex:"Αγοράζω φρούτα στην αγορά.",exEn:"I buy fruit at the market.",tags:["grocery"]},
+ {gr:"κρασί",art:"το",g:"n",en:"wine",pos:"noun",ex:"Ένα ποτήρι κρασί, παρακαλώ.",exEn:"A glass of wine, please.",tags:["restaurant"]},
+ {gr:"μπίρα",art:"η",g:"f",en:"beer",pos:"noun",ex:"Μία μπίρα, παρακαλώ.",exEn:"One beer, please.",tags:["restaurant"]},
+ {gr:"τσάι",art:"το",g:"n",en:"tea",pos:"noun",ex:"Ένα τσάι με λεμόνι.",exEn:"A tea with lemon.",tags:["cafe"]},
+ {gr:"χυμός",art:"ο",g:"m",en:"juice",pos:"noun",ex:"Έναν χυμό πορτοκάλι, παρακαλώ.",exEn:"An orange juice, please.",tags:["cafe"]},
+ {gr:"ζάχαρη",art:"η",g:"f",en:"sugar",pos:"noun",ex:"Χωρίς ζάχαρη, παρακαλώ.",exEn:"Without sugar, please.",tags:["cafe"]},
+ {gr:"αλάτι",art:"το",g:"n",en:"salt",pos:"noun",ex:"Λίγο αλάτι, παρακαλώ.",exEn:"A little salt, please.",tags:["restaurant"]},
+ {gr:"λεμόνι",art:"το",g:"n",en:"lemon",pos:"noun",ex:"Με λεμόνι, παρακαλώ.",exEn:"With lemon, please.",tags:["restaurant"]},
+ {gr:"πρωινό",art:"το",g:"n",en:"breakfast",pos:"noun",ex:"Το πρωινό είναι στις οκτώ.",exEn:"Breakfast is at eight.",tags:["cafe"]},
+ {gr:"πιάτο",art:"το",g:"n",en:"plate, dish",pos:"noun",ex:"Αυτό το πιάτο είναι νόστιμο.",exEn:"This dish is tasty.",tags:["restaurant"]},
+
+ // --- out and about ---
+ {gr:"τραπέζι",art:"το",g:"n",en:"table",pos:"noun",ex:"Ένα τραπέζι για δύο, παρακαλώ.",exEn:"A table for two, please.",tags:["restaurant"]},
+ {gr:"μενού",art:"το",g:"n",en:"menu",pos:"noun",ex:"Το μενού, παρακαλώ.",exEn:"The menu, please.",tags:["restaurant"]},
+ {gr:"λογαριασμός",art:"ο",g:"m",en:"the bill",pos:"noun",ex:"Τον λογαριασμό, παρακαλώ.",exEn:"The bill, please.",tags:["restaurant"]},
+ {gr:"αγορά",art:"η",g:"f",en:"market",pos:"noun",ex:"Πάω στην αγορά.",exEn:"I'm going to the market.",tags:["grocery"]},
+ {gr:"μαγαζί",art:"το",g:"n",en:"shop",pos:"noun",ex:"Το μαγαζί είναι ανοιχτό.",exEn:"The shop is open.",tags:["shopping"]},
+ {gr:"μέγεθος",art:"το",g:"n",en:"size",pos:"noun",ex:"Έχετε άλλο μέγεθος;",exEn:"Do you have another size?",tags:["shopping"]},
+ {gr:"χρώμα",art:"το",g:"n",en:"colour",pos:"noun",ex:"Μου αρέσει αυτό το χρώμα.",exEn:"I like this colour.",tags:["shopping"]},
+ {gr:"τιμή",art:"η",g:"f",en:"price",pos:"noun",ex:"Η τιμή είναι καλή.",exEn:"The price is good.",tags:["shopping"]},
+ {gr:"λεφτά",art:"τα",g:"n",en:"money",pos:"noun",ex:"Δεν έχω λεφτά μαζί μου.",exEn:"I don't have money on me.",tags:["shopping"]},
+ {gr:"κάρτα",art:"η",g:"f",en:"card",pos:"noun",ex:"Μπορώ να πληρώσω με κάρτα;",exEn:"Can I pay by card?",tags:["shopping"]},
+ {gr:"τουαλέτα",art:"η",g:"f",en:"toilet",pos:"noun",ex:"Πού είναι η τουαλέτα;",exEn:"Where is the toilet?",tags:["directions"]},
+ {gr:"δρόμος",art:"ο",g:"m",en:"street, road",pos:"noun",ex:"Ο δρόμος είναι κλειστός.",exEn:"The road is closed.",tags:["directions"]},
+ {gr:"πλατεία",art:"η",g:"f",en:"square",pos:"noun",ex:"Η πλατεία είναι κοντά.",exEn:"The square is nearby.",tags:["directions"]},
+ {gr:"μουσείο",art:"το",g:"n",en:"museum",pos:"noun",ex:"Πώς πάω στο μουσείο;",exEn:"How do I get to the museum?",tags:["directions"]},
+ {gr:"εισιτήριο",art:"το",g:"n",en:"ticket",pos:"noun",ex:"Θα ήθελα ένα εισιτήριο.",exEn:"I would like one ticket.",tags:["transport"]},
+ {gr:"λεωφορείο",art:"το",g:"n",en:"bus",pos:"noun",ex:"Το λεωφορείο φεύγει τώρα.",exEn:"The bus is leaving now.",tags:["transport"]},
+ {gr:"ταξί",art:"το",g:"n",en:"taxi",pos:"noun",ex:"Θέλω ένα ταξί, παρακαλώ.",exEn:"I want a taxi, please.",tags:["transport"]},
+ {gr:"αεροδρόμιο",art:"το",g:"n",en:"airport",pos:"noun",ex:"Πάω στο αεροδρόμιο.",exEn:"I'm going to the airport.",tags:["transport"]},
+ {gr:"ξενοδοχείο",art:"το",g:"n",en:"hotel",pos:"noun",ex:"Μένω σε ένα ξενοδοχείο.",exEn:"I'm staying in a hotel.",tags:["travel"]},
+ {gr:"παραλία",art:"η",g:"f",en:"beach",pos:"noun",ex:"Πάμε στην παραλία;",exEn:"Shall we go to the beach?",tags:["travel"]},
+ {gr:"θάλασσα",art:"η",g:"f",en:"sea",pos:"noun",ex:"Η θάλασσα είναι ζεστή.",exEn:"The sea is warm.",tags:["travel"]},
+ {gr:"νησί",art:"το",g:"n",en:"island",pos:"noun",ex:"Το νησί είναι πολύ ωραίο.",exEn:"The island is very beautiful.",tags:["travel"]},
+ {gr:"φαρμακείο",art:"το",g:"n",en:"pharmacy",pos:"noun",ex:"Πού είναι το φαρμακείο;",exEn:"Where is the pharmacy?",tags:["health"]},
+ {gr:"γιατρός",art:"ο",g:"m",en:"doctor",pos:"noun",ex:"Χρειάζομαι έναν γιατρό.",exEn:"I need a doctor.",tags:["health"]},
+ {gr:"φάρμακο",art:"το",g:"n",en:"medicine",pos:"noun",ex:"Χρειάζομαι ένα φάρμακο.",exEn:"I need a medicine.",tags:["health"]},
+ {gr:"κεφάλι",art:"το",g:"n",en:"head",pos:"noun",ex:"Πονάει το κεφάλι μου.",exEn:"My head hurts.",tags:["health"]},
+
+ // --- home & people ---
+ {gr:"σπίτι",art:"το",g:"n",en:"house, home",pos:"noun",ex:"Πηγαίνω στο σπίτι.",exEn:"I'm going home.",tags:["home"]},
+ {gr:"κουζίνα",art:"η",g:"f",en:"kitchen",pos:"noun",ex:"Η κουζίνα είναι μικρή.",exEn:"The kitchen is small.",tags:["home"]},
+ {gr:"δωμάτιο",art:"το",g:"n",en:"room",pos:"noun",ex:"Το δωμάτιο είναι εκεί.",exEn:"The room is over there.",tags:["home"]},
+ {gr:"πόρτα",art:"η",g:"f",en:"door",pos:"noun",ex:"Η πόρτα είναι ανοιχτή.",exEn:"The door is open.",tags:["home"]},
+ {gr:"κλειδί",art:"το",g:"n",en:"key",pos:"noun",ex:"Πού είναι τα κλειδιά;",exEn:"Where are the keys?",tags:["home"]},
+ {gr:"καρέκλα",art:"η",g:"f",en:"chair",pos:"noun",ex:"Η καρέκλα είναι καινούρια.",exEn:"The chair is new.",tags:["home"]},
+ {gr:"οικογένεια",art:"η",g:"f",en:"family",pos:"noun",ex:"Η οικογένειά μου είναι καλά.",exEn:"My family is well.",tags:["talk"]},
+ {gr:"παιδί",art:"το",g:"n",en:"child",pos:"noun",ex:"Έχω τρία παιδιά.",exEn:"I have three children.",tags:["talk"]},
+ {gr:"μητέρα",art:"η",g:"f",en:"mother",pos:"noun",ex:"Η μητέρα μου μένει εδώ.",exEn:"My mother lives here.",tags:["talk"]},
+ {gr:"πατέρας",art:"ο",g:"m",en:"father",pos:"noun",ex:"Ο πατέρας μου δουλεύει.",exEn:"My father works.",tags:["talk"]},
+ {gr:"φίλος",art:"ο",g:"m",en:"friend (male)",pos:"noun",ex:"Ο φίλος μου είναι Έλληνας.",exEn:"My friend is Greek.",tags:["talk"]},
+ {gr:"φίλη",art:"η",g:"f",en:"friend (female)",pos:"noun",ex:"Η φίλη μου μένει στην Αθήνα.",exEn:"My friend lives in Athens.",tags:["talk"]},
+ {gr:"δουλειά",art:"η",g:"f",en:"work, job",pos:"noun",ex:"Πηγαίνω στη δουλειά.",exEn:"I'm going to work.",tags:["talk"]},
+ {gr:"όνομα",art:"το",g:"n",en:"name",pos:"noun",ex:"Το όνομά μου είναι Άννα.",exEn:"My name is Anna.",tags:["talk"]},
+ {gr:"βιβλίο",art:"το",g:"n",en:"book",pos:"noun",ex:"Διαβάζω ένα βιβλίο.",exEn:"I'm reading a book.",tags:["talk"]},
+ {gr:"κινητό",art:"το",g:"n",en:"mobile phone",pos:"noun",ex:"Το κινητό μου δεν δουλεύει.",exEn:"My phone isn't working.",tags:["talk"]},
+ {gr:"ώρα",art:"η",g:"f",en:"hour, time",pos:"noun",ex:"Τι ώρα είναι;",exEn:"What time is it?",tags:["time"]},
+ {gr:"μέρα",art:"η",g:"f",en:"day",pos:"noun",ex:"Κάθε μέρα πίνω καφέ.",exEn:"Every day I drink coffee.",tags:["time"]},
+ {gr:"πρωί",art:"το",g:"n",en:"morning",pos:"noun",ex:"Το πρωί δουλεύω.",exEn:"In the morning I work.",tags:["time"]},
+ {gr:"βράδυ",art:"το",g:"n",en:"evening",pos:"noun",ex:"Το βράδυ τρώμε αργά.",exEn:"In the evening we eat late.",tags:["time"]},
+
+ // --- verbs (given as "I ..." — first person) ---
+ {gr:"είμαι",art:"",g:"x",en:"I am",pos:"verb",ex:"Είμαι από τις Φιλιππίνες.",exEn:"I am from the Philippines.",tags:["talk"]},
+ {gr:"έχω",art:"",g:"x",en:"I have",pos:"verb",ex:"Έχω δύο εγγόνια.",exEn:"I have two grandchildren.",tags:["talk"]},
+ {gr:"θέλω",art:"",g:"x",en:"I want",pos:"verb",ex:"Θέλω έναν καφέ.",exEn:"I want a coffee.",tags:["cafe"]},
+ {gr:"μπορώ",art:"",g:"x",en:"I can",pos:"verb",ex:"Μπορώ να πληρώσω εδώ;",exEn:"Can I pay here?",tags:["shopping"]},
+ {gr:"πηγαίνω",art:"",g:"x",en:"I go",pos:"verb",ex:"Πού πηγαίνεις;",exEn:"Where are you going?",tags:["directions"]},
+ {gr:"έρχομαι",art:"",g:"x",en:"I come",pos:"verb",ex:"Έρχομαι αύριο.",exEn:"I'm coming tomorrow.",tags:["talk"]},
+ {gr:"κάνω",art:"",g:"x",en:"I do, I make",pos:"verb",ex:"Τι κάνεις σήμερα;",exEn:"What are you doing today?",tags:["talk"]},
+ {gr:"ξέρω",art:"",g:"x",en:"I know",pos:"verb",ex:"Δεν ξέρω.",exEn:"I don't know.",tags:["talk"]},
+ {gr:"μιλάω",art:"",g:"x",en:"I speak",pos:"verb",ex:"Μιλάω λίγα ελληνικά.",exEn:"I speak a little Greek.",tags:["talk"]},
+ {gr:"καταλαβαίνω",art:"",g:"x",en:"I understand",pos:"verb",ex:"Δεν καταλαβαίνω.",exEn:"I don't understand.",tags:["talk"]},
+ {gr:"τρώω",art:"",g:"x",en:"I eat",pos:"verb",ex:"Τρώω στο σπίτι.",exEn:"I eat at home.",tags:["restaurant"]},
+ {gr:"πίνω",art:"",g:"x",en:"I drink",pos:"verb",ex:"Πίνω καφέ κάθε πρωί.",exEn:"I drink coffee every morning.",tags:["cafe"]},
+ {gr:"βλέπω",art:"",g:"x",en:"I see, I watch",pos:"verb",ex:"Βλέπω τη θάλασσα.",exEn:"I see the sea.",tags:["talk"]},
+ {gr:"ακούω",art:"",g:"x",en:"I hear, I listen",pos:"verb",ex:"Ακούω μουσική.",exEn:"I'm listening to music.",tags:["talk"]},
+ {gr:"αγοράζω",art:"",g:"x",en:"I buy",pos:"verb",ex:"Αγοράζω ψωμί.",exEn:"I'm buying bread.",tags:["shopping"]},
+ {gr:"πληρώνω",art:"",g:"x",en:"I pay",pos:"verb",ex:"Πληρώνω με κάρτα.",exEn:"I'm paying by card.",tags:["shopping"]},
+ {gr:"μένω",art:"",g:"x",en:"I live, I stay",pos:"verb",ex:"Μένω στη Μανίλα.",exEn:"I live in Manila.",tags:["talk"]},
+ {gr:"δουλεύω",art:"",g:"x",en:"I work",pos:"verb",ex:"Δουλεύω κάθε μέρα.",exEn:"I work every day.",tags:["talk"]},
+ {gr:"διαβάζω",art:"",g:"x",en:"I read, I study",pos:"verb",ex:"Διαβάζω ελληνικά.",exEn:"I'm studying Greek.",tags:["talk"]},
+ {gr:"γράφω",art:"",g:"x",en:"I write",pos:"verb",ex:"Γράφω κάθε βράδυ.",exEn:"I write every evening.",tags:["talk"]},
+ {gr:"μαθαίνω",art:"",g:"x",en:"I learn",pos:"verb",ex:"Μαθαίνω ελληνικά.",exEn:"I'm learning Greek.",tags:["talk"]},
+ {gr:"παίρνω",art:"",g:"x",en:"I take",pos:"verb",ex:"Παίρνω το λεωφορείο.",exEn:"I take the bus.",tags:["transport"]},
+ {gr:"δίνω",art:"",g:"x",en:"I give",pos:"verb",ex:"Δίνω το κλειδί στη φίλη μου.",exEn:"I give the key to my friend.",tags:["home"]},
+ {gr:"λέω",art:"",g:"x",en:"I say",pos:"verb",ex:"Πώς το λένε στα ελληνικά;",exEn:"How do you say it in Greek?",tags:["talk"]},
+ {gr:"περιμένω",art:"",g:"x",en:"I wait",pos:"verb",ex:"Περιμένω εδώ.",exEn:"I'm waiting here.",tags:["talk"]},
+ {gr:"ψάχνω",art:"",g:"x",en:"I look for",pos:"verb",ex:"Ψάχνω το ξενοδοχείο.",exEn:"I'm looking for the hotel.",tags:["directions"]},
+ {gr:"χρειάζομαι",art:"",g:"x",en:"I need",pos:"verb",ex:"Χρειάζομαι βοήθεια.",exEn:"I need help.",tags:["health"]},
+ {gr:"νομίζω",art:"",g:"x",en:"I think",pos:"verb",ex:"Νομίζω ότι είναι κλειστό.",exEn:"I think it's closed.",tags:["talk"]},
+ {gr:"μου αρέσει",art:"",g:"x",en:"I like it",pos:"verb",ex:"Μου αρέσει πολύ.",exEn:"I like it very much.",tags:["talk"]},
+
+ // --- adjectives ---
+ {gr:"καλός",art:"",g:"x",en:"good",pos:"adj",ex:"Ο καφές είναι καλός.",exEn:"The coffee is good.",tags:["talk"],note:"καλός / καλή / καλό"},
+ {gr:"μεγάλος",art:"",g:"x",en:"big",pos:"adj",ex:"Το σπίτι είναι μεγάλο.",exEn:"The house is big.",tags:["talk"],note:"μεγάλος / μεγάλη / μεγάλο"},
+ {gr:"μικρός",art:"",g:"x",en:"small",pos:"adj",ex:"Η κουζίνα είναι μικρή.",exEn:"The kitchen is small.",tags:["talk"],note:"μικρός / μικρή / μικρό"},
+ {gr:"ωραίος",art:"",g:"x",en:"nice, lovely",pos:"adj",ex:"Τι ωραία μέρα!",exEn:"What a lovely day!",tags:["talk"],note:"ωραίος / ωραία / ωραίο"},
+ {gr:"ακριβός",art:"",g:"x",en:"expensive",pos:"adj",ex:"Είναι πολύ ακριβό.",exEn:"It's very expensive.",tags:["shopping"],note:"ακριβός / ακριβή / ακριβό"},
+ {gr:"φθηνός",art:"",g:"x",en:"cheap",pos:"adj",ex:"Αυτό είναι πιο φθηνό.",exEn:"This one is cheaper.",tags:["shopping"],note:"φθηνός / φθηνή / φθηνό"},
+ {gr:"ζεστός",art:"",g:"x",en:"warm, hot",pos:"adj",ex:"Ο καφές είναι ζεστός.",exEn:"The coffee is hot.",tags:["cafe"],note:"ζεστός / ζεστή / ζεστό"},
+ {gr:"κρύος",art:"",g:"x",en:"cold",pos:"adj",ex:"Το νερό είναι κρύο.",exEn:"The water is cold.",tags:["cafe"],note:"κρύος / κρύα / κρύο"},
+ {gr:"καινούριος",art:"",g:"x",en:"new",pos:"adj",ex:"Έχω ένα καινούριο κινητό.",exEn:"I have a new phone.",tags:["shopping"],note:"καινούριος / καινούρια / καινούριο"},
+ {gr:"ανοιχτός",art:"",g:"x",en:"open",pos:"adj",ex:"Το μαγαζί είναι ανοιχτό.",exEn:"The shop is open.",tags:["shopping"],note:"ανοιχτός / ανοιχτή / ανοιχτό"},
+ {gr:"κλειστός",art:"",g:"x",en:"closed",pos:"adj",ex:"Το μουσείο είναι κλειστό.",exEn:"The museum is closed.",tags:["directions"],note:"κλειστός / κλειστή / κλειστό"},
+ {gr:"νόστιμος",art:"",g:"x",en:"tasty",pos:"adj",ex:"Η σαλάτα είναι νόστιμη.",exEn:"The salad is tasty.",tags:["restaurant"],note:"νόστιμος / νόστιμη / νόστιμο"},
+
+ // --- small words that do a lot of work ---
+ {gr:"τώρα",art:"",g:"x",en:"now",pos:"other",ex:"Πάμε τώρα.",exEn:"Let's go now.",tags:["time"]},
+ {gr:"σήμερα",art:"",g:"x",en:"today",pos:"other",ex:"Τι κάνεις σήμερα;",exEn:"What are you doing today?",tags:["time"]},
+ {gr:"αύριο",art:"",g:"x",en:"tomorrow",pos:"other",ex:"Θα έρθω αύριο.",exEn:"I'll come tomorrow.",tags:["time"]},
+ {gr:"χθες",art:"",g:"x",en:"yesterday",pos:"other",ex:"Χθες ήμουν στη δουλειά.",exEn:"Yesterday I was at work.",tags:["time"]},
+ {gr:"εδώ",art:"",g:"x",en:"here",pos:"other",ex:"Μένω εδώ.",exEn:"I live here.",tags:["directions"]},
+ {gr:"εκεί",art:"",g:"x",en:"there",pos:"other",ex:"Είναι εκεί.",exEn:"It's over there.",tags:["directions"]},
+ {gr:"δεξιά",art:"",g:"x",en:"right",pos:"other",ex:"Στρίψτε δεξιά.",exEn:"Turn right.",tags:["directions"]},
+ {gr:"αριστερά",art:"",g:"x",en:"left",pos:"other",ex:"Στρίψτε αριστερά.",exEn:"Turn left.",tags:["directions"]},
+ {gr:"ευθεία",art:"",g:"x",en:"straight ahead",pos:"other",ex:"Πηγαίνετε ευθεία.",exEn:"Go straight ahead.",tags:["directions"]},
+ {gr:"κοντά",art:"",g:"x",en:"near",pos:"other",ex:"Είναι κοντά στην πλατεία.",exEn:"It's near the square.",tags:["directions"]},
+ {gr:"μακριά",art:"",g:"x",en:"far",pos:"other",ex:"Είναι μακριά από εδώ;",exEn:"Is it far from here?",tags:["directions"]},
+ {gr:"πολύ",art:"",g:"x",en:"very, a lot",pos:"other",ex:"Ευχαριστώ πολύ.",exEn:"Thank you very much.",tags:["talk"]},
+ {gr:"λίγο",art:"",g:"x",en:"a little",pos:"other",ex:"Λίγο νερό, παρακαλώ.",exEn:"A little water, please.",tags:["talk"]},
+ {gr:"πάντα",art:"",g:"x",en:"always",pos:"other",ex:"Πάντα πίνω καφέ.",exEn:"I always drink coffee.",tags:["time"]},
+ {gr:"ποτέ",art:"",g:"x",en:"never",pos:"other",ex:"Δεν πίνω ποτέ.",exEn:"I never drink.",tags:["time"]},
+ {gr:"και",art:"",g:"x",en:"and",pos:"other",ex:"Καφέ και νερό, παρακαλώ.",exEn:"Coffee and water, please.",tags:["talk"]},
+ {gr:"αλλά",art:"",g:"x",en:"but",pos:"other",ex:"Θέλω, αλλά δεν μπορώ.",exEn:"I want to, but I can't.",tags:["talk"]},
+ {gr:"γιατί",art:"",g:"x",en:"because, why",pos:"other",ex:"Γιατί όχι;",exEn:"Why not?",tags:["talk"]},
+ {gr:"με",art:"",g:"x",en:"with",pos:"other",ex:"Καφές με γάλα.",exEn:"Coffee with milk.",tags:["cafe"]},
+ {gr:"χωρίς",art:"",g:"x",en:"without",pos:"other",ex:"Χωρίς ζάχαρη.",exEn:"Without sugar.",tags:["cafe"]},
+ {gr:"για",art:"",g:"x",en:"for",pos:"other",ex:"Ένα τραπέζι για δύο.",exEn:"A table for two.",tags:["restaurant"]},
+ {gr:"από",art:"",g:"x",en:"from",pos:"other",ex:"Είμαι από τη Μανίλα.",exEn:"I'm from Manila.",tags:["talk"]},
+ {gr:"σε",art:"",g:"x",en:"to, at, in",pos:"other",ex:"Πάω σε ένα μαγαζί.",exEn:"I'm going to a shop.",tags:["talk"]}
+];
+
+const PHRASES = [
+ // greetings & basics
+ {gr:"Καλημέρα.",en:"Good morning.",s:"greetings"},
+ {gr:"Καλησπέρα.",en:"Good evening.",s:"greetings"},
+ {gr:"Καληνύχτα.",en:"Good night.",s:"greetings"},
+ {gr:"Γεια σου.",en:"Hello / bye. (to one person, informal)",s:"greetings"},
+ {gr:"Γεια σας.",en:"Hello. (polite or to more than one)",s:"greetings"},
+ {gr:"Τι κάνεις;",en:"How are you? (informal)",s:"greetings"},
+ {gr:"Τι κάνετε;",en:"How are you? (polite)",s:"greetings"},
+ {gr:"Καλά, ευχαριστώ. Εσύ;",en:"Fine, thanks. And you?",s:"greetings"},
+ {gr:"Χάρηκα πολύ.",en:"Very nice to meet you.",s:"greetings"},
+ {gr:"Τα λέμε.",en:"See you.",s:"greetings"},
+ {gr:"Παρακαλώ.",en:"Please. / You're welcome.",s:"greetings"},
+ {gr:"Ευχαριστώ πολύ.",en:"Thank you very much.",s:"greetings"},
+ {gr:"Συγγνώμη.",en:"Sorry. / Excuse me.",s:"greetings"},
+ {gr:"Ναι. / Όχι.",en:"Yes. / No.",s:"greetings"},
+ {gr:"Εντάξει.",en:"Okay.",s:"greetings"},
+
+ // getting by
+ {gr:"Δεν καταλαβαίνω.",en:"I don't understand.",s:"survival"},
+ {gr:"Μιλάτε αγγλικά;",en:"Do you speak English?",s:"survival"},
+ {gr:"Μιλάω λίγα ελληνικά.",en:"I speak a little Greek.",s:"survival"},
+ {gr:"Πιο αργά, παρακαλώ.",en:"Slower, please.",s:"survival"},
+ {gr:"Μπορείτε να το επαναλάβετε;",en:"Can you repeat that?",s:"survival"},
+ {gr:"Πώς το λένε στα ελληνικά;",en:"How do you say it in Greek?",s:"survival"},
+ {gr:"Τι σημαίνει αυτό;",en:"What does this mean?",s:"survival"},
+ {gr:"Δεν ξέρω.",en:"I don't know.",s:"survival"},
+ {gr:"Με λένε Άννα.",en:"My name is Anna.",s:"survival"},
+ {gr:"Πώς σε λένε;",en:"What's your name? (informal)",s:"survival"},
+ {gr:"Είμαι από τις Φιλιππίνες.",en:"I'm from the Philippines.",s:"survival"},
+ {gr:"Μαθαίνω ελληνικά.",en:"I'm learning Greek.",s:"survival"},
+
+ // bakery
+ {gr:"Μία τυρόπιτα, παρακαλώ.",en:"One cheese pie, please.",s:"bakery"},
+ {gr:"Έχετε φρέσκο ψωμί;",en:"Do you have fresh bread?",s:"bakery"},
+ {gr:"Δύο σπανακόπιτες, παρακαλώ.",en:"Two spinach pies, please.",s:"bakery"},
+ {gr:"Αυτό μόνο, ευχαριστώ.",en:"Just this, thank you.",s:"bakery"},
+
+ // café
+ {gr:"Έναν καφέ, παρακαλώ.",en:"One coffee, please.",s:"cafe"},
+ {gr:"Έναν φραπέ μέτριο.",en:"One frappé, medium sweet.",s:"cafe"},
+ {gr:"Χωρίς ζάχαρη, παρακαλώ.",en:"Without sugar, please.",s:"cafe"},
+ {gr:"Για εδώ ή για έξω;",en:"For here or to go? (what they'll ask you)",s:"cafe"},
+ {gr:"Για έξω, παρακαλώ.",en:"To go, please.",s:"cafe"},
+
+ // restaurant
+ {gr:"Ένα τραπέζι για δύο, παρακαλώ.",en:"A table for two, please.",s:"restaurant"},
+ {gr:"Το μενού, παρακαλώ.",en:"The menu, please.",s:"restaurant"},
+ {gr:"Τι μας προτείνετε;",en:"What do you recommend?",s:"restaurant"},
+ {gr:"Θα ήθελα μία ελληνική σαλάτα.",en:"I would like a Greek salad.",s:"restaurant"},
+ {gr:"Δεν τρώω κρέας.",en:"I don't eat meat.",s:"restaurant"},
+ {gr:"Είμαι αλλεργική στα θαλασσινά.",en:"I'm allergic to seafood. (said by a woman)",s:"restaurant"},
+ {gr:"Λίγο ακόμα νερό, παρακαλώ.",en:"A little more water, please.",s:"restaurant"},
+ {gr:"Ήταν πολύ νόστιμο.",en:"It was very tasty.",s:"restaurant"},
+ {gr:"Μπορώ να έχω τον λογαριασμό;",en:"Can I have the bill?",s:"restaurant"},
+
+ // grocery & shopping
+ {gr:"Πού είναι το γάλα;",en:"Where is the milk?",s:"grocery"},
+ {gr:"Πόσο κάνει;",en:"How much is it?",s:"grocery"},
+ {gr:"Πόσο κάνουν όλα μαζί;",en:"How much is it all together?",s:"grocery"},
+ {gr:"Μία σακούλα, παρακαλώ.",en:"A bag, please.",s:"grocery"},
+ {gr:"Έχετε αυτό σε μεγαλύτερο μέγεθος;",en:"Do you have this in a bigger size?",s:"shopping"},
+ {gr:"Μπορώ να το δοκιμάσω;",en:"Can I try it on?",s:"shopping"},
+ {gr:"Είναι πολύ ακριβό.",en:"It's very expensive.",s:"shopping"},
+ {gr:"Θα το πάρω.",en:"I'll take it.",s:"shopping"},
+ {gr:"Μπορώ να πληρώσω με κάρτα;",en:"Can I pay by card?",s:"shopping"},
+ {gr:"Απόδειξη, παρακαλώ.",en:"A receipt, please.",s:"shopping"},
+
+ // directions & transport
+ {gr:"Πού είναι η τουαλέτα;",en:"Where is the toilet?",s:"directions"},
+ {gr:"Πώς πάω στο μουσείο;",en:"How do I get to the museum?",s:"directions"},
+ {gr:"Είναι μακριά από εδώ;",en:"Is it far from here?",s:"directions"},
+ {gr:"Χάθηκα.",en:"I'm lost.",s:"directions"},
+ {gr:"Μπορείτε να μου δείξετε στον χάρτη;",en:"Can you show me on the map?",s:"directions"},
+ {gr:"Ένα εισιτήριο για την Αθήνα, παρακαλώ.",en:"One ticket to Athens, please.",s:"transport"},
+ {gr:"Τι ώρα φεύγει το λεωφορείο;",en:"What time does the bus leave?",s:"transport"},
+ {gr:"Στο αεροδρόμιο, παρακαλώ.",en:"To the airport, please.",s:"transport"},
+ {gr:"Εδώ είναι καλά, ευχαριστώ.",en:"Here is fine, thank you.",s:"transport"},
+
+ // home & everyday
+ {gr:"Πού είναι τα κλειδιά;",en:"Where are the keys?",s:"home"},
+ {gr:"Τι θα φάμε απόψε;",en:"What shall we eat tonight?",s:"home"},
+ {gr:"Έρχομαι σε πέντε λεπτά.",en:"I'm coming in five minutes.",s:"home"},
+ {gr:"Είμαι κουρασμένη.",en:"I'm tired. (said by a woman)",s:"home"},
+ {gr:"Καλή όρεξη!",en:"Enjoy your meal!",s:"home"},
+
+ // health
+ {gr:"Χρειάζομαι έναν γιατρό.",en:"I need a doctor.",s:"health"},
+ {gr:"Πονάει το κεφάλι μου.",en:"My head hurts.",s:"health"},
+ {gr:"Έχετε κάτι για τον πονόλαιμο;",en:"Do you have something for a sore throat?",s:"health"},
+ {gr:"Δεν αισθάνομαι καλά.",en:"I don't feel well.",s:"health"},
+ {gr:"Βοήθεια!",en:"Help!",s:"health"},
+
+ // small talk
+ {gr:"Τι κάνεις σήμερα;",en:"What are you doing today?",s:"talk"},
+ {gr:"Πού μένεις;",en:"Where do you live?",s:"talk"},
+ {gr:"Έχω τρία παιδιά και δύο εγγόνια.",en:"I have three children and two grandchildren.",s:"talk"},
+ {gr:"Μου αρέσει πολύ η Ελλάδα.",en:"I like Greece very much.",s:"talk"},
+ {gr:"Τι ωραία μέρα!",en:"What a lovely day!",s:"talk"},
+ {gr:"Καλό ταξίδι!",en:"Have a good trip!",s:"talk"}
+];
+
+const PATTERNS = [
+ {gr:"Θα ήθελα",en:"I would like ___",slot:"+ noun",ex:[
+   ["Θα ήθελα έναν καφέ.","I would like a coffee."],
+   ["Θα ήθελα μία σαλάτα.","I would like a salad."],
+   ["Θα ήθελα ένα εισιτήριο.","I would like a ticket."]]},
+ {gr:"Μπορώ να",en:"Can I ___?",slot:"+ verb",ex:[
+   ["Μπορώ να πληρώσω με κάρτα;","Can I pay by card?"],
+   ["Μπορώ να το δοκιμάσω;","Can I try it?"],
+   ["Μπορώ να καθίσω εδώ;","Can I sit here?"]]},
+ {gr:"Πού είναι",en:"Where is ___?",slot:"+ noun",ex:[
+   ["Πού είναι η τουαλέτα;","Where is the toilet?"],
+   ["Πού είναι το φαρμακείο;","Where is the pharmacy?"],
+   ["Πού είναι τα κλειδιά;","Where are the keys?"]]},
+ {gr:"Έχετε",en:"Do you have ___?",slot:"+ noun",ex:[
+   ["Έχετε φρέσκο ψωμί;","Do you have fresh bread?"],
+   ["Έχετε άλλο χρώμα;","Do you have another colour?"],
+   ["Έχετε τραπέζι για δύο;","Do you have a table for two?"]]},
+ {gr:"Πόσο κάνει",en:"How much is ___?",slot:"+ noun",ex:[
+   ["Πόσο κάνει ο καφές;","How much is the coffee?"],
+   ["Πόσο κάνει αυτό;","How much is this?"],
+   ["Πόσο κάνουν όλα μαζί;","How much is everything together?"]]},
+ {gr:"Θέλω να",en:"I want to ___",slot:"+ verb",ex:[
+   ["Θέλω να πάω στην παραλία.","I want to go to the beach."],
+   ["Θέλω να μάθω ελληνικά.","I want to learn Greek."],
+   ["Θέλω να δω το μενού.","I want to see the menu."]]},
+ {gr:"Μου αρέσει",en:"I like ___",slot:"+ noun",ex:[
+   ["Μου αρέσει ο ελληνικός καφές.","I like Greek coffee."],
+   ["Μου αρέσει αυτό το μαγαζί.","I like this shop."],
+   ["Μου αρέσει να γράφω.","I like to write."]]},
+ {gr:"Χρειάζομαι",en:"I need ___",slot:"+ noun",ex:[
+   ["Χρειάζομαι έναν γιατρό.","I need a doctor."],
+   ["Χρειάζομαι βοήθεια.","I need help."],
+   ["Χρειάζομαι λίγο χρόνο.","I need a little time."]]},
+ {gr:"Υπάρχει",en:"Is there ___?",slot:"+ noun",ex:[
+   ["Υπάρχει φαρμακείο εδώ κοντά;","Is there a pharmacy near here?"],
+   ["Υπάρχει τραπέζι έξω;","Is there a table outside?"],
+   ["Υπάρχει λεωφορείο το βράδυ;","Is there a bus in the evening?"]]},
+ {gr:"Πώς πάω",en:"How do I get to ___?",slot:"+ place",ex:[
+   ["Πώς πάω στο μουσείο;","How do I get to the museum?"],
+   ["Πώς πάω στην παραλία;","How do I get to the beach?"],
+   ["Πώς πάω στο κέντρο;","How do I get to the centre?"]]},
+ {gr:"Τι ώρα",en:"What time ___?",slot:"+ verb",ex:[
+   ["Τι ώρα είναι;","What time is it?"],
+   ["Τι ώρα ανοίγει;","What time does it open?"],
+   ["Τι ώρα φεύγει το λεωφορείο;","What time does the bus leave?"]]},
+ {gr:"Δεν",en:"I don't ___",slot:"+ verb",ex:[
+   ["Δεν καταλαβαίνω.","I don't understand."],
+   ["Δεν ξέρω.","I don't know."],
+   ["Δεν τρώω κρέας.","I don't eat meat."]]}
+];
+
+const SITUATIONS = [
+ {id:"greetings",gr:"Χαιρετισμοί",en:"Greetings"},
+ {id:"survival",gr:"Τα βασικά",en:"Getting by"},
+ {id:"bakery",gr:"Στον φούρνο",en:"At the bakery"},
+ {id:"cafe",gr:"Στην καφετέρια",en:"At the café"},
+ {id:"restaurant",gr:"Στο εστιατόριο",en:"At the restaurant"},
+ {id:"grocery",gr:"Στο σούπερ μάρκετ",en:"Groceries"},
+ {id:"shopping",gr:"Ψώνια",en:"Shopping"},
+ {id:"directions",gr:"Κατευθύνσεις",en:"Directions"},
+ {id:"transport",gr:"Μετακίνηση",en:"Getting around"},
+ {id:"travel",gr:"Ταξίδι",en:"Travel"},
+ {id:"home",gr:"Στο σπίτι",en:"At home"},
+ {id:"health",gr:"Υγεία",en:"Health"},
+ {id:"talk",gr:"Κουβέντα",en:"Small talk"},
+ {id:"time",gr:"Χρόνος",en:"Time"}
+];
+
+/* ============================================================
+   2. ENGINE
+   ============================================================ */
+
+WORDS.forEach((w,i)=>{w.id="w"+i;w.kind="word";});
+PHRASES.forEach((p,i)=>{p.id="p"+i;p.kind="phrase";p.tags=[p.s];p.art="";p.g="x";});
+const ALL = WORDS.concat(PHRASES);
+const BY_ID = {}; ALL.forEach(x=>BY_ID[x.id]=x);
+
+// storage that survives everywhere: localStorage if allowed, memory if not
+const store = (()=>{
+  let mem={};
+  const key="lexeis.v1";
+  let ok=true;
+  try{ localStorage.setItem("_t","1"); localStorage.removeItem("_t"); }catch(e){ ok=false; }
+  return {
+    load(){ if(!ok) return mem;
+      try{ return JSON.parse(localStorage.getItem(key)||"{}"); }catch(e){ return {}; } },
+    save(d){ mem=d; if(!ok) return;
+      try{ localStorage.setItem(key,JSON.stringify(d)); }catch(e){} },
+    ok
+  };
+})();
+
+let P = store.load();                 // {id:{box,due,right,wrong}}
+const save = ()=>store.save(P);
+
+const DAY = 86400000;
+const STEPS = [0, 1, 2, 4, 8, 16, 32, 64];   // days until next review, by box
+const now = ()=>Date.now();
+
+function rec(id){ return P[id] || {box:0,due:0,right:0,wrong:0}; }
+function seen(id){ return !!P[id]; }
+function grade(id,good){
+  const r = rec(id);
+  r.box = good ? Math.min(r.box+1, STEPS.length-1) : 1;
+  if(good) r.right++; else r.wrong++;
+  r.due = now() + STEPS[r.box]*DAY;
+  P[id]=r; save();
+}
+function dueList(){
+  return ALL.filter(x=> seen(x.id) && rec(x.id).due <= now());
+}
+function newList(n){
+  return ALL.filter(x=> !seen(x.id)).slice(0,n);
+}
+function mastered(id){ return rec(id).box >= 5; }
+
+// speech
+let voice=null;
+function pickVoice(){
+  const vs = (window.speechSynthesis && speechSynthesis.getVoices) ? speechSynthesis.getVoices() : [];
+  voice = vs.find(v=>/^el/i.test(v.lang)) || null;
+}
+if(window.speechSynthesis){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function say(text){
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang="el-GR"; if(voice) u.voice=voice; u.rate=0.85;
+  speechSynthesis.speak(u);
+}
+
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
+const app = document.getElementById("app");
+const foot = document.getElementById("foot");
+
+// full Greek form with article, coloured by gender
+function full(x){
+  const cls = x.g==="m"?"m":x.g==="f"?"f":x.g==="n"?"n":"";
+  const art = x.art ? '<span class="art">'+x.art+'</span> ' : '';
+  return '<span class="gr '+cls+'">'+art+esc(x.gr)+'</span>';
+}
+function plain(x){ return (x.art? x.art+" ":"")+x.gr; }
+
+/* ---------- screens ---------- */
+let view = {name:"home"};
+function go(name,arg){ view={name,arg}; window.scrollTo(0,0); render(); }
+
+function render(){
+  const d = dueList().length;
+  document.getElementById("dueTag").innerHTML = d ? '<b>'+d+'</b> to review' : '';
+  foot.textContent = store.ok ? "Your progress is saved on this device." :
+    "Private browsing: progress will not be saved after you close this tab.";
+  ({home:Home,words:Words,phrases:Phrases,patterns:Patterns,
+    situations:Situations,situation:Situation,review:Review,
+    speak:Speak,progress:Progress}[view.name] || Home)();
+}
+
+function back(label){
+  return '<button class="back" onclick="go(\'home\')">← '+ (label||"Home") +'</button>';
+}
+
+function Home(){
+  const d = dueList().length;
+  const started = Object.keys(P).length;
+  app.innerHTML =
+    '<h1>Τι θα μάθεις σήμερα;</h1>'+
+    '<p class="sub">What do you want to learn today?</p>'+
+    '<div class="menu">'+
+      tile("Λέξεις","Words — with their article and gender","words",WORDS.length)+
+      tile("Φράσεις","Phrases you can actually say","phrases",PHRASES.length)+
+      tile("Μοτίβα","Patterns you can fill in yourself","patterns",PATTERNS.length)+
+      tile("Καταστάσεις","Situations — bakery, café, taxi, home","situations",SITUATIONS.length)+
+      tile("Επανάληψη", d ? d+" ready for review right now" : "Nothing due — start something new","review",d,d>0)+
+      tile("Από μνήμης","Speak from memory: English first","speak",started)+
+    '</div>'+
+    '<button class="back" style="margin-top:16px" onclick="go(\'progress\')">See your progress →</button>';
+}
+function tile(gr,en,to,n,hot){
+  return '<button class="tile'+(hot?' hot':'')+'" onclick="go(\''+to+'\')">'+
+    '<span class="gr">'+gr+'</span><span class="en">'+en+'</span>'+
+    (n?'<span class="n">'+n+'</span>':'')+'</button>';
+}
+
+/* ---------- words ---------- */
+let wFilter="all", wQuery="", wOpen=null;
+function Words(){
+  const f = WORDS.filter(w=>
+    (wFilter==="all"||w.pos===wFilter) &&
+    (!wQuery || (w.gr+w.en).toLowerCase().includes(wQuery.toLowerCase())));
+  app.innerHTML = back()+'<h1>Λέξεις</h1><p class="sub">Every noun comes with its article, so you learn the gender at the same time.</p>'+
+    '<input type="search" id="q" placeholder="Search Greek or English" value="'+esc(wQuery)+'">'+
+    '<div class="chips">'+
+      ["all","noun","verb","adj","other"].map(k=>
+        '<button class="chip" aria-pressed="'+(wFilter===k)+'" onclick="setFilter(\''+k+'\')">'+
+        ({all:"All",noun:"Nouns",verb:"Verbs",adj:"Adjectives",other:"Small words"}[k])+'</button>').join("")+
+    '</div>'+
+    '<div class="legend"><span><b class="art" style="color:var(--m)">ο</b> masculine</span>'+
+    '<span><b class="art" style="color:var(--f)">η</b> feminine</span>'+
+    '<span><b class="art" style="color:var(--n)">το</b> neuter</span></div>'+
+    (f.length ? f.map(itemHTML).join("") : '<div class="empty">No words match that. Try a shorter search.</div>');
+  const q = document.getElementById("q");
+  q.oninput = e=>{ wQuery=e.target.value; const pos=e.target.selectionStart; Words();
+    const nq=document.getElementById("q"); nq.focus(); nq.setSelectionRange(pos,pos); };
+}
+function setFilter(k){ wFilter=k; wOpen=null; Words(); }
+
+function itemHTML(x){
+  const open = wOpen===x.id;
+  let d="";
+  if(open){
+    d = '<div class="detail">'+
+      (x.ex?'<div class="exgr">'+esc(x.ex)+'</div><div class="exen">'+esc(x.exEn)+'</div>':'')+
+      (x.note?'<div class="pos">Forms: '+esc(x.note)+'</div>':'')+
+      '<div class="pos">'+({noun:"noun",verb:"verb",adj:"adjective",other:"everyday word"}[x.pos]||"")+
+        (x.g==="m"?" · masculine":x.g==="f"?" · feminine":x.g==="n"?" · neuter":"")+'</div>'+
+      '<button class="speak" onclick="event.stopPropagation();say(\''+plain(x).replace(/'/g,"\\'")+'\')">▸ Hear it</button>'+
+      '</div>';
+  }
+  return '<div class="item" onclick="toggle(\''+x.id+'\')">'+full(x)+
+    '<div class="en">'+esc(x.en)+'</div>'+d+'</div>';
+}
+function toggle(id){ wOpen = wOpen===id?null:id; (view.name==="words"?Words:view.name==="phrases"?Phrases:Situation)(); }
+
+/* ---------- phrases ---------- */
+let pSit="all";
+function Phrases(){
+  const list = PHRASES.filter(p=>pSit==="all"||p.s===pSit);
+  app.innerHTML = back()+'<h1>Φράσεις</h1><p class="sub">Whole sentences you can use today, without changing anything.</p>'+
+    '<div class="chips"><button class="chip" aria-pressed="'+(pSit==="all")+'" onclick="setSit(\'all\')">All</button>'+
+      SITUATIONS.filter(s=>PHRASES.some(p=>p.s===s.id)).map(s=>
+        '<button class="chip" aria-pressed="'+(pSit===s.id)+'" onclick="setSit(\''+s.id+'\')">'+s.en+'</button>').join("")+
+    '</div>'+ list.map(itemHTML).join("");
+}
+function setSit(s){ pSit=s; wOpen=null; Phrases(); }
+
+/* ---------- patterns ---------- */
+function Patterns(){
+  app.innerHTML = back()+'<h1>Μοτίβα</h1>'+
+    '<p class="sub">Learn one pattern and you can build a hundred sentences. Swap in any word you know.</p>'+
+    PATTERNS.map(p=>
+      '<div class="pat"><div class="form">'+esc(p.gr)+'<span class="slot"></span></div>'+
+      '<div class="en">'+esc(p.en)+' &nbsp;·&nbsp; '+esc(p.slot)+'</div>'+
+      '<ul>'+p.ex.map(e=>'<li>'+esc(e[0])+'<small>'+esc(e[1])+'</small></li>').join("")+'</ul></div>'
+    ).join("");
+}
+
+/* ---------- situations ---------- */
+function Situations(){
+  app.innerHTML = back()+'<h1>Καταστάσεις</h1>'+
+    '<p class="sub">The words and phrases you need for one place, together.</p>'+
+    '<div class="menu">'+SITUATIONS.map(s=>{
+      const n = ALL.filter(x=>x.tags&&x.tags.includes(s.id)).length;
+      return '<button class="tile" onclick="go(\'situation\',\''+s.id+'\')">'+
+        '<span class="gr">'+s.gr+'</span><span class="en">'+s.en+'</span><span class="n">'+n+'</span></button>';
+    }).join("")+'</div>';
+}
+function Situation(){
+  const s = SITUATIONS.find(x=>x.id===view.arg);
+  const items = ALL.filter(x=>x.tags&&x.tags.includes(s.id));
+  const words = items.filter(x=>x.kind==="word"), phr = items.filter(x=>x.kind==="phrase");
+  app.innerHTML = '<button class="back" onclick="go(\'situations\')">← Situations</button>'+
+    '<h1>'+s.gr+'</h1><p class="sub">'+s.en+'</p>'+
+    (phr.length?'<h2>Say this</h2>'+phr.map(itemHTML).join(""):"")+
+    (words.length?'<h2>Words you need</h2>'+words.map(itemHTML).join(""):"");
+}
+
+/* ---------- review ---------- */
+let session=null;
+function Review(){
+  if(!session){
+    let q = shuffle(dueList()).slice(0,20);
+    if(q.length < 10) q = q.concat(newList(10-q.length));
+    if(!q.length){ app.innerHTML = back()+'<h1>Επανάληψη</h1>'+
+      '<div class="empty">Nothing to review and nothing new left. Come back tomorrow, or open Words to browse.</div>'; return; }
+    session = {q:shuffle(q), i:0, right:0, mode:null, shown:false, picked:null};
+  }
+  const S=session;
+  if(S.i>=S.q.length){
+    app.innerHTML = back()+'<h1>Τέλος</h1>'+
+      '<div class="empty">'+S.right+' of '+S.q.length+' right.<br>Next batch is scheduled.</div>'+
+      '<div class="actions"><button class="btn" onclick="session=null;go(\'review\')">Review more</button>'+
+      '<button class="btn ghost" onclick="session=null;go(\'home\')">Done for now</button></div>';
+    return;
+  }
+  const x = S.q[S.i];
+  if(S.mode===null){ S.mode = (!seen(x.id) || rec(x.id).box<2) ? "recognise" : "produce"; }
+
+  if(S.mode==="recognise"){
+    const wrongs = shuffle(ALL.filter(o=>o.id!==x.id && o.kind===x.kind)).slice(0,3);
+    if(!S.opts) S.opts = shuffle([x].concat(wrongs));
+    app.innerHTML = back()+'<h1>Επανάληψη</h1>'+
+      '<div class="card"><div class="prompt">What does this mean?</div>'+
+        '<div class="big">'+plainSpan(x)+'</div></div>'+
+      '<div class="choices">'+S.opts.map(o=>{
+        let c="choice";
+        if(S.picked){ if(o.id===x.id) c+=" right"; else if(o.id===S.picked) c+=" wrong"; }
+        return '<button class="'+c+'" onclick="pick(\''+o.id+'\')">'+esc(o.en)+'</button>';
+      }).join("")+'</div>'+
+      (S.picked?'<div class="actions"><button class="btn" onclick="next()">Next</button></div>':"")+
+      counter();
+  } else {
+    app.innerHTML = back()+'<h1>Επανάληψη</h1>'+
+      '<div class="card"><div class="prompt">Say it in Greek</div>'+
+        '<div class="bigen">'+esc(x.en)+'</div>'+
+        (S.shown?'<div class="big reveal">'+plainSpan(x)+'</div>'+
+          (x.ex?'<div class="ex reveal">'+esc(x.ex)+'</div>':""):"")+
+      '</div>'+
+      (S.shown
+        ? '<div class="actions two"><button class="btn again" onclick="mark(false)">Not yet</button>'+
+          '<button class="btn good" onclick="mark(true)">I had it</button></div>'+
+          '<div class="actions"><button class="btn ghost" onclick="say(\''+plain(x).replace(/'/g,"\\'")+'\')">▸ Hear it</button></div>'
+        : '<div class="actions"><button class="btn" onclick="session.shown=true;Review()">Show the answer</button></div>')+
+      counter();
+  }
+}
+function plainSpan(x){
+  const cls = x.g==="m"?"m":x.g==="f"?"f":x.g==="n"?"n":"";
+  const art = x.art?'<span class="art">'+x.art+'</span> ':'';
+  return '<span class="'+cls+'">'+art+esc(x.gr)+'</span>';
+}
+function counter(){ return '<div class="counter">'+(session.i+1)+' / '+session.q.length+'</div>'; }
+function pick(id){
+  if(session.picked) return;
+  session.picked=id;
+  const ok = id===session.q[session.i].id;
+  if(ok) session.right++;
+  grade(session.q[session.i].id, ok);
+  Review();
+}
+function mark(good){ if(good) session.right++; grade(session.q[session.i].id,good); next(); }
+function next(){ session.i++; session.mode=null; session.shown=false; session.picked=null; session.opts=null; Review(); }
+
+/* ---------- speak from memory ---------- */
+let sp=null;
+function Speak(){
+  if(!sp){
+    const pool = ALL.filter(x=>seen(x.id)).length>8 ? ALL.filter(x=>seen(x.id)) : ALL;
+    sp = {q:shuffle(pool).slice(0,15), i:0, shown:false};
+  }
+  if(sp.i>=sp.q.length){
+    app.innerHTML = back()+'<h1>Από μνήμης</h1><div class="empty">That\'s the set. Say them out loud once more before you close.</div>'+
+      '<div class="actions"><button class="btn" onclick="sp=null;Speak()">Another set</button></div>'; return;
+  }
+  const x = sp.q[sp.i];
+  app.innerHTML = back()+'<h1>Από μνήμης</h1>'+
+    '<p class="sub">Say the Greek out loud first. Then check.</p>'+
+    '<div class="card"><div class="bigen">'+esc(x.en)+'</div>'+
+      (sp.shown?'<div class="big reveal">'+plainSpan(x)+'</div>'+
+        (x.ex?'<div class="ex reveal">'+esc(x.ex)+'</div>':""):"")+'</div>'+
+    (sp.shown
+      ? '<div class="actions two">'+
+        '<button class="btn ghost" onclick="say(\''+plain(x).replace(/'/g,"\\'")+'\')">▸ Hear it</button>'+
+        '<button class="btn" onclick="sp.i++;sp.shown=false;Speak()">Next</button></div>'
+      : '<div class="actions"><button class="btn" onclick="sp.shown=true;Speak()">Check</button></div>')+
+    '<div class="counter">'+(sp.i+1)+' / '+sp.q.length+'</div>';
+}
+
+/* ---------- progress ---------- */
+function Progress(){
+  const groups = [
+    ["Nouns", WORDS.filter(w=>w.pos==="noun")],
+    ["Verbs", WORDS.filter(w=>w.pos==="verb")],
+    ["Adjectives &amp; small words", WORDS.filter(w=>w.pos==="adj"||w.pos==="other")],
+    ["Phrases", PHRASES]
+  ];
+  const d = dueList().length;
+  app.innerHTML = back()+'<h1>Πρόοδος</h1><p class="sub">Mastered means you have recalled it correctly five times, spread over weeks.</p>'+
+    groups.map(([name,list])=>{
+      const m = list.filter(x=>mastered(x.id)).length;
+      const pct = list.length? Math.round(m/list.length*100):0;
+      return '<div class="row"><div class="lab"><span>'+name+'</span><b>'+m+' / '+list.length+'</b></div>'+
+        '<div class="bar"><i style="width:'+pct+'%"></i></div></div>';
+    }).join("")+
+    '<div class="empty" style="margin-top:22px">'+(d? d+' ready for review today.' : 'Nothing due today.')+'</div>'+
+    '<div class="actions" style="margin-top:22px"><button class="btn ghost" onclick="reset()">Erase my progress</button></div>';
+}
+function reset(){
+  if(confirm("Erase all progress on this device? This cannot be undone.")){ P={}; save(); go("home"); }
+}
+
+render();
+</script>
+</body>
+</html>
