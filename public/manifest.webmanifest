@@ -1,0 +1,11 @@
+{
+  "name": "Greek Mastery A1–A2",
+  "short_name": "Greek Mastery",
+  "description": "Structured Modern Greek grammar, vocabulary and mastery practice.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#123b66",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
