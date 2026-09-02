@@ -1,15 +1,16 @@
-# Greek Mastery  A1–A2
+# Greek Mastery A1–A2
 
 An offline-first Modern Greek learning app built around a fixed grammar-led A1→A2 pathway.
 
-## Phase 0 foundation
+## Phase 1 mastery foundation
 
 - Today screen with one clear next action
 - Fixed course path and locked future lessons
-- One complete grammar lesson: Understand → Notice → Control → Use → Result
-- Five controlled questions with explanatory feedback and retry
-- Completion gate requiring practice mastery and personal production
-- Vocabulary cards with article, plural, meaning and natural Greek use
+- First article-mastery worksheet with ten validated exercises
+- Immediate correction loop and first-attempt scoring
+- Mastery gate requiring 10/10 corrected and at least 9/10 on first attempt
+- Three-word vocabulary ceiling for the first worksheet
+- Data-driven curriculum structure designed to scale to twenty worksheets and 200 exercises
 - Review state and 1/3/7/21/60-day rhythm
 - Local progress persistence
 - Search and in-app system check
