@@ -3,11 +3,27 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const page = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+const styles = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
 const manifest = JSON.parse(readFileSync(new URL("../public/manifest.webmanifest", import.meta.url), "utf8"));
 const curriculum = JSON.parse(readFileSync(new URL("../data/a1-foundations.json", import.meta.url), "utf8"));
 
 test("all five purposeful navigation destinations exist", () => {
   for (const label of ["Today", "Path", "Practice", "Vocabulary", "Review"]) assert.match(page, new RegExp(`label: "${label}"`));
+});
+
+test("persistent course selectors make earlier units and worksheets reachable", () => {
+  assert.match(page, /aria-label="Course menu"/);
+  assert.match(page, /aria-label="Select unit"/);
+  assert.match(page, /aria-label="Select worksheet"/);
+  assert.match(page, /curriculum\.units\.filter\(\(unit\) => unit\.unitNumber === selectedUnit\)/);
+  assert.match(page, /disabled=\{!unlocked\}/);
+});
+
+test("deep-blue gradient theme keeps primary text dark and bold", () => {
+  assert.match(styles, /--navy:#061f3f/);
+  assert.match(styles, /--ink:#071425/);
+  assert.match(styles, /background:linear-gradient\(180deg,#061f3f/);
+  assert.match(styles, /h1,h2,h3,strong\{font-weight:800\}/);
 });
 
 test("five units contain 100 sequential worksheets and 1,000 exercises", () => {
@@ -69,5 +85,5 @@ test("listening and installation metadata are present", () => {
   assert.match(page, /speechSynthesis/);
   assert.ok(curriculum.worksheets.flatMap((worksheet) => worksheet.exercises).some((item) => item.audioText));
   assert.equal(manifest.display, "standalone");
-  assert.equal(manifest.theme_color, "#123b66");
+  assert.equal(manifest.theme_color, "#061f3f");
 });
