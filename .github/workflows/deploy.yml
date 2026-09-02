@@ -27,6 +27,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run generate:curriculum
       - run: npm run lint
       - run: node --test tests/greek-mastery-foundation.test.mjs
       - run: npm run build:github

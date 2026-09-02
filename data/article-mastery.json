@@ -2,108 +2,3886 @@
   "packId": "articles-a1",
   "title": "Definite Articles Mastery",
   "totalWorksheets": 20,
+  "totalExercises": 200,
+  "reviewIntervalsDays": [
+    1,
+    3,
+    7,
+    21,
+    60
+  ],
   "worksheets": [
     {
       "id": "ART-A1",
       "sequence": 1,
       "title": "το + three essential nouns",
-      "estimatedMinutes": 4,
+      "estimatedMinutes": 5,
       "masteryFirstAttempt": 9,
-      "words": [
-        { "greek": "το νερό", "english": "the water", "article": "το", "noun": "νερό" },
-        { "greek": "το ψωμί", "english": "the bread", "article": "το", "noun": "ψωμί" },
-        { "greek": "το σπίτι", "english": "the house / home", "article": "το", "noun": "σπίτι" }
+      "rule": "το means “the” before one neuter noun. Learn το and the noun together as one vocabulary unit.",
+      "ruleSteps": [
+        "Say το and the noun without separating them.",
+        "Nouns ending in -ο or -ι are often neuter.",
+        "Use the ending only as a clue; keep the article with the noun."
       ],
+      "words": [
+        {
+          "greek": "το νερό",
+          "noun": "νερό",
+          "article": "το",
+          "family": "neuter",
+          "english": "the water"
+        },
+        {
+          "greek": "το ψωμί",
+          "noun": "ψωμί",
+          "article": "το",
+          "family": "neuter",
+          "english": "the bread"
+        },
+        {
+          "greek": "το σπίτι",
+          "noun": "σπίτι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the house / home"
+        }
+      ],
+      "knownWordCount": 3,
       "exercises": [
         {
           "id": "ART-A1-001",
-          "kind": "article-choice",
-          "instruction": "Choose the complete word unit.",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
           "prompt": "___ νερό",
-          "options": ["ο νερό", "η νερό", "το νερό"],
+          "options": [
+            "ο νερό",
+            "η νερό",
+            "το νερό"
+          ],
           "answer": "το νερό",
-          "explanation": "Learn this as one unit: το νερό — the water."
+          "explanation": "το νερό means the water."
         },
         {
           "id": "ART-A1-002",
-          "kind": "meaning-choice",
+          "kind": "greek",
+          "audioText": null,
           "instruction": "Choose the Greek for “the bread.”",
           "prompt": "the bread",
-          "options": ["το σπίτι", "το ψωμί", "το νερό"],
+          "options": [
+            "το σπίτι",
+            "το νερό",
+            "το ψωμί"
+          ],
           "answer": "το ψωμί",
-          "explanation": "Το ψωμί means the bread."
+          "explanation": "The complete Greek unit is το ψωμί."
         },
         {
           "id": "ART-A1-003",
-          "kind": "article-choice",
-          "instruction": "Choose the complete word unit.",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
           "prompt": "___ σπίτι",
-          "options": ["η σπίτι", "το σπίτι", "ο σπίτι"],
+          "options": [
+            "το σπίτι",
+            "ο σπίτι",
+            "η σπίτι"
+          ],
           "answer": "το σπίτι",
-          "explanation": "Learn this as one unit: το σπίτι — the house or home."
+          "explanation": "το σπίτι means the house / home."
         },
         {
           "id": "ART-A1-004",
-          "kind": "meaning-choice",
+          "kind": "meaning",
+          "audioText": null,
           "instruction": "Choose the English meaning.",
           "prompt": "το νερό",
-          "options": ["the house", "the bread", "the water"],
+          "options": [
+            "the water",
+            "the bread",
+            "the house / home"
+          ],
           "answer": "the water",
-          "explanation": "Το νερό means the water."
+          "explanation": "το νερό means the water."
         },
         {
           "id": "ART-A1-005",
-          "kind": "article-choice",
-          "instruction": "Choose the complete word unit.",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
           "prompt": "___ ψωμί",
-          "options": ["το ψωμί", "ο ψωμί", "η ψωμί"],
+          "options": [
+            "η ψωμί",
+            "το ψωμί",
+            "ο ψωμί"
+          ],
           "answer": "το ψωμί",
-          "explanation": "Learn this as one unit: το ψωμί — the bread."
+          "explanation": "το ψωμί means the bread."
         },
         {
           "id": "ART-A1-006",
-          "kind": "meaning-choice",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the house / home.”",
+          "prompt": "the house / home",
+          "options": [
+            "το ψωμί",
+            "το σπίτι",
+            "το νερό"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "The complete Greek unit is το σπίτι."
+        },
+        {
+          "id": "ART-A1-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ νερό",
+          "options": [
+            "ο νερό",
+            "η νερό",
+            "το νερό"
+          ],
+          "answer": "το νερό",
+          "explanation": "το νερό means the water."
+        },
+        {
+          "id": "ART-A1-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το ψωμί",
+          "options": [
+            "the house / home",
+            "the water",
+            "the bread"
+          ],
+          "answer": "the bread",
+          "explanation": "το ψωμί means the bread."
+        },
+        {
+          "id": "ART-A1-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σπίτι",
+          "options": [
+            "το σπίτι",
+            "ο σπίτι",
+            "η σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "το σπίτι means the house / home."
+        },
+        {
+          "id": "ART-A1-010",
+          "kind": "greek",
+          "audioText": null,
           "instruction": "Choose the Greek for “the water.”",
           "prompt": "the water",
-          "options": ["το ψωμί", "το νερό", "το σπίτι"],
+          "options": [
+            "το νερό",
+            "το ψωμί",
+            "το σπίτι"
+          ],
+          "answer": "το νερό",
+          "explanation": "The complete Greek unit is το νερό."
+        }
+      ]
+    },
+    {
+      "id": "ART-A2",
+      "sequence": 2,
+      "title": "το + three new neuter nouns",
+      "estimatedMinutes": 5,
+      "masteryFirstAttempt": 9,
+      "rule": "The same το rule applies to these new singular neuter nouns.",
+      "ruleSteps": [
+        "Notice the endings -ο and -ι.",
+        "Say the complete unit aloud.",
+        "Old words remain mixed into the worksheet."
+      ],
+      "words": [
+        {
+          "greek": "το βιβλίο",
+          "noun": "βιβλίο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the book"
+        },
+        {
+          "greek": "το τραπέζι",
+          "noun": "τραπέζι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the table"
+        },
+        {
+          "greek": "το μουσείο",
+          "noun": "μουσείο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the museum"
+        }
+      ],
+      "knownWordCount": 6,
+      "exercises": [
+        {
+          "id": "ART-A2-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ βιβλίο",
+          "options": [
+            "ο βιβλίο",
+            "η βιβλίο",
+            "το βιβλίο"
+          ],
+          "answer": "το βιβλίο",
+          "explanation": "το βιβλίο means the book."
+        },
+        {
+          "id": "ART-A2-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the table.”",
+          "prompt": "the table",
+          "options": [
+            "το σπίτι",
+            "το βιβλίο",
+            "το τραπέζι"
+          ],
+          "answer": "το τραπέζι",
+          "explanation": "The complete Greek unit is το τραπέζι."
+        },
+        {
+          "id": "ART-A2-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ μουσείο",
+          "options": [
+            "το μουσείο",
+            "ο μουσείο",
+            "η μουσείο"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "το μουσείο means the museum."
+        },
+        {
+          "id": "ART-A2-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το βιβλίο",
+          "options": [
+            "the book",
+            "the table",
+            "the museum"
+          ],
+          "answer": "the book",
+          "explanation": "το βιβλίο means the book."
+        },
+        {
+          "id": "ART-A2-005",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ τραπέζι",
+          "options": [
+            "η τραπέζι",
+            "το τραπέζι",
+            "ο τραπέζι"
+          ],
+          "answer": "το τραπέζι",
+          "explanation": "το τραπέζι means the table."
+        },
+        {
+          "id": "ART-A2-006",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the museum.”",
+          "prompt": "the museum",
+          "options": [
+            "το ψωμί",
+            "το μουσείο",
+            "το νερό"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "The complete Greek unit is το μουσείο."
+        },
+        {
+          "id": "ART-A2-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ βιβλίο",
+          "options": [
+            "ο βιβλίο",
+            "η βιβλίο",
+            "το βιβλίο"
+          ],
+          "answer": "το βιβλίο",
+          "explanation": "το βιβλίο means the book."
+        },
+        {
+          "id": "ART-A2-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το τραπέζι",
+          "options": [
+            "the house / home",
+            "the book",
+            "the table"
+          ],
+          "answer": "the table",
+          "explanation": "το τραπέζι means the table."
+        },
+        {
+          "id": "ART-A2-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ μουσείο",
+          "options": [
+            "το μουσείο",
+            "ο μουσείο",
+            "η μουσείο"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "το μουσείο means the museum."
+        },
+        {
+          "id": "ART-A2-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the book.”",
+          "prompt": "the book",
+          "options": [
+            "το βιβλίο",
+            "το τραπέζι",
+            "το μουσείο"
+          ],
+          "answer": "το βιβλίο",
+          "explanation": "The complete Greek unit is το βιβλίο."
+        }
+      ]
+    },
+    {
+      "id": "ART-A3",
+      "sequence": 3,
+      "title": "Mix six το-family nouns",
+      "estimatedMinutes": 5,
+      "masteryFirstAttempt": 9,
+      "rule": "All six nouns belong to the το family. Retrieve the complete unit instead of guessing from position.",
+      "ruleSteps": [
+        "Recall the meaning before choosing.",
+        "Use the noun ending as a clue.",
+        "Correct every missed unit immediately."
+      ],
+      "words": [
+        {
+          "greek": "το νερό",
+          "noun": "νερό",
+          "article": "το",
+          "family": "neuter",
+          "english": "the water"
+        },
+        {
+          "greek": "το ψωμί",
+          "noun": "ψωμί",
+          "article": "το",
+          "family": "neuter",
+          "english": "the bread"
+        },
+        {
+          "greek": "το σπίτι",
+          "noun": "σπίτι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the house / home"
+        },
+        {
+          "greek": "το βιβλίο",
+          "noun": "βιβλίο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the book"
+        },
+        {
+          "greek": "το τραπέζι",
+          "noun": "τραπέζι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the table"
+        },
+        {
+          "greek": "το μουσείο",
+          "noun": "μουσείο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the museum"
+        }
+      ],
+      "knownWordCount": 6,
+      "exercises": [
+        {
+          "id": "ART-A3-001",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το νερό",
+          "options": [
+            "the water",
+            "the house / home",
+            "the book"
+          ],
+          "answer": "the water",
+          "explanation": "το νερό means the water."
+        },
+        {
+          "id": "ART-A3-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bread.”",
+          "prompt": "the bread",
+          "options": [
+            "το βιβλίο",
+            "το τραπέζι",
+            "το ψωμί"
+          ],
+          "answer": "το ψωμί",
+          "explanation": "The complete Greek unit is το ψωμί."
+        },
+        {
+          "id": "ART-A3-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σπίτι",
+          "options": [
+            "το σπίτι",
+            "ο σπίτι",
+            "η σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "το σπίτι means the house / home."
+        },
+        {
+          "id": "ART-A3-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το βιβλίο",
+          "options": [
+            "the book",
+            "the museum",
+            "the water"
+          ],
+          "answer": "the book",
+          "explanation": "το βιβλίο means the book."
+        },
+        {
+          "id": "ART-A3-005",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the table.”",
+          "prompt": "the table",
+          "options": [
+            "το νερό",
+            "το ψωμί",
+            "το τραπέζι"
+          ],
+          "answer": "το τραπέζι",
+          "explanation": "The complete Greek unit is το τραπέζι."
+        },
+        {
+          "id": "ART-A3-006",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ μουσείο",
+          "options": [
+            "το μουσείο",
+            "ο μουσείο",
+            "η μουσείο"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "το μουσείο means the museum."
+        },
+        {
+          "id": "ART-A3-007",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το νερό",
+          "options": [
+            "the water",
+            "the house / home",
+            "the book"
+          ],
+          "answer": "the water",
+          "explanation": "το νερό means the water."
+        },
+        {
+          "id": "ART-A3-008",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bread.”",
+          "prompt": "the bread",
+          "options": [
+            "το βιβλίο",
+            "το τραπέζι",
+            "το ψωμί"
+          ],
+          "answer": "το ψωμί",
+          "explanation": "The complete Greek unit is το ψωμί."
+        },
+        {
+          "id": "ART-A3-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σπίτι",
+          "options": [
+            "το σπίτι",
+            "ο σπίτι",
+            "η σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "το σπίτι means the house / home."
+        },
+        {
+          "id": "ART-A3-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the book.”",
+          "prompt": "the book",
+          "options": [
+            "το βιβλίο",
+            "το μουσείο",
+            "το νερό"
+          ],
+          "answer": "το βιβλίο",
+          "explanation": "The complete Greek unit is το βιβλίο."
+        }
+      ]
+    },
+    {
+      "id": "ART-A4",
+      "sequence": 4,
+      "title": "Recall το with fewer hints",
+      "estimatedMinutes": 5,
+      "masteryFirstAttempt": 9,
+      "rule": "Recognition is becoming recall: begin from the English meaning and retrieve the whole Greek unit.",
+      "ruleSteps": [
+        "Look away from the word list.",
+        "Recall το together with the noun.",
+        "Use choices only to confirm your retrieval."
+      ],
+      "words": [
+        {
+          "greek": "το νερό",
+          "noun": "νερό",
+          "article": "το",
+          "family": "neuter",
+          "english": "the water"
+        },
+        {
+          "greek": "το ψωμί",
+          "noun": "ψωμί",
+          "article": "το",
+          "family": "neuter",
+          "english": "the bread"
+        },
+        {
+          "greek": "το σπίτι",
+          "noun": "σπίτι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the house / home"
+        },
+        {
+          "greek": "το βιβλίο",
+          "noun": "βιβλίο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the book"
+        },
+        {
+          "greek": "το τραπέζι",
+          "noun": "τραπέζι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the table"
+        },
+        {
+          "greek": "το μουσείο",
+          "noun": "μουσείο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the museum"
+        }
+      ],
+      "knownWordCount": 6,
+      "exercises": [
+        {
+          "id": "ART-A4-001",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the water.”",
+          "prompt": "the water",
+          "options": [
+            "το νερό",
+            "το βιβλίο",
+            "το τραπέζι"
+          ],
           "answer": "το νερό",
           "explanation": "The complete Greek unit is το νερό."
         },
         {
-          "id": "ART-A1-007",
-          "kind": "article-choice",
-          "instruction": "Choose the complete word unit.",
-          "prompt": "___ νερό",
-          "options": ["η νερό", "το νερό", "ο νερό"],
-          "answer": "το νερό",
-          "explanation": "Νερό is learned with the neuter article: το νερό."
+          "id": "ART-A4-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bread.”",
+          "prompt": "the bread",
+          "options": [
+            "το τραπέζι",
+            "το μουσείο",
+            "το ψωμί"
+          ],
+          "answer": "το ψωμί",
+          "explanation": "The complete Greek unit is το ψωμί."
         },
         {
-          "id": "ART-A1-008",
-          "kind": "meaning-choice",
+          "id": "ART-A4-003",
+          "kind": "meaning",
+          "audioText": null,
           "instruction": "Choose the English meaning.",
           "prompt": "το σπίτι",
-          "options": ["the water", "the house / home", "the bread"],
+          "options": [
+            "the water",
+            "the house / home",
+            "the museum"
+          ],
           "answer": "the house / home",
-          "explanation": "Το σπίτι means the house or home."
+          "explanation": "το σπίτι means the house / home."
         },
         {
-          "id": "ART-A1-009",
-          "kind": "article-choice",
-          "instruction": "Choose the complete word unit.",
-          "prompt": "___ ψωμί",
-          "options": ["ο ψωμί", "η ψωμί", "το ψωμί"],
+          "id": "ART-A4-004",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the book.”",
+          "prompt": "the book",
+          "options": [
+            "το βιβλίο",
+            "το νερό",
+            "το ψωμί"
+          ],
+          "answer": "το βιβλίο",
+          "explanation": "The complete Greek unit is το βιβλίο."
+        },
+        {
+          "id": "ART-A4-005",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ τραπέζι",
+          "options": [
+            "η τραπέζι",
+            "το τραπέζι",
+            "ο τραπέζι"
+          ],
+          "answer": "το τραπέζι",
+          "explanation": "το τραπέζι means the table."
+        },
+        {
+          "id": "ART-A4-006",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the museum.”",
+          "prompt": "the museum",
+          "options": [
+            "το βιβλίο",
+            "το μουσείο",
+            "το σπίτι"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "The complete Greek unit is το μουσείο."
+        },
+        {
+          "id": "ART-A4-007",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το νερό",
+          "options": [
+            "the water",
+            "the book",
+            "the table"
+          ],
+          "answer": "the water",
+          "explanation": "το νερό means the water."
+        },
+        {
+          "id": "ART-A4-008",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bread.”",
+          "prompt": "the bread",
+          "options": [
+            "το τραπέζι",
+            "το μουσείο",
+            "το ψωμί"
+          ],
           "answer": "το ψωμί",
-          "explanation": "Ψωμί is learned with the neuter article: το ψωμί."
+          "explanation": "The complete Greek unit is το ψωμί."
         },
         {
-          "id": "ART-A1-010",
-          "kind": "mixed-recall",
+          "id": "ART-A4-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σπίτι",
+          "options": [
+            "το σπίτι",
+            "ο σπίτι",
+            "η σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "το σπίτι means the house / home."
+        },
+        {
+          "id": "ART-A4-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the book.”",
+          "prompt": "the book",
+          "options": [
+            "το βιβλίο",
+            "το νερό",
+            "το ψωμί"
+          ],
+          "answer": "το βιβλίο",
+          "explanation": "The complete Greek unit is το βιβλίο."
+        }
+      ]
+    },
+    {
+      "id": "ART-A5",
+      "sequence": 5,
+      "title": "η + three essential feminine nouns",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "η means “the” before one feminine noun. Learn η and the noun together.",
+      "ruleSteps": [
+        "Many feminine nouns end in -α or -η.",
+        "Say η with the noun.",
+        "Do not choose the article from the object’s meaning."
+      ],
+      "words": [
+        {
+          "greek": "η πόρτα",
+          "noun": "πόρτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the door"
+        },
+        {
+          "greek": "η τσάντα",
+          "noun": "τσάντα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the bag"
+        },
+        {
+          "greek": "η κουζίνα",
+          "noun": "κουζίνα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the kitchen"
+        }
+      ],
+      "knownWordCount": 9,
+      "exercises": [
+        {
+          "id": "ART-A5-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ πόρτα",
+          "options": [
+            "ο πόρτα",
+            "η πόρτα",
+            "το πόρτα"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A5-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bag.”",
+          "prompt": "the bag",
+          "options": [
+            "η κουζίνα",
+            "η πόρτα",
+            "η τσάντα"
+          ],
+          "answer": "η τσάντα",
+          "explanation": "The complete Greek unit is η τσάντα."
+        },
+        {
+          "id": "ART-A5-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ κουζίνα",
+          "options": [
+            "το κουζίνα",
+            "ο κουζίνα",
+            "η κουζίνα"
+          ],
+          "answer": "η κουζίνα",
+          "explanation": "η κουζίνα means the kitchen."
+        },
+        {
+          "id": "ART-A5-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η πόρτα",
+          "options": [
+            "the door",
+            "the bag",
+            "the kitchen"
+          ],
+          "answer": "the door",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A5-005",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ τσάντα",
+          "options": [
+            "η τσάντα",
+            "το τσάντα",
+            "ο τσάντα"
+          ],
+          "answer": "η τσάντα",
+          "explanation": "η τσάντα means the bag."
+        },
+        {
+          "id": "ART-A5-006",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the kitchen.”",
+          "prompt": "the kitchen",
+          "options": [
+            "η τσάντα",
+            "η κουζίνα",
+            "η πόρτα"
+          ],
+          "answer": "η κουζίνα",
+          "explanation": "The complete Greek unit is η κουζίνα."
+        },
+        {
+          "id": "ART-A5-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ πόρτα",
+          "options": [
+            "ο πόρτα",
+            "η πόρτα",
+            "το πόρτα"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A5-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η τσάντα",
+          "options": [
+            "the kitchen",
+            "the door",
+            "the bag"
+          ],
+          "answer": "the bag",
+          "explanation": "η τσάντα means the bag."
+        },
+        {
+          "id": "ART-A5-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ κουζίνα",
+          "options": [
+            "το κουζίνα",
+            "ο κουζίνα",
+            "η κουζίνα"
+          ],
+          "answer": "η κουζίνα",
+          "explanation": "η κουζίνα means the kitchen."
+        },
+        {
+          "id": "ART-A5-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the door.”",
+          "prompt": "the door",
+          "options": [
+            "η πόρτα",
+            "η τσάντα",
+            "η κουζίνα"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "The complete Greek unit is η πόρτα."
+        }
+      ]
+    },
+    {
+      "id": "ART-A6",
+      "sequence": 6,
+      "title": "η + three new feminine nouns",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "The η family grows by three nouns while the first three remain in review.",
+      "ruleSteps": [
+        "Notice common -α and -η endings.",
+        "Retrieve η with every noun.",
+        "Old and new words are deliberately mixed."
+      ],
+      "words": [
+        {
+          "greek": "η στάση",
+          "noun": "στάση",
+          "article": "η",
+          "family": "feminine",
+          "english": "the stop"
+        },
+        {
+          "greek": "η απόδειξη",
+          "noun": "απόδειξη",
+          "article": "η",
+          "family": "feminine",
+          "english": "the receipt"
+        },
+        {
+          "greek": "η σαλάτα",
+          "noun": "σαλάτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the salad"
+        }
+      ],
+      "knownWordCount": 12,
+      "exercises": [
+        {
+          "id": "ART-A6-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ στάση",
+          "options": [
+            "ο στάση",
+            "η στάση",
+            "το στάση"
+          ],
+          "answer": "η στάση",
+          "explanation": "η στάση means the stop."
+        },
+        {
+          "id": "ART-A6-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the receipt.”",
+          "prompt": "the receipt",
+          "options": [
+            "η πόρτα",
+            "η τσάντα",
+            "η απόδειξη"
+          ],
+          "answer": "η απόδειξη",
+          "explanation": "The complete Greek unit is η απόδειξη."
+        },
+        {
+          "id": "ART-A6-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σαλάτα",
+          "options": [
+            "το σαλάτα",
+            "ο σαλάτα",
+            "η σαλάτα"
+          ],
+          "answer": "η σαλάτα",
+          "explanation": "η σαλάτα means the salad."
+        },
+        {
+          "id": "ART-A6-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η στάση",
+          "options": [
+            "the stop",
+            "the kitchen",
+            "the receipt"
+          ],
+          "answer": "the stop",
+          "explanation": "η στάση means the stop."
+        },
+        {
+          "id": "ART-A6-005",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the receipt.”",
+          "prompt": "the receipt",
+          "options": [
+            "η στάση",
+            "η σαλάτα",
+            "η απόδειξη"
+          ],
+          "answer": "η απόδειξη",
+          "explanation": "The complete Greek unit is η απόδειξη."
+        },
+        {
+          "id": "ART-A6-006",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σαλάτα",
+          "options": [
+            "το σαλάτα",
+            "ο σαλάτα",
+            "η σαλάτα"
+          ],
+          "answer": "η σαλάτα",
+          "explanation": "η σαλάτα means the salad."
+        },
+        {
+          "id": "ART-A6-007",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η στάση",
+          "options": [
+            "the stop",
+            "the salad",
+            "the door"
+          ],
+          "answer": "the stop",
+          "explanation": "η στάση means the stop."
+        },
+        {
+          "id": "ART-A6-008",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the receipt.”",
+          "prompt": "the receipt",
+          "options": [
+            "η πόρτα",
+            "η τσάντα",
+            "η απόδειξη"
+          ],
+          "answer": "η απόδειξη",
+          "explanation": "The complete Greek unit is η απόδειξη."
+        },
+        {
+          "id": "ART-A6-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σαλάτα",
+          "options": [
+            "το σαλάτα",
+            "ο σαλάτα",
+            "η σαλάτα"
+          ],
+          "answer": "η σαλάτα",
+          "explanation": "η σαλάτα means the salad."
+        },
+        {
+          "id": "ART-A6-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the stop.”",
+          "prompt": "the stop",
+          "options": [
+            "η στάση",
+            "η κουζίνα",
+            "η απόδειξη"
+          ],
+          "answer": "η στάση",
+          "explanation": "The complete Greek unit is η στάση."
+        }
+      ]
+    },
+    {
+      "id": "ART-A7",
+      "sequence": 7,
+      "title": "Mix six η-family nouns",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "All six nouns belong to the η family. Retrieve meaning and article together.",
+      "ruleSteps": [
+        "Recall before looking at the choices.",
+        "Check the ending clue.",
+        "Correct and repeat weak units."
+      ],
+      "words": [
+        {
+          "greek": "η πόρτα",
+          "noun": "πόρτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the door"
+        },
+        {
+          "greek": "η τσάντα",
+          "noun": "τσάντα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the bag"
+        },
+        {
+          "greek": "η κουζίνα",
+          "noun": "κουζίνα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the kitchen"
+        },
+        {
+          "greek": "η στάση",
+          "noun": "στάση",
+          "article": "η",
+          "family": "feminine",
+          "english": "the stop"
+        },
+        {
+          "greek": "η απόδειξη",
+          "noun": "απόδειξη",
+          "article": "η",
+          "family": "feminine",
+          "english": "the receipt"
+        },
+        {
+          "greek": "η σαλάτα",
+          "noun": "σαλάτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the salad"
+        }
+      ],
+      "knownWordCount": 12,
+      "exercises": [
+        {
+          "id": "ART-A7-001",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η πόρτα",
+          "options": [
+            "the door",
+            "the bag",
+            "the kitchen"
+          ],
+          "answer": "the door",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A7-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bag.”",
+          "prompt": "the bag",
+          "options": [
+            "η κουζίνα",
+            "η στάση",
+            "η τσάντα"
+          ],
+          "answer": "η τσάντα",
+          "explanation": "The complete Greek unit is η τσάντα."
+        },
+        {
+          "id": "ART-A7-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ κουζίνα",
+          "options": [
+            "το κουζίνα",
+            "ο κουζίνα",
+            "η κουζίνα"
+          ],
+          "answer": "η κουζίνα",
+          "explanation": "η κουζίνα means the kitchen."
+        },
+        {
+          "id": "ART-A7-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η στάση",
+          "options": [
+            "the stop",
+            "the receipt",
+            "the salad"
+          ],
+          "answer": "the stop",
+          "explanation": "η στάση means the stop."
+        },
+        {
+          "id": "ART-A7-005",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the receipt.”",
+          "prompt": "the receipt",
+          "options": [
+            "η σαλάτα",
+            "η πόρτα",
+            "η απόδειξη"
+          ],
+          "answer": "η απόδειξη",
+          "explanation": "The complete Greek unit is η απόδειξη."
+        },
+        {
+          "id": "ART-A7-006",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σαλάτα",
+          "options": [
+            "το σαλάτα",
+            "ο σαλάτα",
+            "η σαλάτα"
+          ],
+          "answer": "η σαλάτα",
+          "explanation": "η σαλάτα means the salad."
+        },
+        {
+          "id": "ART-A7-007",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η πόρτα",
+          "options": [
+            "the door",
+            "the bag",
+            "the kitchen"
+          ],
+          "answer": "the door",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A7-008",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bag.”",
+          "prompt": "the bag",
+          "options": [
+            "η κουζίνα",
+            "η στάση",
+            "η τσάντα"
+          ],
+          "answer": "η τσάντα",
+          "explanation": "The complete Greek unit is η τσάντα."
+        },
+        {
+          "id": "ART-A7-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ κουζίνα",
+          "options": [
+            "το κουζίνα",
+            "ο κουζίνα",
+            "η κουζίνα"
+          ],
+          "answer": "η κουζίνα",
+          "explanation": "η κουζίνα means the kitchen."
+        },
+        {
+          "id": "ART-A7-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the stop.”",
+          "prompt": "the stop",
+          "options": [
+            "η στάση",
+            "η απόδειξη",
+            "η σαλάτα"
+          ],
+          "answer": "η στάση",
+          "explanation": "The complete Greek unit is η στάση."
+        }
+      ]
+    },
+    {
+      "id": "ART-A8",
+      "sequence": 8,
+      "title": "Contrast το and η",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "Now choose between two families: το for a neuter singular noun and η for a feminine singular noun.",
+      "ruleSteps": [
+        "First identify the noun.",
+        "Recall its article family.",
+        "Then choose the complete unit."
+      ],
+      "words": [
+        {
+          "greek": "το σπίτι",
+          "noun": "σπίτι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the house / home"
+        },
+        {
+          "greek": "το ψωμί",
+          "noun": "ψωμί",
+          "article": "το",
+          "family": "neuter",
+          "english": "the bread"
+        },
+        {
+          "greek": "το μουσείο",
+          "noun": "μουσείο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the museum"
+        },
+        {
+          "greek": "η πόρτα",
+          "noun": "πόρτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the door"
+        },
+        {
+          "greek": "η τσάντα",
+          "noun": "τσάντα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the bag"
+        },
+        {
+          "greek": "η κουζίνα",
+          "noun": "κουζίνα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the kitchen"
+        }
+      ],
+      "knownWordCount": 12,
+      "exercises": [
+        {
+          "id": "ART-A8-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σπίτι",
+          "options": [
+            "ο σπίτι",
+            "η σπίτι",
+            "το σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "το σπίτι means the house / home."
+        },
+        {
+          "id": "ART-A8-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bread.”",
+          "prompt": "the bread",
+          "options": [
+            "η κουζίνα",
+            "η στάση",
+            "το ψωμί"
+          ],
+          "answer": "το ψωμί",
+          "explanation": "The complete Greek unit is το ψωμί."
+        },
+        {
+          "id": "ART-A8-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ μουσείο",
+          "options": [
+            "το μουσείο",
+            "ο μουσείο",
+            "η μουσείο"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "το μουσείο means the museum."
+        },
+        {
+          "id": "ART-A8-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η πόρτα",
+          "options": [
+            "the door",
+            "the receipt",
+            "the salad"
+          ],
+          "answer": "the door",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A8-005",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ τσάντα",
+          "options": [
+            "η τσάντα",
+            "το τσάντα",
+            "ο τσάντα"
+          ],
+          "answer": "η τσάντα",
+          "explanation": "η τσάντα means the bag."
+        },
+        {
+          "id": "ART-A8-006",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the kitchen.”",
+          "prompt": "the kitchen",
+          "options": [
+            "το ψωμί",
+            "η κουζίνα",
+            "το νερό"
+          ],
+          "answer": "η κουζίνα",
+          "explanation": "The complete Greek unit is η κουζίνα."
+        },
+        {
+          "id": "ART-A8-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σπίτι",
+          "options": [
+            "ο σπίτι",
+            "η σπίτι",
+            "το σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "το σπίτι means the house / home."
+        },
+        {
+          "id": "ART-A8-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το ψωμί",
+          "options": [
+            "the house / home",
+            "the book",
+            "the bread"
+          ],
+          "answer": "the bread",
+          "explanation": "το ψωμί means the bread."
+        },
+        {
+          "id": "ART-A8-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ μουσείο",
+          "options": [
+            "το μουσείο",
+            "ο μουσείο",
+            "η μουσείο"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "το μουσείο means the museum."
+        },
+        {
+          "id": "ART-A8-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the door.”",
+          "prompt": "the door",
+          "options": [
+            "η πόρτα",
+            "το τραπέζι",
+            "το μουσείο"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "The complete Greek unit is η πόρτα."
+        }
+      ]
+    },
+    {
+      "id": "ART-A9",
+      "sequence": 9,
+      "title": "ο + three essential masculine nouns",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "ο means “the” before one masculine noun. Learn ο and the noun together.",
+      "ruleSteps": [
+        "Masculine nouns often end in -ος, -ης or -ας.",
+        "The ending is a clue, not a guarantee.",
+        "Say the complete unit aloud."
+      ],
+      "words": [
+        {
+          "greek": "ο καφές",
+          "noun": "καφές",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the coffee"
+        },
+        {
+          "greek": "ο δρόμος",
+          "noun": "δρόμος",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the road"
+        },
+        {
+          "greek": "ο φούρνος",
+          "noun": "φούρνος",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the oven"
+        }
+      ],
+      "knownWordCount": 15,
+      "exercises": [
+        {
+          "id": "ART-A9-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ καφές",
+          "options": [
+            "ο καφές",
+            "η καφές",
+            "το καφές"
+          ],
+          "answer": "ο καφές",
+          "explanation": "ο καφές means the coffee."
+        },
+        {
+          "id": "ART-A9-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the road.”",
+          "prompt": "the road",
+          "options": [
+            "ο καφές",
+            "ο φούρνος",
+            "ο δρόμος"
+          ],
+          "answer": "ο δρόμος",
+          "explanation": "The complete Greek unit is ο δρόμος."
+        },
+        {
+          "id": "ART-A9-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ φούρνος",
+          "options": [
+            "το φούρνος",
+            "ο φούρνος",
+            "η φούρνος"
+          ],
+          "answer": "ο φούρνος",
+          "explanation": "ο φούρνος means the oven."
+        },
+        {
+          "id": "ART-A9-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο καφές",
+          "options": [
+            "the coffee",
+            "the oven",
+            "the road"
+          ],
+          "answer": "the coffee",
+          "explanation": "ο καφές means the coffee."
+        },
+        {
+          "id": "ART-A9-005",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ δρόμος",
+          "options": [
+            "η δρόμος",
+            "το δρόμος",
+            "ο δρόμος"
+          ],
+          "answer": "ο δρόμος",
+          "explanation": "ο δρόμος means the road."
+        },
+        {
+          "id": "ART-A9-006",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the oven.”",
+          "prompt": "the oven",
+          "options": [
+            "ο καφές",
+            "ο φούρνος",
+            "ο δρόμος"
+          ],
+          "answer": "ο φούρνος",
+          "explanation": "The complete Greek unit is ο φούρνος."
+        },
+        {
+          "id": "ART-A9-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ καφές",
+          "options": [
+            "ο καφές",
+            "η καφές",
+            "το καφές"
+          ],
+          "answer": "ο καφές",
+          "explanation": "ο καφές means the coffee."
+        },
+        {
+          "id": "ART-A9-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο δρόμος",
+          "options": [
+            "the coffee",
+            "the oven",
+            "the road"
+          ],
+          "answer": "the road",
+          "explanation": "ο δρόμος means the road."
+        },
+        {
+          "id": "ART-A9-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ φούρνος",
+          "options": [
+            "το φούρνος",
+            "ο φούρνος",
+            "η φούρνος"
+          ],
+          "answer": "ο φούρνος",
+          "explanation": "ο φούρνος means the oven."
+        },
+        {
+          "id": "ART-A9-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the coffee.”",
+          "prompt": "the coffee",
+          "options": [
+            "ο καφές",
+            "ο φούρνος",
+            "ο δρόμος"
+          ],
+          "answer": "ο καφές",
+          "explanation": "The complete Greek unit is ο καφές."
+        }
+      ]
+    },
+    {
+      "id": "ART-A10",
+      "sequence": 10,
+      "title": "ο + three new masculine nouns",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "The ο family grows by three practical nouns while earlier masculine nouns remain active.",
+      "ruleSteps": [
+        "Notice -ος and -ης endings.",
+        "Retrieve ο with the noun.",
+        "Mix old and new units."
+      ],
+      "words": [
+        {
+          "greek": "ο λογαριασμός",
+          "noun": "λογαριασμός",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the bill"
+        },
+        {
+          "greek": "ο χάρτης",
+          "noun": "χάρτης",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the map"
+        },
+        {
+          "greek": "ο σταθμός",
+          "noun": "σταθμός",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the station"
+        }
+      ],
+      "knownWordCount": 18,
+      "exercises": [
+        {
+          "id": "ART-A10-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ λογαριασμός",
+          "options": [
+            "ο λογαριασμός",
+            "η λογαριασμός",
+            "το λογαριασμός"
+          ],
+          "answer": "ο λογαριασμός",
+          "explanation": "ο λογαριασμός means the bill."
+        },
+        {
+          "id": "ART-A10-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the map.”",
+          "prompt": "the map",
+          "options": [
+            "ο σταθμός",
+            "ο καφές",
+            "ο χάρτης"
+          ],
+          "answer": "ο χάρτης",
+          "explanation": "The complete Greek unit is ο χάρτης."
+        },
+        {
+          "id": "ART-A10-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σταθμός",
+          "options": [
+            "το σταθμός",
+            "ο σταθμός",
+            "η σταθμός"
+          ],
+          "answer": "ο σταθμός",
+          "explanation": "ο σταθμός means the station."
+        },
+        {
+          "id": "ART-A10-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο λογαριασμός",
+          "options": [
+            "the bill",
+            "the coffee",
+            "the road"
+          ],
+          "answer": "the bill",
+          "explanation": "ο λογαριασμός means the bill."
+        },
+        {
+          "id": "ART-A10-005",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the map.”",
+          "prompt": "the map",
+          "options": [
+            "ο δρόμος",
+            "ο φούρνος",
+            "ο χάρτης"
+          ],
+          "answer": "ο χάρτης",
+          "explanation": "The complete Greek unit is ο χάρτης."
+        },
+        {
+          "id": "ART-A10-006",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σταθμός",
+          "options": [
+            "το σταθμός",
+            "ο σταθμός",
+            "η σταθμός"
+          ],
+          "answer": "ο σταθμός",
+          "explanation": "ο σταθμός means the station."
+        },
+        {
+          "id": "ART-A10-007",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο λογαριασμός",
+          "options": [
+            "the bill",
+            "the map",
+            "the station"
+          ],
+          "answer": "the bill",
+          "explanation": "ο λογαριασμός means the bill."
+        },
+        {
+          "id": "ART-A10-008",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the map.”",
+          "prompt": "the map",
+          "options": [
+            "ο σταθμός",
+            "ο καφές",
+            "ο χάρτης"
+          ],
+          "answer": "ο χάρτης",
+          "explanation": "The complete Greek unit is ο χάρτης."
+        },
+        {
+          "id": "ART-A10-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σταθμός",
+          "options": [
+            "το σταθμός",
+            "ο σταθμός",
+            "η σταθμός"
+          ],
+          "answer": "ο σταθμός",
+          "explanation": "ο σταθμός means the station."
+        },
+        {
+          "id": "ART-A10-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bill.”",
+          "prompt": "the bill",
+          "options": [
+            "ο λογαριασμός",
+            "ο καφές",
+            "ο δρόμος"
+          ],
+          "answer": "ο λογαριασμός",
+          "explanation": "The complete Greek unit is ο λογαριασμός."
+        }
+      ]
+    },
+    {
+      "id": "ART-A11",
+      "sequence": 11,
+      "title": "Mix six ο-family nouns",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "All six nouns belong to the ο family. Strengthen complete-unit recall.",
+      "ruleSteps": [
+        "Recall the meaning first.",
+        "Attach ο automatically.",
+        "Correct every error before continuing."
+      ],
+      "words": [
+        {
+          "greek": "ο καφές",
+          "noun": "καφές",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the coffee"
+        },
+        {
+          "greek": "ο δρόμος",
+          "noun": "δρόμος",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the road"
+        },
+        {
+          "greek": "ο φούρνος",
+          "noun": "φούρνος",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the oven"
+        },
+        {
+          "greek": "ο λογαριασμός",
+          "noun": "λογαριασμός",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the bill"
+        },
+        {
+          "greek": "ο χάρτης",
+          "noun": "χάρτης",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the map"
+        },
+        {
+          "greek": "ο σταθμός",
+          "noun": "σταθμός",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the station"
+        }
+      ],
+      "knownWordCount": 18,
+      "exercises": [
+        {
+          "id": "ART-A11-001",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο καφές",
+          "options": [
+            "the coffee",
+            "the map",
+            "the station"
+          ],
+          "answer": "the coffee",
+          "explanation": "ο καφές means the coffee."
+        },
+        {
+          "id": "ART-A11-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the road.”",
+          "prompt": "the road",
+          "options": [
+            "ο σταθμός",
+            "ο καφές",
+            "ο δρόμος"
+          ],
+          "answer": "ο δρόμος",
+          "explanation": "The complete Greek unit is ο δρόμος."
+        },
+        {
+          "id": "ART-A11-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ φούρνος",
+          "options": [
+            "το φούρνος",
+            "ο φούρνος",
+            "η φούρνος"
+          ],
+          "answer": "ο φούρνος",
+          "explanation": "ο φούρνος means the oven."
+        },
+        {
+          "id": "ART-A11-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο λογαριασμός",
+          "options": [
+            "the bill",
+            "the road",
+            "the oven"
+          ],
+          "answer": "the bill",
+          "explanation": "ο λογαριασμός means the bill."
+        },
+        {
+          "id": "ART-A11-005",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the map.”",
+          "prompt": "the map",
+          "options": [
+            "ο φούρνος",
+            "ο λογαριασμός",
+            "ο χάρτης"
+          ],
+          "answer": "ο χάρτης",
+          "explanation": "The complete Greek unit is ο χάρτης."
+        },
+        {
+          "id": "ART-A11-006",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σταθμός",
+          "options": [
+            "το σταθμός",
+            "ο σταθμός",
+            "η σταθμός"
+          ],
+          "answer": "ο σταθμός",
+          "explanation": "ο σταθμός means the station."
+        },
+        {
+          "id": "ART-A11-007",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο καφές",
+          "options": [
+            "the coffee",
+            "the map",
+            "the station"
+          ],
+          "answer": "the coffee",
+          "explanation": "ο καφές means the coffee."
+        },
+        {
+          "id": "ART-A11-008",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the road.”",
+          "prompt": "the road",
+          "options": [
+            "ο σταθμός",
+            "ο καφές",
+            "ο δρόμος"
+          ],
+          "answer": "ο δρόμος",
+          "explanation": "The complete Greek unit is ο δρόμος."
+        },
+        {
+          "id": "ART-A11-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ φούρνος",
+          "options": [
+            "το φούρνος",
+            "ο φούρνος",
+            "η φούρνος"
+          ],
+          "answer": "ο φούρνος",
+          "explanation": "ο φούρνος means the oven."
+        },
+        {
+          "id": "ART-A11-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bill.”",
+          "prompt": "the bill",
+          "options": [
+            "ο λογαριασμός",
+            "ο δρόμος",
+            "ο φούρνος"
+          ],
+          "answer": "ο λογαριασμός",
+          "explanation": "The complete Greek unit is ο λογαριασμός."
+        }
+      ]
+    },
+    {
+      "id": "ART-A12",
+      "sequence": 12,
+      "title": "Contrast ο, η and το",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "Choose among all three singular article families: ο masculine, η feminine and το neuter.",
+      "ruleSteps": [
+        "Identify the noun.",
+        "Recall its stored article.",
+        "Use endings only as supporting clues."
+      ],
+      "words": [
+        {
+          "greek": "ο καφές",
+          "noun": "καφές",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the coffee"
+        },
+        {
+          "greek": "ο λογαριασμός",
+          "noun": "λογαριασμός",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the bill"
+        },
+        {
+          "greek": "η πόρτα",
+          "noun": "πόρτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the door"
+        },
+        {
+          "greek": "η απόδειξη",
+          "noun": "απόδειξη",
+          "article": "η",
+          "family": "feminine",
+          "english": "the receipt"
+        },
+        {
+          "greek": "το σπίτι",
+          "noun": "σπίτι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the house / home"
+        },
+        {
+          "greek": "το μουσείο",
+          "noun": "μουσείο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the museum"
+        }
+      ],
+      "knownWordCount": 18,
+      "exercises": [
+        {
+          "id": "ART-A12-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ καφές",
+          "options": [
+            "ο καφές",
+            "η καφές",
+            "το καφές"
+          ],
+          "answer": "ο καφές",
+          "explanation": "ο καφές means the coffee."
+        },
+        {
+          "id": "ART-A12-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bill.”",
+          "prompt": "the bill",
+          "options": [
+            "ο καφές",
+            "ο δρόμος",
+            "ο λογαριασμός"
+          ],
+          "answer": "ο λογαριασμός",
+          "explanation": "The complete Greek unit is ο λογαριασμός."
+        },
+        {
+          "id": "ART-A12-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ πόρτα",
+          "options": [
+            "το πόρτα",
+            "ο πόρτα",
+            "η πόρτα"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A12-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η απόδειξη",
+          "options": [
+            "the receipt",
+            "the oven",
+            "the bill"
+          ],
+          "answer": "the receipt",
+          "explanation": "η απόδειξη means the receipt."
+        },
+        {
+          "id": "ART-A12-005",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σπίτι",
+          "options": [
+            "η σπίτι",
+            "το σπίτι",
+            "ο σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "το σπίτι means the house / home."
+        },
+        {
+          "id": "ART-A12-006",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the museum.”",
+          "prompt": "the museum",
+          "options": [
+            "ο σταθμός",
+            "το μουσείο",
+            "ο χάρτης"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "The complete Greek unit is το μουσείο."
+        },
+        {
+          "id": "ART-A12-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ καφές",
+          "options": [
+            "ο καφές",
+            "η καφές",
+            "το καφές"
+          ],
+          "answer": "ο καφές",
+          "explanation": "ο καφές means the coffee."
+        },
+        {
+          "id": "ART-A12-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο λογαριασμός",
+          "options": [
+            "the water",
+            "the bread",
+            "the bill"
+          ],
+          "answer": "the bill",
+          "explanation": "ο λογαριασμός means the bill."
+        },
+        {
+          "id": "ART-A12-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ πόρτα",
+          "options": [
+            "το πόρτα",
+            "ο πόρτα",
+            "η πόρτα"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A12-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the receipt.”",
+          "prompt": "the receipt",
+          "options": [
+            "η απόδειξη",
+            "το σπίτι",
+            "το βιβλίο"
+          ],
+          "answer": "η απόδειξη",
+          "explanation": "The complete Greek unit is η απόδειξη."
+        }
+      ]
+    },
+    {
+      "id": "ART-A13",
+      "sequence": 13,
+      "title": "Neuter ending clue: -μα",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "Many singular nouns ending in -μα are neuter and use το. This is a clue, not a universal rule.",
+      "ruleSteps": [
+        "Notice the noun ending.",
+        "Confirm the stored article.",
+        "Recall the full unit."
+      ],
+      "words": [
+        {
+          "greek": "το όνομα",
+          "noun": "όνομα",
+          "article": "το",
+          "family": "neuter",
+          "english": "the name"
+        },
+        {
+          "greek": "το κατάστημα",
+          "noun": "κατάστημα",
+          "article": "το",
+          "family": "neuter",
+          "english": "the shop"
+        },
+        {
+          "greek": "το εισιτήριο",
+          "noun": "εισιτήριο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the ticket"
+        }
+      ],
+      "knownWordCount": 21,
+      "exercises": [
+        {
+          "id": "ART-A13-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ όνομα",
+          "options": [
+            "ο όνομα",
+            "η όνομα",
+            "το όνομα"
+          ],
+          "answer": "το όνομα",
+          "explanation": "το όνομα means the name."
+        },
+        {
+          "id": "ART-A13-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the shop.”",
+          "prompt": "the shop",
+          "options": [
+            "ο δρόμος",
+            "ο φούρνος",
+            "το κατάστημα"
+          ],
+          "answer": "το κατάστημα",
+          "explanation": "The complete Greek unit is το κατάστημα."
+        },
+        {
+          "id": "ART-A13-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ εισιτήριο",
+          "options": [
+            "το εισιτήριο",
+            "ο εισιτήριο",
+            "η εισιτήριο"
+          ],
+          "answer": "το εισιτήριο",
+          "explanation": "το εισιτήριο means the ticket."
+        },
+        {
+          "id": "ART-A13-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το όνομα",
+          "options": [
+            "the name",
+            "the bill",
+            "the map"
+          ],
+          "answer": "the name",
+          "explanation": "το όνομα means the name."
+        },
+        {
+          "id": "ART-A13-005",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ κατάστημα",
+          "options": [
+            "η κατάστημα",
+            "το κατάστημα",
+            "ο κατάστημα"
+          ],
+          "answer": "το κατάστημα",
+          "explanation": "το κατάστημα means the shop."
+        },
+        {
+          "id": "ART-A13-006",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the ticket.”",
+          "prompt": "the ticket",
+          "options": [
+            "το όνομα",
+            "το εισιτήριο",
+            "ο σταθμός"
+          ],
+          "answer": "το εισιτήριο",
+          "explanation": "The complete Greek unit is το εισιτήριο."
+        },
+        {
+          "id": "ART-A13-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ όνομα",
+          "options": [
+            "ο όνομα",
+            "η όνομα",
+            "το όνομα"
+          ],
+          "answer": "το όνομα",
+          "explanation": "το όνομα means the name."
+        },
+        {
+          "id": "ART-A13-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το κατάστημα",
+          "options": [
+            "the ticket",
+            "the water",
+            "the shop"
+          ],
+          "answer": "the shop",
+          "explanation": "το κατάστημα means the shop."
+        },
+        {
+          "id": "ART-A13-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ εισιτήριο",
+          "options": [
+            "το εισιτήριο",
+            "ο εισιτήριο",
+            "η εισιτήριο"
+          ],
+          "answer": "το εισιτήριο",
+          "explanation": "το εισιτήριο means the ticket."
+        },
+        {
+          "id": "ART-A13-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the name.”",
+          "prompt": "the name",
+          "options": [
+            "το όνομα",
+            "το νερό",
+            "το ψωμί"
+          ],
+          "answer": "το όνομα",
+          "explanation": "The complete Greek unit is το όνομα."
+        }
+      ]
+    },
+    {
+      "id": "ART-A14",
+      "sequence": 14,
+      "title": "Feminine exceptions ending in -ος",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "Some nouns ending in -ος are feminine. Learn η είσοδος, η έξοδος and η λεωφόρος as complete units.",
+      "ruleSteps": [
+        "Do not apply ending clues mechanically.",
+        "Trust the stored article-and-noun unit.",
+        "Contrast these words with masculine -ος nouns."
+      ],
+      "words": [
+        {
+          "greek": "η είσοδος",
+          "noun": "είσοδος",
+          "article": "η",
+          "family": "feminine",
+          "english": "the entrance"
+        },
+        {
+          "greek": "η έξοδος",
+          "noun": "έξοδος",
+          "article": "η",
+          "family": "feminine",
+          "english": "the exit"
+        },
+        {
+          "greek": "η λεωφόρος",
+          "noun": "λεωφόρος",
+          "article": "η",
+          "family": "feminine",
+          "english": "the avenue"
+        }
+      ],
+      "knownWordCount": 24,
+      "exercises": [
+        {
+          "id": "ART-A14-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ είσοδος",
+          "options": [
+            "ο είσοδος",
+            "η είσοδος",
+            "το είσοδος"
+          ],
+          "answer": "η είσοδος",
+          "explanation": "η είσοδος means the entrance."
+        },
+        {
+          "id": "ART-A14-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the exit.”",
+          "prompt": "the exit",
+          "options": [
+            "ο φούρνος",
+            "ο λογαριασμός",
+            "η έξοδος"
+          ],
+          "answer": "η έξοδος",
+          "explanation": "The complete Greek unit is η έξοδος."
+        },
+        {
+          "id": "ART-A14-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ λεωφόρος",
+          "options": [
+            "το λεωφόρος",
+            "ο λεωφόρος",
+            "η λεωφόρος"
+          ],
+          "answer": "η λεωφόρος",
+          "explanation": "η λεωφόρος means the avenue."
+        },
+        {
+          "id": "ART-A14-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η είσοδος",
+          "options": [
+            "the entrance",
+            "the map",
+            "the station"
+          ],
+          "answer": "the entrance",
+          "explanation": "η είσοδος means the entrance."
+        },
+        {
+          "id": "ART-A14-005",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ έξοδος",
+          "options": [
+            "η έξοδος",
+            "το έξοδος",
+            "ο έξοδος"
+          ],
+          "answer": "η έξοδος",
+          "explanation": "η έξοδος means the exit."
+        },
+        {
+          "id": "ART-A14-006",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the avenue.”",
+          "prompt": "the avenue",
+          "options": [
+            "το κατάστημα",
+            "η λεωφόρος",
+            "το όνομα"
+          ],
+          "answer": "η λεωφόρος",
+          "explanation": "The complete Greek unit is η λεωφόρος."
+        },
+        {
+          "id": "ART-A14-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ είσοδος",
+          "options": [
+            "ο είσοδος",
+            "η είσοδος",
+            "το είσοδος"
+          ],
+          "answer": "η είσοδος",
+          "explanation": "η είσοδος means the entrance."
+        },
+        {
+          "id": "ART-A14-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η έξοδος",
+          "options": [
+            "the ticket",
+            "the entrance",
+            "the exit"
+          ],
+          "answer": "the exit",
+          "explanation": "η έξοδος means the exit."
+        },
+        {
+          "id": "ART-A14-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ λεωφόρος",
+          "options": [
+            "το λεωφόρος",
+            "ο λεωφόρος",
+            "η λεωφόρος"
+          ],
+          "answer": "η λεωφόρος",
+          "explanation": "η λεωφόρος means the avenue."
+        },
+        {
+          "id": "ART-A14-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the entrance.”",
+          "prompt": "the entrance",
+          "options": [
+            "η είσοδος",
+            "η έξοδος",
+            "η λεωφόρος"
+          ],
+          "answer": "η είσοδος",
+          "explanation": "The complete Greek unit is η είσοδος."
+        }
+      ]
+    },
+    {
+      "id": "ART-A15",
+      "sequence": 15,
+      "title": "Cumulative article retrieval",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "Retrieve ο, η or το from memory across all noun families.",
+      "ruleSteps": [
+        "Do not rely on one ending rule.",
+        "Recall the word as a complete unit.",
+        "Use correction data to identify weak families."
+      ],
+      "words": [
+        {
+          "greek": "το νερό",
+          "noun": "νερό",
+          "article": "το",
+          "family": "neuter",
+          "english": "the water"
+        },
+        {
+          "greek": "το μουσείο",
+          "noun": "μουσείο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the museum"
+        },
+        {
+          "greek": "η πόρτα",
+          "noun": "πόρτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the door"
+        },
+        {
+          "greek": "η απόδειξη",
+          "noun": "απόδειξη",
+          "article": "η",
+          "family": "feminine",
+          "english": "the receipt"
+        },
+        {
+          "greek": "ο καφές",
+          "noun": "καφές",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the coffee"
+        },
+        {
+          "greek": "ο λογαριασμός",
+          "noun": "λογαριασμός",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the bill"
+        },
+        {
+          "greek": "η είσοδος",
+          "noun": "είσοδος",
+          "article": "η",
+          "family": "feminine",
+          "english": "the entrance"
+        },
+        {
+          "greek": "το εισιτήριο",
+          "noun": "εισιτήριο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the ticket"
+        }
+      ],
+      "knownWordCount": 24,
+      "exercises": [
+        {
+          "id": "ART-A15-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ νερό",
+          "options": [
+            "ο νερό",
+            "η νερό",
+            "το νερό"
+          ],
+          "answer": "το νερό",
+          "explanation": "το νερό means the water."
+        },
+        {
+          "id": "ART-A15-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the museum.”",
+          "prompt": "the museum",
+          "options": [
+            "ο λογαριασμός",
+            "ο χάρτης",
+            "το μουσείο"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "The complete Greek unit is το μουσείο."
+        },
+        {
+          "id": "ART-A15-003",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η πόρτα",
+          "options": [
+            "the station",
+            "the door",
+            "the map"
+          ],
+          "answer": "the door",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A15-004",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ απόδειξη",
+          "options": [
+            "ο απόδειξη",
+            "η απόδειξη",
+            "το απόδειξη"
+          ],
+          "answer": "η απόδειξη",
+          "explanation": "η απόδειξη means the receipt."
+        },
+        {
+          "id": "ART-A15-005",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the coffee.”",
+          "prompt": "the coffee",
+          "options": [
+            "το όνομα",
+            "το κατάστημα",
+            "ο καφές"
+          ],
+          "answer": "ο καφές",
+          "explanation": "The complete Greek unit is ο καφές."
+        },
+        {
+          "id": "ART-A15-006",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο λογαριασμός",
+          "options": [
+            "the ticket",
+            "the bill",
+            "the shop"
+          ],
+          "answer": "the bill",
+          "explanation": "ο λογαριασμός means the bill."
+        },
+        {
+          "id": "ART-A15-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ είσοδος",
+          "options": [
+            "ο είσοδος",
+            "η είσοδος",
+            "το είσοδος"
+          ],
+          "answer": "η είσοδος",
+          "explanation": "η είσοδος means the entrance."
+        },
+        {
+          "id": "ART-A15-008",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the ticket.”",
+          "prompt": "the ticket",
+          "options": [
+            "η είσοδος",
+            "η έξοδος",
+            "το εισιτήριο"
+          ],
+          "answer": "το εισιτήριο",
+          "explanation": "The complete Greek unit is το εισιτήριο."
+        },
+        {
+          "id": "ART-A15-009",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ νερό",
+          "options": [
+            "το νερό",
+            "ο νερό",
+            "η νερό"
+          ],
+          "answer": "το νερό",
+          "explanation": "το νερό means the water."
+        },
+        {
+          "id": "ART-A15-010",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the museum.”",
+          "prompt": "the museum",
+          "options": [
+            "το μουσείο",
+            "η λεωφόρος",
+            "το νερό"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "The complete Greek unit is το μουσείο."
+        }
+      ]
+    },
+    {
+      "id": "ART-A16",
+      "sequence": 16,
+      "title": "Listen and identify the article family",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "Listen for the article and noun as one spoken unit, then match what you hear.",
+      "ruleSteps": [
+        "Play the audio once.",
+        "Repeat the unit aloud.",
+        "Choose only after recalling the meaning."
+      ],
+      "words": [
+        {
+          "greek": "το ψωμί",
+          "noun": "ψωμί",
+          "article": "το",
+          "family": "neuter",
+          "english": "the bread"
+        },
+        {
+          "greek": "το σπίτι",
+          "noun": "σπίτι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the house / home"
+        },
+        {
+          "greek": "η τσάντα",
+          "noun": "τσάντα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the bag"
+        },
+        {
+          "greek": "η κουζίνα",
+          "noun": "κουζίνα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the kitchen"
+        },
+        {
+          "greek": "ο δρόμος",
+          "noun": "δρόμος",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the road"
+        },
+        {
+          "greek": "ο χάρτης",
+          "noun": "χάρτης",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the map"
+        }
+      ],
+      "knownWordCount": 24,
+      "exercises": [
+        {
+          "id": "ART-A16-001",
+          "kind": "listen",
+          "audioText": "το ψωμί",
+          "instruction": "Listen, repeat, then choose what you heard.",
+          "prompt": "Audio item",
+          "options": [
+            "το ψωμί",
+            "ο λογαριασμός",
+            "ο χάρτης"
+          ],
+          "answer": "το ψωμί",
+          "explanation": "You heard το ψωμί — the bread."
+        },
+        {
+          "id": "ART-A16-002",
+          "kind": "listen",
+          "audioText": "το σπίτι",
+          "instruction": "Listen, repeat, then choose what you heard.",
+          "prompt": "Audio item",
+          "options": [
+            "ο χάρτης",
+            "ο σταθμός",
+            "το σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "You heard το σπίτι — the house / home."
+        },
+        {
+          "id": "ART-A16-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ τσάντα",
+          "options": [
+            "το τσάντα",
+            "ο τσάντα",
+            "η τσάντα"
+          ],
+          "answer": "η τσάντα",
+          "explanation": "η τσάντα means the bag."
+        },
+        {
+          "id": "ART-A16-004",
+          "kind": "listen",
+          "audioText": "η κουζίνα",
+          "instruction": "Listen, repeat, then choose what you heard.",
+          "prompt": "Audio item",
+          "options": [
+            "η κουζίνα",
+            "το όνομα",
+            "το κατάστημα"
+          ],
+          "answer": "η κουζίνα",
+          "explanation": "You heard η κουζίνα — the kitchen."
+        },
+        {
+          "id": "ART-A16-005",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο δρόμος",
+          "options": [
+            "the shop",
+            "the ticket",
+            "the road"
+          ],
+          "answer": "the road",
+          "explanation": "ο δρόμος means the road."
+        },
+        {
+          "id": "ART-A16-006",
+          "kind": "listen",
+          "audioText": "ο χάρτης",
+          "instruction": "Listen, repeat, then choose what you heard.",
+          "prompt": "Audio item",
+          "options": [
+            "η είσοδος",
+            "ο χάρτης",
+            "το εισιτήριο"
+          ],
+          "answer": "ο χάρτης",
+          "explanation": "You heard ο χάρτης — the map."
+        },
+        {
+          "id": "ART-A16-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ ψωμί",
+          "options": [
+            "ο ψωμί",
+            "η ψωμί",
+            "το ψωμί"
+          ],
+          "answer": "το ψωμί",
+          "explanation": "το ψωμί means the bread."
+        },
+        {
+          "id": "ART-A16-008",
+          "kind": "listen",
+          "audioText": "το σπίτι",
+          "instruction": "Listen, repeat, then choose what you heard.",
+          "prompt": "Audio item",
+          "options": [
+            "η έξοδος",
+            "η λεωφόρος",
+            "το σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "You heard το σπίτι — the house / home."
+        },
+        {
+          "id": "ART-A16-009",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the bag.”",
+          "prompt": "the bag",
+          "options": [
+            "το νερό",
+            "η τσάντα",
+            "η λεωφόρος"
+          ],
+          "answer": "η τσάντα",
+          "explanation": "The complete Greek unit is η τσάντα."
+        },
+        {
+          "id": "ART-A16-010",
+          "kind": "listen",
+          "audioText": "η κουζίνα",
+          "instruction": "Listen, repeat, then choose what you heard.",
+          "prompt": "Audio item",
+          "options": [
+            "η κουζίνα",
+            "το νερό",
+            "το ψωμί"
+          ],
+          "answer": "η κουζίνα",
+          "explanation": "You heard η κουζίνα — the kitchen."
+        }
+      ]
+    },
+    {
+      "id": "ART-A17",
+      "sequence": 17,
+      "title": "Use known nouns in a sentence frame",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "The article-and-noun unit can now enter a controlled sentence: ___ είναι εδώ means “___ is here.”",
+      "ruleSteps": [
+        "Keep the article attached to the noun.",
+        "Choose the unit named in English.",
+        "Do not create an independent sentence yet."
+      ],
+      "words": [
+        {
+          "greek": "το νερό",
+          "noun": "νερό",
+          "article": "το",
+          "family": "neuter",
+          "english": "the water"
+        },
+        {
+          "greek": "το ψωμί",
+          "noun": "ψωμί",
+          "article": "το",
+          "family": "neuter",
+          "english": "the bread"
+        },
+        {
+          "greek": "η πόρτα",
+          "noun": "πόρτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the door"
+        },
+        {
+          "greek": "η τσάντα",
+          "noun": "τσάντα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the bag"
+        },
+        {
+          "greek": "ο καφές",
+          "noun": "καφές",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the coffee"
+        },
+        {
+          "greek": "ο λογαριασμός",
+          "noun": "λογαριασμός",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the bill"
+        }
+      ],
+      "knownWordCount": 24,
+      "exercises": [
+        {
+          "id": "ART-A17-001",
+          "kind": "sentence",
+          "audioText": null,
+          "instruction": "Complete: “The water is here.”",
+          "prompt": "___ είναι εδώ.",
+          "options": [
+            "το νερό",
+            "ο χάρτης",
+            "ο σταθμός"
+          ],
+          "answer": "το νερό",
+          "explanation": "το νερό είναι εδώ. means “The water is here.”"
+        },
+        {
+          "id": "ART-A17-002",
+          "kind": "sentence",
+          "audioText": null,
+          "instruction": "Complete: “The bread is here.”",
+          "prompt": "___ είναι εδώ.",
+          "options": [
+            "ο σταθμός",
+            "το όνομα",
+            "το ψωμί"
+          ],
+          "answer": "το ψωμί",
+          "explanation": "το ψωμί είναι εδώ. means “The bread is here.”"
+        },
+        {
+          "id": "ART-A17-003",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ πόρτα",
+          "options": [
+            "το πόρτα",
+            "ο πόρτα",
+            "η πόρτα"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "η πόρτα means the door."
+        },
+        {
+          "id": "ART-A17-004",
+          "kind": "sentence",
+          "audioText": null,
+          "instruction": "Complete: “The bag is here.”",
+          "prompt": "___ είναι εδώ.",
+          "options": [
+            "η τσάντα",
+            "το κατάστημα",
+            "το εισιτήριο"
+          ],
+          "answer": "η τσάντα",
+          "explanation": "η τσάντα είναι εδώ. means “The bag is here.”"
+        },
+        {
+          "id": "ART-A17-005",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "ο καφές",
+          "options": [
+            "the ticket",
+            "the entrance",
+            "the coffee"
+          ],
+          "answer": "the coffee",
+          "explanation": "ο καφές means the coffee."
+        },
+        {
+          "id": "ART-A17-006",
+          "kind": "sentence",
+          "audioText": null,
+          "instruction": "Complete: “The bill is here.”",
+          "prompt": "___ είναι εδώ.",
+          "options": [
+            "η έξοδος",
+            "ο λογαριασμός",
+            "η είσοδος"
+          ],
+          "answer": "ο λογαριασμός",
+          "explanation": "ο λογαριασμός είναι εδώ. means “The bill is here.”"
+        },
+        {
+          "id": "ART-A17-007",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ νερό",
+          "options": [
+            "ο νερό",
+            "η νερό",
+            "το νερό"
+          ],
+          "answer": "το νερό",
+          "explanation": "το νερό means the water."
+        },
+        {
+          "id": "ART-A17-008",
+          "kind": "sentence",
+          "audioText": null,
+          "instruction": "Complete: “The bread is here.”",
+          "prompt": "___ είναι εδώ.",
+          "options": [
+            "η λεωφόρος",
+            "το νερό",
+            "το ψωμί"
+          ],
+          "answer": "το ψωμί",
+          "explanation": "το ψωμί είναι εδώ. means “The bread is here.”"
+        },
+        {
+          "id": "ART-A17-009",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the door.”",
+          "prompt": "the door",
+          "options": [
+            "το ψωμί",
+            "η πόρτα",
+            "το νερό"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "The complete Greek unit is η πόρτα."
+        },
+        {
+          "id": "ART-A17-010",
+          "kind": "sentence",
+          "audioText": null,
+          "instruction": "Complete: “The bag is here.”",
+          "prompt": "___ είναι εδώ.",
+          "options": [
+            "η τσάντα",
+            "το ψωμί",
+            "το σπίτι"
+          ],
+          "answer": "η τσάντα",
+          "explanation": "η τσάντα είναι εδώ. means “The bag is here.”"
+        }
+      ]
+    },
+    {
+      "id": "ART-A18",
+      "sequence": 18,
+      "title": "Definite το versus indefinite ένα",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "Use το for “the” with one neuter noun. Use ένα for “a” or “one” neuter noun.",
+      "ruleSteps": [
+        "το νερό means the water.",
+        "ένα νερό means a water / one water.",
+        "Choose from the English meaning, not by habit."
+      ],
+      "words": [
+        {
+          "greek": "το νερό",
+          "noun": "νερό",
+          "article": "το",
+          "family": "neuter",
+          "english": "the water"
+        },
+        {
+          "greek": "το ψωμί",
+          "noun": "ψωμί",
+          "article": "το",
+          "family": "neuter",
+          "english": "the bread"
+        },
+        {
+          "greek": "το σπίτι",
+          "noun": "σπίτι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the house / home"
+        },
+        {
+          "greek": "το βιβλίο",
+          "noun": "βιβλίο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the book"
+        },
+        {
+          "greek": "το τραπέζι",
+          "noun": "τραπέζι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the table"
+        },
+        {
+          "greek": "το μουσείο",
+          "noun": "μουσείο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the museum"
+        }
+      ],
+      "knownWordCount": 24,
+      "exercises": [
+        {
+          "id": "ART-A18-001",
+          "kind": "definite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the water.”",
+          "prompt": "the water",
+          "options": [
+            "το νερό",
+            "ένα νερό",
+            "το μουσείο"
+          ],
+          "answer": "το νερό",
+          "explanation": "το νερό uses the definite article because it means “the water.”"
+        },
+        {
+          "id": "ART-A18-002",
+          "kind": "indefinite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “a/one bread.”",
+          "prompt": "a/one bread",
+          "options": [
+            "το ψωμί",
+            "ένα νερό",
+            "ένα ψωμί"
+          ],
+          "answer": "ένα ψωμί",
+          "explanation": "ένα ψωμί means a/one bread."
+        },
+        {
+          "id": "ART-A18-003",
+          "kind": "definite",
+          "audioText": null,
           "instruction": "Choose the Greek for “the house / home.”",
           "prompt": "the house / home",
-          "options": ["το νερό", "το σπίτι", "το ψωμί"],
+          "options": [
+            "το ψωμί",
+            "το σπίτι",
+            "ένα σπίτι"
+          ],
           "answer": "το σπίτι",
-          "explanation": "The complete Greek unit is το σπίτι."
+          "explanation": "το σπίτι uses the definite article because it means “the house / home.”"
+        },
+        {
+          "id": "ART-A18-004",
+          "kind": "indefinite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “a/one book.”",
+          "prompt": "a/one book",
+          "options": [
+            "ένα βιβλίο",
+            "το βιβλίο",
+            "ένα σπίτι"
+          ],
+          "answer": "ένα βιβλίο",
+          "explanation": "ένα βιβλίο means a/one book."
+        },
+        {
+          "id": "ART-A18-005",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the table.”",
+          "prompt": "the table",
+          "options": [
+            "το βιβλίο",
+            "το μουσείο",
+            "το τραπέζι"
+          ],
+          "answer": "το τραπέζι",
+          "explanation": "The complete Greek unit is το τραπέζι."
+        },
+        {
+          "id": "ART-A18-006",
+          "kind": "definite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the museum.”",
+          "prompt": "the museum",
+          "options": [
+            "το τραπέζι",
+            "το μουσείο",
+            "ένα μουσείο"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "το μουσείο uses the definite article because it means “the museum.”"
+        },
+        {
+          "id": "ART-A18-007",
+          "kind": "indefinite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “a/one water.”",
+          "prompt": "a/one water",
+          "options": [
+            "ένα νερό",
+            "το νερό",
+            "ένα μουσείο"
+          ],
+          "answer": "ένα νερό",
+          "explanation": "ένα νερό means a/one water."
+        },
+        {
+          "id": "ART-A18-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "το ψωμί",
+          "options": [
+            "the water",
+            "the house / home",
+            "the bread"
+          ],
+          "answer": "the bread",
+          "explanation": "το ψωμί means the bread."
+        },
+        {
+          "id": "ART-A18-009",
+          "kind": "definite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the house / home.”",
+          "prompt": "the house / home",
+          "options": [
+            "το ψωμί",
+            "το σπίτι",
+            "ένα σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "το σπίτι uses the definite article because it means “the house / home.”"
+        },
+        {
+          "id": "ART-A18-010",
+          "kind": "indefinite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “a/one book.”",
+          "prompt": "a/one book",
+          "options": [
+            "ένα βιβλίο",
+            "το βιβλίο",
+            "ένα σπίτι"
+          ],
+          "answer": "ένα βιβλίο",
+          "explanation": "ένα βιβλίο means a/one book."
+        }
+      ]
+    },
+    {
+      "id": "ART-A19",
+      "sequence": 19,
+      "title": "Definite η/ο versus μία/ένας",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "Use η or ο for “the.” Use μία with one feminine noun and ένας with one masculine noun for “a/one” in the subject form.",
+      "ruleSteps": [
+        "η τσάντα means the bag; μία τσάντα means a bag.",
+        "ο χάρτης means the map; ένας χάρτης means a map.",
+        "Object forms will be taught in a later grammar pack."
+      ],
+      "words": [
+        {
+          "greek": "η πόρτα",
+          "noun": "πόρτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the door"
+        },
+        {
+          "greek": "η τσάντα",
+          "noun": "τσάντα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the bag"
+        },
+        {
+          "greek": "η σαλάτα",
+          "noun": "σαλάτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the salad"
+        },
+        {
+          "greek": "ο καφές",
+          "noun": "καφές",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the coffee"
+        },
+        {
+          "greek": "ο χάρτης",
+          "noun": "χάρτης",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the map"
+        },
+        {
+          "greek": "ο σταθμός",
+          "noun": "σταθμός",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the station"
+        }
+      ],
+      "knownWordCount": 24,
+      "exercises": [
+        {
+          "id": "ART-A19-001",
+          "kind": "definite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the door.”",
+          "prompt": "the door",
+          "options": [
+            "η πόρτα",
+            "μία πόρτα",
+            "το όνομα"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "η πόρτα uses the definite article because it means “the door.”"
+        },
+        {
+          "id": "ART-A19-002",
+          "kind": "indefinite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “a/one bag.”",
+          "prompt": "a/one bag",
+          "options": [
+            "η τσάντα",
+            "ένα κατάστημα",
+            "μία τσάντα"
+          ],
+          "answer": "μία τσάντα",
+          "explanation": "μία τσάντα means a/one bag."
+        },
+        {
+          "id": "ART-A19-003",
+          "kind": "definite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the salad.”",
+          "prompt": "the salad",
+          "options": [
+            "το εισιτήριο",
+            "η σαλάτα",
+            "μία σαλάτα"
+          ],
+          "answer": "η σαλάτα",
+          "explanation": "η σαλάτα uses the definite article because it means “the salad.”"
+        },
+        {
+          "id": "ART-A19-004",
+          "kind": "indefinite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “a/one coffee.”",
+          "prompt": "a/one coffee",
+          "options": [
+            "ένας καφές",
+            "ο καφές",
+            "μία είσοδος"
+          ],
+          "answer": "ένας καφές",
+          "explanation": "ένας καφές means a/one coffee."
+        },
+        {
+          "id": "ART-A19-005",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the map.”",
+          "prompt": "the map",
+          "options": [
+            "η έξοδος",
+            "η λεωφόρος",
+            "ο χάρτης"
+          ],
+          "answer": "ο χάρτης",
+          "explanation": "The complete Greek unit is ο χάρτης."
+        },
+        {
+          "id": "ART-A19-006",
+          "kind": "definite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the station.”",
+          "prompt": "the station",
+          "options": [
+            "η λεωφόρος",
+            "ο σταθμός",
+            "ένας σταθμός"
+          ],
+          "answer": "ο σταθμός",
+          "explanation": "ο σταθμός uses the definite article because it means “the station.”"
+        },
+        {
+          "id": "ART-A19-007",
+          "kind": "indefinite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “a/one door.”",
+          "prompt": "a/one door",
+          "options": [
+            "μία πόρτα",
+            "η πόρτα",
+            "ένα νερό"
+          ],
+          "answer": "μία πόρτα",
+          "explanation": "μία πόρτα means a/one door."
+        },
+        {
+          "id": "ART-A19-008",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η τσάντα",
+          "options": [
+            "the bread",
+            "the house / home",
+            "the bag"
+          ],
+          "answer": "the bag",
+          "explanation": "η τσάντα means the bag."
+        },
+        {
+          "id": "ART-A19-009",
+          "kind": "definite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the salad.”",
+          "prompt": "the salad",
+          "options": [
+            "το σπίτι",
+            "η σαλάτα",
+            "μία σαλάτα"
+          ],
+          "answer": "η σαλάτα",
+          "explanation": "η σαλάτα uses the definite article because it means “the salad.”"
+        },
+        {
+          "id": "ART-A19-010",
+          "kind": "indefinite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “a/one coffee.”",
+          "prompt": "a/one coffee",
+          "options": [
+            "ένας καφές",
+            "ο καφές",
+            "ένα βιβλίο"
+          ],
+          "answer": "ένας καφές",
+          "explanation": "ένας καφές means a/one coffee."
+        }
+      ]
+    },
+    {
+      "id": "ART-A20",
+      "sequence": 20,
+      "title": "Article mastery assessment",
+      "estimatedMinutes": 6,
+      "masteryFirstAttempt": 9,
+      "rule": "Use meaning, noun family and the stored article-and-noun unit to choose accurately without hints.",
+      "ruleSteps": [
+        "Retrieve before looking at the choices.",
+        "Listen and read across all three families.",
+        "Mastery requires 9/10 first attempt and 10/10 after correction."
+      ],
+      "words": [
+        {
+          "greek": "το νερό",
+          "noun": "νερό",
+          "article": "το",
+          "family": "neuter",
+          "english": "the water"
+        },
+        {
+          "greek": "το μουσείο",
+          "noun": "μουσείο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the museum"
+        },
+        {
+          "greek": "η πόρτα",
+          "noun": "πόρτα",
+          "article": "η",
+          "family": "feminine",
+          "english": "the door"
+        },
+        {
+          "greek": "η απόδειξη",
+          "noun": "απόδειξη",
+          "article": "η",
+          "family": "feminine",
+          "english": "the receipt"
+        },
+        {
+          "greek": "ο καφές",
+          "noun": "καφές",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the coffee"
+        },
+        {
+          "greek": "ο λογαριασμός",
+          "noun": "λογαριασμός",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the bill"
+        },
+        {
+          "greek": "το εισιτήριο",
+          "noun": "εισιτήριο",
+          "article": "το",
+          "family": "neuter",
+          "english": "the ticket"
+        },
+        {
+          "greek": "η είσοδος",
+          "noun": "είσοδος",
+          "article": "η",
+          "family": "feminine",
+          "english": "the entrance"
+        },
+        {
+          "greek": "ο χάρτης",
+          "noun": "χάρτης",
+          "article": "ο",
+          "family": "masculine",
+          "english": "the map"
+        },
+        {
+          "greek": "το σπίτι",
+          "noun": "σπίτι",
+          "article": "το",
+          "family": "neuter",
+          "english": "the house / home"
+        }
+      ],
+      "knownWordCount": 24,
+      "exercises": [
+        {
+          "id": "ART-A20-001",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ νερό",
+          "options": [
+            "ο νερό",
+            "η νερό",
+            "το νερό"
+          ],
+          "answer": "το νερό",
+          "explanation": "το νερό means the water."
+        },
+        {
+          "id": "ART-A20-002",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the museum.”",
+          "prompt": "the museum",
+          "options": [
+            "το εισιτήριο",
+            "η είσοδος",
+            "το μουσείο"
+          ],
+          "answer": "το μουσείο",
+          "explanation": "The complete Greek unit is το μουσείο."
+        },
+        {
+          "id": "ART-A20-003",
+          "kind": "listen",
+          "audioText": "η πόρτα",
+          "instruction": "Listen, repeat, then choose what you heard.",
+          "prompt": "Audio item",
+          "options": [
+            "η έξοδος",
+            "η πόρτα",
+            "η είσοδος"
+          ],
+          "answer": "η πόρτα",
+          "explanation": "You heard η πόρτα — the door."
+        },
+        {
+          "id": "ART-A20-004",
+          "kind": "meaning",
+          "audioText": null,
+          "instruction": "Choose the English meaning.",
+          "prompt": "η απόδειξη",
+          "options": [
+            "the receipt",
+            "the exit",
+            "the avenue"
+          ],
+          "answer": "the receipt",
+          "explanation": "η απόδειξη means the receipt."
+        },
+        {
+          "id": "ART-A20-005",
+          "kind": "sentence",
+          "audioText": null,
+          "instruction": "Complete: “The coffee is here.”",
+          "prompt": "___ είναι εδώ.",
+          "options": [
+            "η λεωφόρος",
+            "το νερό",
+            "ο καφές"
+          ],
+          "answer": "ο καφές",
+          "explanation": "ο καφές είναι εδώ. means “The coffee is here.”"
+        },
+        {
+          "id": "ART-A20-006",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ λογαριασμός",
+          "options": [
+            "το λογαριασμός",
+            "ο λογαριασμός",
+            "η λογαριασμός"
+          ],
+          "answer": "ο λογαριασμός",
+          "explanation": "ο λογαριασμός means the bill."
+        },
+        {
+          "id": "ART-A20-007",
+          "kind": "greek",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the ticket.”",
+          "prompt": "the ticket",
+          "options": [
+            "το εισιτήριο",
+            "το ψωμί",
+            "το σπίτι"
+          ],
+          "answer": "το εισιτήριο",
+          "explanation": "The complete Greek unit is το εισιτήριο."
+        },
+        {
+          "id": "ART-A20-008",
+          "kind": "listen",
+          "audioText": "η είσοδος",
+          "instruction": "Listen, repeat, then choose what you heard.",
+          "prompt": "Audio item",
+          "options": [
+            "το σπίτι",
+            "το βιβλίο",
+            "η είσοδος"
+          ],
+          "answer": "η είσοδος",
+          "explanation": "You heard η είσοδος — the entrance."
+        },
+        {
+          "id": "ART-A20-009",
+          "kind": "definite",
+          "audioText": null,
+          "instruction": "Choose the Greek for “the map.”",
+          "prompt": "the map",
+          "options": [
+            "το βιβλίο",
+            "ο χάρτης",
+            "ένας χάρτης"
+          ],
+          "answer": "ο χάρτης",
+          "explanation": "ο χάρτης uses the definite article because it means “the map.”"
+        },
+        {
+          "id": "ART-A20-010",
+          "kind": "article",
+          "audioText": null,
+          "instruction": "Choose the correct complete word unit.",
+          "prompt": "___ σπίτι",
+          "options": [
+            "ο σπίτι",
+            "η σπίτι",
+            "το σπίτι"
+          ],
+          "answer": "το σπίτι",
+          "explanation": "το σπίτι means the house / home."
         }
       ]
     }
