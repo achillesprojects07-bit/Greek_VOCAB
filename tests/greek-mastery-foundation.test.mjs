@@ -4,25 +4,30 @@ import test from "node:test";
 
 const page = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
 const manifest = JSON.parse(readFileSync(new URL("../public/manifest.webmanifest", import.meta.url), "utf8"));
-const curriculum = JSON.parse(readFileSync(new URL("../data/article-mastery.json", import.meta.url), "utf8"));
+const curriculum = JSON.parse(readFileSync(new URL("../data/a1-foundations.json", import.meta.url), "utf8"));
 
 test("all five purposeful navigation destinations exist", () => {
   for (const label of ["Today", "Path", "Practice", "Vocabulary", "Review"]) assert.match(page, new RegExp(`label: "${label}"`));
 });
 
-test("the article pack contains twenty sequential worksheets and 200 exercises", () => {
-  assert.equal(curriculum.totalWorksheets, 20);
-  assert.equal(curriculum.totalExercises, 200);
-  assert.equal(curriculum.worksheets.length, 20);
+test("five units contain 100 sequential worksheets and 1,000 exercises", () => {
+  assert.equal(curriculum.totalUnits, 5);
+  assert.equal(curriculum.totalWorksheets, 100);
+  assert.equal(curriculum.totalExercises, 1000);
+  assert.equal(curriculum.worksheets.length, 100);
   const exercises = curriculum.worksheets.flatMap((worksheet) => worksheet.exercises);
-  assert.equal(exercises.length, 200);
-  assert.equal(new Set(exercises.map((exercise) => exercise.id)).size, 200);
-  curriculum.worksheets.forEach((worksheet, index) => {
-    assert.equal(worksheet.id, `ART-A${index + 1}`);
-    assert.equal(worksheet.sequence, index + 1);
-    assert.equal(worksheet.exercises.length, 10);
-    assert.ok(worksheet.rule.length > 30);
-    assert.equal(worksheet.ruleSteps.length, 3);
+  assert.equal(exercises.length, 1000);
+  assert.equal(new Set(exercises.map((exercise) => exercise.id)).size, 1000);
+  curriculum.units.forEach((unit, unitIndex) => {
+    assert.equal(unit.unitNumber, unitIndex + 1);
+    assert.equal(unit.worksheets.length, 20);
+    unit.worksheets.forEach((worksheet, worksheetIndex) => {
+      assert.equal(worksheet.sequence, worksheetIndex + 1);
+      assert.equal(worksheet.unitNumber, unit.unitNumber);
+      assert.equal(worksheet.exercises.length, 10);
+      assert.ok(worksheet.rule.length > 30);
+      assert.equal(worksheet.ruleSteps.length, 3);
+    });
   });
 });
 
@@ -32,8 +37,18 @@ test("every exercise is complete, selectable and self-explaining", () => {
     assert.ok(item.instruction, `${item.id} instruction`);
     assert.ok(item.explanation, `${item.id} explanation`);
     assert.equal(item.options.length, 3, `${item.id} options`);
+    assert.equal(new Set(item.options).size, 3, `${item.id} options must be unique`);
     assert.ok(item.options.includes(item.answer), `${item.id} answer must appear in options`);
   }
+});
+
+test("units 2 to 5 contain the required Greek grammar forms", () => {
+  const text = JSON.stringify(curriculum);
+  for (const form of ["είμαι", "είσαι", "είναι", "είμαστε", "είστε"]) assert.match(text, new RegExp(form));
+  for (const form of ["Ναι, είμαι εδώ.", "Όχι, δεν είμαι εδώ.", "Είσαι εδώ;"]) assert.match(text, new RegExp(form));
+  for (const lemma of ["μένω", "δουλεύω", "γράφω", "διαβάζω", "αγοράζω"]) assert.match(text, new RegExp(lemma));
+  for (const lemma of ["έχω", "πάω", "λέω", "θέλω"]) assert.match(text, new RegExp(lemma));
+  for (const badGloss of ["I be", "he be", "she work", "he live/stay", "she have", "he go"]) assert.doesNotMatch(text, new RegExp(`"${badGloss}"`));
 });
 
 test("mastery, correction, locking and spaced-review gates are implemented", () => {
@@ -47,7 +62,7 @@ test("mastery, correction, locking and spaced-review gates are implemented", () 
 test("Greek orthography and full-form rules are preserved", () => {
   const combined = `${page}\n${JSON.stringify(curriculum)}`;
   assert.doesNotMatch(combined, /\bΚι\b/u);
-  for (const item of ["το νερό", "το ψωμί", "το σπίτι", "η είσοδος", "ο καφές"]) assert.match(combined, new RegExp(item));
+  for (const item of ["το νερό", "το ψωμί", "το σπίτι", "η είσοδος", "ο καφές", "εγώ είμαι"]) assert.match(combined, new RegExp(item));
 });
 
 test("listening and installation metadata are present", () => {

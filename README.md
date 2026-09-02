@@ -1,12 +1,17 @@
-# Greek Mastery A1–A2 • v0.3.0
+# Greek Mastery A1–A2 • v0.4.0
 
 An offline-first Modern Greek learning app built around a fixed grammar-led A1→A2 pathway.
 
-## Phase 1 mastery foundation
+## A1 foundation batch 1
 
 - Today screen with one clear next action
 - Fixed course path and locked future lessons
-- Complete article-mastery pack with 20 sequential worksheets and 200 validated exercises
+- Five grammar-led units with 100 sequential worksheets and 1,000 validated exercises
+- Unit 1: articles and noun gender
+- Unit 2: είμαι and personal pronouns
+- Unit 3: affirmative statements, negation and yes–no questions
+- Unit 4: regular present-tense verbs
+- Unit 5: high-frequency verbs έχω, πάω, λέω and θέλω
 - Immediate correction loop and first-attempt scoring
 - Mastery gate requiring 10/10 corrected and at least 9/10 on first attempt
 - Three-word vocabulary ceiling for the first worksheet, with gradual cumulative growth

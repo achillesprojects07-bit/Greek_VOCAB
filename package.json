@@ -10,7 +10,7 @@
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vite",
     "build": "bash scripts/build-verified.sh",
     "build:github": "vite build --config vite.github.config.ts",
-    "generate:curriculum": "node scripts/generate-article-mastery.mjs",
+    "generate:curriculum": "node scripts/generate-article-mastery.mjs && node scripts/generate-a1-foundations.mjs",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && node --test tests/*.test.mjs",
     "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern dist-github --ignore-pattern .next",

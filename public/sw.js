@@ -1,4 +1,4 @@
-const CACHE = "greek-mastery-v0.3.0";
+const CACHE = "greek-mastery-v0.4.0";
 self.addEventListener("install", event => { event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(["./", "./manifest.webmanifest", "./favicon.svg"]))); self.skipWaiting(); });
 self.addEventListener("activate", event => { event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))); self.clients.claim(); });
 self.addEventListener("fetch", event => {

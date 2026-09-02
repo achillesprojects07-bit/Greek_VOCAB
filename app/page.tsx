@@ -27,11 +27,11 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import articleMastery from "@/data/article-mastery.json";
+import curriculum from "@/data/a1-foundations.json";
 
 type Screen = "today" | "path" | "practice" | "vocabulary" | "review";
 type Stage = "understand" | "notice" | "control" | "use" | "result";
-type Worksheet = (typeof articleMastery.worksheets)[number];
+type Worksheet = (typeof curriculum.worksheets)[number];
 
 type WorksheetState = {
   answers: Record<number, string>;
@@ -52,8 +52,8 @@ type ProgressState = {
 };
 
 const STORAGE_KEY = "greek_mastery_state_v3";
-const worksheets = articleMastery.worksheets;
-const reviewIntervals = articleMastery.reviewIntervalsDays;
+const worksheets = curriculum.worksheets;
+const reviewIntervals = curriculum.reviewIntervalsDays;
 
 function blankWorksheetState(): WorksheetState {
   return {
@@ -234,14 +234,14 @@ export default function HomePage() {
           ))}
         </nav>
         <button className="sidebar-status" onClick={() => setQaOpen(true)}>
-          <ShieldCheck /><span><strong>PHASE 1 • v0.3.0</strong><small>20 worksheets • 200 exercises</small></span>
+          <ShieldCheck /><span><strong>A1 FOUNDATIONS • v0.4.0</strong><small>5 units • 1,000 exercises</small></span>
         </button>
       </aside>
 
       <div className="main-area">
         <header className="topbar">
           <div className="mobile-brand"><Brand compact /></div>
-          <div className="topbar-context"><span>ARTICLE MASTERY</span><strong>{completedCount} of 20 mastered</strong></div>
+          <div className="topbar-context"><span>{worksheet.unitTitle.toUpperCase()}</span><strong>{completedCount} of {worksheets.length} worksheets mastered</strong></div>
           <button className="topbar-qa" onClick={() => setQaOpen(true)}><ShieldCheck /> Quality checks</button>
         </header>
         <main className="content-wrap">
@@ -279,7 +279,7 @@ function TodayScreen({ worksheet, state, completed, onStart }: { worksheet: Work
     <section className="welcome-row"><div><span className="eyebrow">YOUR LEARNING DAY</span><h1>One small step at a time.</h1><p>Master one pattern before the next one unlocks.</p></div><div className="day-marker"><strong>{completed}</strong><span>mastered</span></div></section>
     <section className="focus-card">
       <div className="focus-top"><span>CURRENT WORKSHEET</span><small><Clock3 /> {worksheet.estimatedMinutes}–{worksheet.estimatedMinutes + 2} min</small></div>
-      <div className="focus-body"><div className="focus-number">{String(worksheet.sequence).padStart(2, "0")}</div><div><h2>{worksheet.title}</h2><p>{worksheet.rule}</p></div></div>
+      <div className="focus-body"><div className="focus-number">{worksheet.code.replace("U", "").replace("–W", ".")}</div><div><span className="unit-kicker">UNIT {worksheet.unitNumber} • {worksheet.unitTitle}</span><h2>{worksheet.title}</h2><p>{worksheet.rule}</p></div></div>
       <div className="lesson-progress"><span>Worksheet progress</span><strong>{state.mastered ? "Mastered" : `${correct}/10 correct`}</strong></div>
       <Progress value={state.mastered ? 100 : correct * 10} />
       <Button className="primary-action" onClick={onStart}>{state.started ? "Continue worksheet" : "Start this small step"}<ArrowRight /></Button>
@@ -296,20 +296,22 @@ function PlanItem({ n, title, text }: { n: string; title: string; text: string }
 }
 
 function PathScreen({ progress, onOpen }: { progress: ProgressState; onOpen: (index: number) => void }) {
-  return <div className="screen-stack"><PageIntro eyebrow="YOUR PATH" title="20 minute steps to article mastery" text="Each worksheet has ten exercises. A new worksheet unlocks only after the previous one is mastered." />
-    <section className="level-overview"><div><span>A1 FOUNDATION PACK</span><strong>200 exercises</strong></div><Progress value={(worksheets.filter((w) => progress.items[w.id]?.mastered).length / 20) * 100} /><p>Three article families → contrast → exceptions → listening → controlled use → assessment</p></section>
-    <section className="path-list">{worksheets.map((item, index) => {
+  const completed = worksheets.filter((w) => progress.items[w.id]?.mastered).length;
+  return <div className="screen-stack"><PageIntro eyebrow="YOUR A1 PATH" title="Five foundations, mastered in minute steps" text="Each unit contains 20 worksheets and 200 exercises. Every worksheet must be mastered before the next one unlocks." />
+    <section className="level-overview"><div><span>A1 FOUNDATION BATCH 1</span><strong>1,000 exercises</strong></div><Progress value={(completed / worksheets.length) * 100} /><p>Articles → είμαι → statements and questions → regular verbs → high-frequency verbs</p></section>
+    {curriculum.units.map((unit) => <section className="unit-path" key={unit.unitNumber}><header><div><span>UNIT {unit.unitNumber}</span><h2>{unit.title}</h2><p>{unit.objective}</p></div><strong>{unit.worksheets.filter((w) => progress.items[w.id]?.mastered).length}/20</strong></header><div className="path-list">{unit.worksheets.map((item) => {
+      const index = worksheets.findIndex((worksheet) => worksheet.id === item.id);
       const state = progress.items[item.id]; const unlocked = index === 0 || Boolean(progress.items[worksheets[index - 1].id]?.mastered);
       return <button key={item.id} disabled={!unlocked} onClick={() => onOpen(index)} className={`path-row ${state?.mastered ? "complete" : ""} ${progress.currentIndex === index ? "current" : ""}`}>
-        <span className="path-number">{state?.mastered ? <Check /> : unlocked ? item.sequence : <LockKeyhole />}</span><div><strong>A{item.sequence}. {item.title}</strong><span>{item.words.length} focus words • 10 exercises • mastery {item.masteryFirstAttempt}/10</span></div>{unlocked && <ChevronRight />}
+        <span className="path-number">{state?.mastered ? <Check /> : unlocked ? item.sequence : <LockKeyhole />}</span><div><strong>{item.code}. {item.title}</strong><span>{item.words.length} focus units • 10 exercises • mastery {item.masteryFirstAttempt}/10</span></div>{unlocked && <ChevronRight />}
       </button>;
-    })}</section>
+    })}</div></section>)}
   </div>;
 }
 
 function PracticeScreen({ worksheet, state, onStart, onReview, dueCount }: { worksheet: Worksheet; state: WorksheetState; onStart: () => void; onReview: () => void; dueCount: number }) {
   return <div className="screen-stack"><PageIntro eyebrow="PRACTICE" title="Train exactly what is ready" text="The app limits difficulty so vocabulary and grammar never jump at the same time." />
-    <div className="practice-grid"><button className="practice-card featured" onClick={onStart}><span className="practice-icon"><ListChecks /></span><span>CURRENT MICRO-STEP</span><h2>A{worksheet.sequence}. {worksheet.title}</h2><p>{worksheet.rule}</p><strong>{state.started ? "Continue" : "Begin"}<ArrowRight /></strong></button>
+    <div className="practice-grid"><button className="practice-card featured" onClick={onStart}><span className="practice-icon"><ListChecks /></span><span>CURRENT MICRO-STEP • {worksheet.code}</span><h2>{worksheet.title}</h2><p>{worksheet.rule}</p><strong>{state.started ? "Continue" : "Begin"}<ArrowRight /></strong></button>
       <div className="practice-card"><span className="practice-icon pale"><RotateCcw /></span><span>SPACED REVIEW</span><h2>{dueCount ? `${dueCount} review${dueCount > 1 ? "s" : ""} ready` : "Nothing due"}</h2><p>Mastered material returns after 1, 3, 7, 21 and 60 days.</p>{dueCount > 0 && <Button onClick={onReview}>Start review</Button>}</div>
       <div className="practice-card"><span className="practice-icon pale"><Headphones /></span><span>LISTENING</span><h2>Begins at A16</h2><p>Audio appears only after the written article families are stable.</p><small><LockKeyhole /> Graded progression</small></div></div>
   </div>;
@@ -319,7 +321,7 @@ function VocabularyScreen({ active }: { active: Worksheet }) {
   const allWords = useMemo(() => Array.from(new Map(worksheets.flatMap((w) => w.words).map((word) => [word.greek, word])).values()), []);
   const [query, setQuery] = useState("");
   const shown = allWords.filter((word) => `${word.greek} ${word.english}`.toLowerCase().includes(query.toLowerCase()));
-  return <div className="screen-stack"><PageIntro eyebrow="VOCABULARY" title="Always learn article + noun together" text={`Worksheet A${active.sequence} focuses on ${active.words.length} units. The pack contains ${allWords.length} carefully reused words.`} />
+  return <div className="screen-stack"><PageIntro eyebrow="VOCABULARY AND FORMS" title="Learn complete, reusable Greek units" text={`${active.code} focuses on ${active.words.length} units. The current five-unit course contains ${allWords.length} carefully reused forms and word units.`} />
     <div className="search-field"><Search /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Greek or English" /></div>
     <div className="word-library">{shown.map((word) => <div className="word-row" key={word.greek}><div><strong>{word.greek}</strong><span>{word.english}</span></div><small>{word.family}</small><button aria-label={`Hear ${word.greek}`} onClick={() => speakGreek(word.greek)}><Volume2 /></button></div>)}</div>
   </div>;
@@ -328,8 +330,8 @@ function VocabularyScreen({ active }: { active: Worksheet }) {
 function ReviewScreen({ progress, due, onReview }: { progress: ProgressState; due: Worksheet[]; onReview: (id: string) => void }) {
   const upcoming = worksheets.map((w) => ({ w, state: progress.items[w.id] })).filter((x) => x.state?.mastered && x.state.dueAt).sort((a, b) => String(a.state.dueAt).localeCompare(String(b.state.dueAt)))[0];
   return <div className="screen-stack"><PageIntro eyebrow="SPACED REVIEW" title="Recall just before it fades" text="Reviews are scheduled from demonstrated mastery, not from simply opening a lesson." />
-    {due.length ? <section className="review-ready"><div className="review-orbit"><RotateCcw /></div><span>READY NOW</span><h2>{due.length} worksheet{due.length > 1 ? "s" : ""} due</h2><p>Repeat all ten items. Every mistake must still be corrected.</p><Button onClick={() => onReview(due[0].id)}>Review A{due[0].sequence}</Button></section>
-      : <section className="empty-review"><div><CheckCircle2 /></div><h2>Nothing is due yet</h2><p>{upcoming ? `Next review: A${upcoming.w.sequence} on ${new Date(upcoming.state.dueAt!).toLocaleDateString()}.` : "Master your first worksheet to start the review schedule."}</p></section>}
+    {due.length ? <section className="review-ready"><div className="review-orbit"><RotateCcw /></div><span>READY NOW</span><h2>{due.length} worksheet{due.length > 1 ? "s" : ""} due</h2><p>Repeat all ten items. Every mistake must still be corrected.</p><Button onClick={() => onReview(due[0].id)}>Review {due[0].code}</Button></section>
+      : <section className="empty-review"><div><CheckCircle2 /></div><h2>Nothing is due yet</h2><p>{upcoming ? `Next review: ${upcoming.w.code} on ${new Date(upcoming.state.dueAt!).toLocaleDateString()}.` : "Master your first worksheet to start the review schedule."}</p></section>}
     <section className="review-schedule"><h2>Review rhythm</h2><div>{reviewIntervals.map((days, index) => <div key={days}><span>{index + 1}</span><strong>{days} day{days > 1 ? "s" : ""}</strong><small>after mastery</small></div>)}</div></section>
   </div>;
 }
@@ -344,6 +346,8 @@ function LessonView({ worksheet, state, stage, setStage, questionIndex, setQuest
   const stages: Stage[] = ["understand", "notice", "control", "use"];
   const stageIndex = stage === "result" ? 4 : stages.indexOf(stage);
   const current = exercises[questionIndex];
+  const globalIndex = worksheets.findIndex((item) => item.id === worksheet.id);
+  const nextWorksheet = worksheets[globalIndex + 1];
   const selected = state.answers[questionIndex] || "";
   const submitted = Boolean(state.submitted[questionIndex]);
   const correct = selected === current?.answer;
@@ -359,7 +363,7 @@ function LessonView({ worksheet, state, stage, setStage, questionIndex, setQuest
   const retry = () => updateState((old) => ({ ...old, answers: { ...old.answers, [questionIndex]: "" }, submitted: { ...old.submitted, [questionIndex]: false } }));
 
   return <div className="lesson-shell"><div className="lesson-view">
-    <div className="lesson-toolbar"><button onClick={onClose}><ArrowLeft /> Save and leave</button><span>Worksheet A{worksheet.sequence}</span><strong>Round {state.round}</strong></div>
+    <div className="lesson-toolbar"><button onClick={onClose}><ArrowLeft /> Save and leave</button><span>{worksheet.code} • Unit {worksheet.unitNumber}</span><strong>Round {state.round}</strong></div>
     <div className="lesson-progress-bar"><Progress value={stageIndex * 25 + (stage === "control" ? ((questionIndex + 1) / 10) * 25 : 0)} /></div>
     <nav className="lesson-stage-nav">{stages.map((name, index) => <button key={name} className={index === stageIndex ? "active" : index < stageIndex ? "done" : ""} onClick={() => index < stageIndex && setStage(name)}><span>{index < stageIndex ? <Check /> : index + 1}</span>{name}</button>)}</nav>
 
@@ -371,7 +375,7 @@ function LessonView({ worksheet, state, stage, setStage, questionIndex, setQuest
 
     {stage === "use" && <section className="lesson-panel result-panel"><div className="result-badge"><Target /></div><span className="eyebrow">MASTERY CHECK</span><h1>{allCorrect ? "Every item is now correct." : "Finish every correction first."}</h1><p>Mastery requires all 10 answers correct and at least 9 correct on the first attempt. If the first-attempt score is lower, repeating this same micro-step is the learning method—not a failure.</p><div className="result-stats"><div><strong>{score}/10</strong><span>correct now</span></div><div><strong>{firstAttempt}/10</strong><span>first attempt</span></div><div><strong>{state.round}</strong><span>practice round</span></div></div>{allCorrect && firstAttempt >= worksheet.masteryFirstAttempt ? <Button onClick={onMaster}><Trophy /> Record mastery</Button> : <Button onClick={onRepeat}><RotateCcw /> Repeat this worksheet</Button>}</section>}
 
-    {stage === "result" && <section className="lesson-panel result-panel"><div className="result-badge"><Trophy /></div><span className="eyebrow">WORKSHEET MASTERED</span><h1>A{worksheet.sequence} is secure.</h1><p>You met the accuracy gate. This material is scheduled for spaced review, and the next small step is now unlocked.</p><div className="result-stats"><div><strong>10/10</strong><span>corrected score</span></div><div><strong>{firstAttempt}/10</strong><span>first attempt</span></div><div><strong>{reviewIntervals[state.reviewStep] || 1} day</strong><span>next review</span></div></div><Button onClick={onContinue}>{worksheet.sequence < 20 ? `Continue to A${worksheet.sequence + 1}` : "Return to Today"}<ArrowRight /></Button></section>}
+    {stage === "result" && <section className="lesson-panel result-panel"><div className="result-badge"><Trophy /></div><span className="eyebrow">WORKSHEET MASTERED</span><h1>{worksheet.code} is secure.</h1><p>You met the accuracy gate. This material is scheduled for spaced review, and the next small step is now unlocked.</p><div className="result-stats"><div><strong>10/10</strong><span>corrected score</span></div><div><strong>{firstAttempt}/10</strong><span>first attempt</span></div><div><strong>{reviewIntervals[state.reviewStep] || 1} day</strong><span>next review</span></div></div><Button onClick={onContinue}>{nextWorksheet ? `Continue to ${nextWorksheet.code}` : "Return to Today"}<ArrowRight /></Button></section>}
   </div></div>;
 }
 
@@ -383,7 +387,7 @@ function QualityModal({ onClose }: { onClose: () => void }) {
   const total = worksheets.reduce((sum, worksheet) => sum + worksheet.exercises.length, 0);
   const ids = new Set(worksheets.flatMap((worksheet) => worksheet.exercises.map((exercise) => exercise.id)));
   const checks = [
-    ["Sequential worksheets", worksheets.length === 20], ["Exercise count", total === 200], ["Unique exercise IDs", ids.size === 200], ["Ten items per worksheet", worksheets.every((w) => w.exercises.length === 10)], ["Explicit rule in every worksheet", worksheets.every((w) => w.rule.length > 30)], ["Full written Greek forms", !JSON.stringify(articleMastery).includes("Κι ")],
+    ["Five sequential units", curriculum.units.length === 5], ["Exercise count", total === 1000], ["Unique exercise IDs", ids.size === 1000], ["Ten items per worksheet", worksheets.every((w) => w.exercises.length === 10)], ["Explicit rule in every worksheet", worksheets.every((w) => w.rule.length > 30)], ["Full written Greek forms", !JSON.stringify(curriculum).includes("Κι ")],
   ] as const;
-  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" onClick={(event) => event.stopPropagation()}><header><h2>Curriculum quality checks</h2><button onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Pack generated and validated</strong><span>Version 0.3.0 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
+  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" onClick={(event) => event.stopPropagation()}><header><h2>Curriculum quality checks</h2><button onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Five units generated and validated</strong><span>Version 0.4.0 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
 }
