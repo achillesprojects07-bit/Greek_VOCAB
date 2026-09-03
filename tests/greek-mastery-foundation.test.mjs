@@ -43,7 +43,7 @@ test("today screen uses one aligned, responsive learning workspace", () => {
   assert.match(page, /Current streak/);
   assert.match(page, /Next review/);
   assert.match(styles, /\.today-grid\{display:grid;grid-template-columns:/);
-  assert.match(styles, /\.topbar-inner\{width:min\(1160px/);
+  assert.match(styles, /@media\(min-width:1101px\)\{\.topbar-inner\{width:min\(1600px/);
   assert.match(styles, /@media\(max-width:760px\)\{\.today-grid\{grid-template-columns:1fr\}/);
 });
 

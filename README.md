@@ -1,4 +1,4 @@
-# Greek Mastery A1–A2 • v0.5.1
+# Greek Mastery A1–A2 • v0.5.2
 
 An offline-first Modern Greek learning app built around a fixed grammar-led A1→A2 pathway.
 
@@ -8,6 +8,7 @@ An offline-first Modern Greek learning app built around a fixed grammar-led A1�
 - Compact Course button with a focused unit-and-worksheet drawer, including a direct return to Unit 1 and quiet access to curriculum checks
 - Unit-first progress showing mastery out of 20, current streak, and review status without the discouraging 100-worksheet total on the Today screen
 - Unified learning workspace with aligned header controls, a full-width lesson area, and a compact progress rail
+- Fluid wide-screen layout that expands to a 1,600-pixel working area instead of leaving oversized side margins
 - Deep-blue gradient visual system with high-contrast dark text
 - Fixed course path and locked future lessons
 - Five grammar-led units with 100 sequential worksheets and 1,000 validated exercises

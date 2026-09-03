@@ -241,7 +241,7 @@ export default function HomePage() {
           ))}
         </nav>
         <button className="sidebar-status" onClick={() => setQaOpen(true)}>
-          <ShieldCheck /><span><strong>A1 FOUNDATIONS • v0.5.1</strong><small>5 units • 1,000 exercises</small></span>
+          <ShieldCheck /><span><strong>A1 FOUNDATIONS • v0.5.2</strong><small>5 units • 1,000 exercises</small></span>
         </button>
       </aside>
 
@@ -474,5 +474,5 @@ function QualityModal({ onClose }: { onClose: () => void }) {
   const checks = [
     ["Five sequential units", curriculum.units.length === 5], ["Exercise count", total === 1000], ["Unique exercise IDs", ids.size === 1000], ["Ten items per worksheet", worksheets.every((w) => w.exercises.length === 10)], ["Explicit rule in every worksheet", worksheets.every((w) => w.rule.length > 30)], ["Full written Greek forms", !JSON.stringify(curriculum).includes("Κι ")],
   ] as const;
-  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" onClick={(event) => event.stopPropagation()}><header><h2>Curriculum quality checks</h2><button onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Five units generated and validated</strong><span>Version 0.5.1 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
+  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" onClick={(event) => event.stopPropagation()}><header><h2>Curriculum quality checks</h2><button onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Five units generated and validated</strong><span>Version 0.5.2 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
 }
