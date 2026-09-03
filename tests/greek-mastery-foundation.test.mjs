@@ -18,6 +18,9 @@ test("compact course drawer keeps earlier units and worksheets reachable", () =>
   assert.match(page, /aria-label="Select worksheet"/);
   assert.match(page, /curriculum\.units\.filter\(\(unit\) => unit\.unitNumber === selectedUnit\)/);
   assert.match(page, /disabled=\{!unlocked\}/);
+  assert.match(page, /Units &amp; worksheets/);
+  assert.match(page, /className="quality-link"/);
+  assert.doesNotMatch(page, /className="topbar-qa"/);
 });
 
 test("deep-blue gradient theme keeps primary text dark and bold", () => {
@@ -35,6 +38,10 @@ test("today screen uses one aligned, responsive learning workspace", () => {
   assert.match(page, /className="progress-card"/);
   assert.match(page, /className="method-section"/);
   assert.doesNotMatch(page, /worksheets mastered<\/strong>/);
+  assert.match(page, /className="progress-stats"/);
+  assert.match(page, /\(unitCompleted \/ 20\) \* 100/);
+  assert.match(page, /Current streak/);
+  assert.match(page, /Next review/);
   assert.match(styles, /\.today-grid\{display:grid;grid-template-columns:/);
   assert.match(styles, /\.topbar-inner\{width:min\(1160px/);
   assert.match(styles, /@media\(max-width:760px\)\{\.today-grid\{grid-template-columns:1fr\}/);

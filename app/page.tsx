@@ -136,7 +136,6 @@ export default function HomePage() {
 
   const worksheet = worksheets[progress.currentIndex] || worksheets[0];
   const worksheetState = progress.items[worksheet.id] || blankWorksheetState();
-  const completedCount = worksheets.filter((item) => progress.items[item.id]?.mastered).length;
   const unitCompletedCount = worksheets.filter((item) => item.unitNumber === worksheet.unitNumber && progress.items[item.id]?.mastered).length;
   const dueWorksheets = worksheets.filter((item) => {
     const state = progress.items[item.id];
@@ -242,7 +241,7 @@ export default function HomePage() {
           ))}
         </nav>
         <button className="sidebar-status" onClick={() => setQaOpen(true)}>
-          <ShieldCheck /><span><strong>A1 FOUNDATIONS • v0.5.0</strong><small>5 units • 1,000 exercises</small></span>
+          <ShieldCheck /><span><strong>A1 FOUNDATIONS • v0.5.1</strong><small>5 units • 1,000 exercises</small></span>
         </button>
       </aside>
 
@@ -250,7 +249,7 @@ export default function HomePage() {
         <header className="topbar">
           <div className="topbar-inner">
             <div className="mobile-brand"><Brand compact /></div>
-            <div className="topbar-context"><span>A1 FOUNDATIONS</span><strong>Unit {worksheet.unitNumber} · {worksheet.code}</strong></div>
+            <div className="topbar-context"><span>A1 FOUNDATIONS</span><strong>Unit {worksheet.unitNumber} · {worksheet.unitTitle}</strong></div>
             <div className="topbar-actions">
               <CourseSelector
                 selectedUnit={selectedUnit}
@@ -267,13 +266,13 @@ export default function HomePage() {
                   setSelectedUnit(worksheets[index].unitNumber);
                   setScreen("today");
                 }}
+                onOpenQuality={() => setQaOpen(true)}
               />
-              <button className="topbar-qa" onClick={() => setQaOpen(true)}><ShieldCheck /> Quality checks</button>
             </div>
           </div>
         </header>
         <main className="content-wrap">
-          {screen === "today" && <TodayScreen worksheet={worksheet} state={worksheetState} completed={completedCount} unitCompleted={unitCompletedCount} onStart={() => openWorksheet(progress.currentIndex)} onPath={() => setScreen("path")} />}
+          {screen === "today" && <TodayScreen worksheet={worksheet} state={worksheetState} unitCompleted={unitCompletedCount} activeDays={progress.activeDays} dueCount={dueWorksheets.length} onStart={() => openWorksheet(progress.currentIndex)} onPath={() => setScreen("path")} />}
           {screen === "path" && <PathScreen progress={progress} selectedUnit={selectedUnit} onOpen={openWorksheet} />}
           {screen === "practice" && <PracticeScreen worksheet={worksheet} state={worksheetState} onStart={() => openWorksheet(progress.currentIndex, worksheetState.started ? "control" : "understand")} onReview={() => dueWorksheets[0] && startReview(worksheets.findIndex((w) => w.id === dueWorksheets[0].id))} dueCount={dueWorksheets.length} />}
           {screen === "vocabulary" && <VocabularyScreen active={worksheet} />}
@@ -297,18 +296,19 @@ function Brand({ compact = false }: { compact?: boolean }) {
   return <div className={`brand ${compact ? "compact" : ""}`}><span className="brand-mark">Ε</span><div><strong>Greek Mastery</strong><span>SMALL STEPS • REAL PROGRESS</span></div></div>;
 }
 
-function CourseSelector({ selectedUnit, currentWorksheet, progress, onUnitChange, onWorksheetChange }: {
+function CourseSelector({ selectedUnit, currentWorksheet, progress, onUnitChange, onWorksheetChange, onOpenQuality }: {
   selectedUnit: number;
   currentWorksheet: Worksheet;
   progress: ProgressState;
   onUnitChange: (unitNumber: number) => void;
   onWorksheetChange: (id: string) => void;
+  onOpenQuality: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const unit = curriculum.units.find((item) => item.unitNumber === selectedUnit) || curriculum.units[0];
   const currentValue = currentWorksheet.unitNumber === selectedUnit ? currentWorksheet.id : undefined;
   return <Sheet open={open} onOpenChange={setOpen}>
-    <SheetTrigger asChild><button className="course-menu-button" aria-label="Open course menu"><BookOpen /><span><small>Course</small><strong>{currentWorksheet.code}</strong></span><ChevronRight /></button></SheetTrigger>
+    <SheetTrigger asChild><button className="course-menu-button" aria-label="Open course menu"><BookOpen /><span><strong>Course</strong><small>Units &amp; worksheets</small></span><ChevronRight /></button></SheetTrigger>
     <SheetContent className="course-sheet" side="right">
       <SheetHeader className="course-sheet-header"><span className="course-sheet-icon"><BookOpen /></span><SheetTitle>Your course</SheetTitle><SheetDescription>Return to Unit 1 or choose any worksheet you have unlocked.</SheetDescription></SheetHeader>
       <div className="current-step-card"><small>CURRENT STEP</small><strong>{currentWorksheet.code} · {currentWorksheet.title}</strong><span>Unit {currentWorksheet.unitNumber}: {currentWorksheet.unitTitle}</span></div>
@@ -334,6 +334,7 @@ function CourseSelector({ selectedUnit, currentWorksheet, progress, onUnitChange
       </div>
       <div className="course-sheet-help"><LockKeyhole /><p><strong>Mastery controls the path.</strong><span>Earlier work stays available. New worksheets unlock only after you master the previous step.</span></p></div>
       <Button className="view-unit-button" onClick={() => { onUnitChange(selectedUnit); setOpen(false); }}>View Unit {selectedUnit} path<ArrowRight /></Button>
+      <button className="quality-link" onClick={() => { setOpen(false); onOpenQuality(); }}><ShieldCheck /> Curriculum quality checks</button>
     </SheetContent>
   </Sheet>;
 }
@@ -342,7 +343,7 @@ function PageIntro({ eyebrow, title, text }: { eyebrow: string; title: string; t
   return <div className="page-intro"><span className="eyebrow">{eyebrow}</span><h1>{title}</h1><p>{text}</p></div>;
 }
 
-function TodayScreen({ worksheet, state, completed, unitCompleted, onStart, onPath }: { worksheet: Worksheet; state: WorksheetState; completed: number; unitCompleted: number; onStart: () => void; onPath: () => void }) {
+function TodayScreen({ worksheet, state, unitCompleted, activeDays, dueCount, onStart, onPath }: { worksheet: Worksheet; state: WorksheetState; unitCompleted: number; activeDays: number; dueCount: number; onStart: () => void; onPath: () => void }) {
   const correct = worksheet.exercises.filter((item, index) => state.submitted[index] && state.answers[index] === item.answer).length;
   return <div className="today-screen">
     <section className="today-grid">
@@ -357,10 +358,13 @@ function TodayScreen({ worksheet, state, completed, unitCompleted, onStart, onPa
       </div>
       <aside className="today-rail" aria-label="Learning progress">
         <section className="progress-card">
-          <span className="eyebrow">YOUR PROGRESS</span>
-          <div className="progress-score"><strong>{completed}</strong><span>of 100 worksheets<br />mastered</span></div>
-          <Progress value={completed} />
-          <div className="unit-progress-row"><span>Unit {worksheet.unitNumber}</span><strong>{unitCompleted}/20</strong></div>
+          <span className="eyebrow">UNIT {worksheet.unitNumber} PROGRESS</span>
+          <div className="progress-score"><strong>{unitCompleted}</strong><span>of 20 worksheets<br />mastered</span></div>
+          <Progress value={(unitCompleted / 20) * 100} />
+          <div className="progress-stats">
+            <div><span>Current streak</span><strong>{activeDays} {activeDays === 1 ? "day" : "days"}</strong></div>
+            <div><span>Next review</span><strong>{dueCount > 0 ? `${dueCount} due now` : "Nothing due"}</strong></div>
+          </div>
           <Button variant="outline" className="path-action" onClick={onPath}>View course path<ArrowRight /></Button>
         </section>
         <div className="mastery-note"><Trophy /><div><strong>Mastery first</strong><span>New work unlocks only when the current step is secure.</span></div></div>
@@ -470,5 +474,5 @@ function QualityModal({ onClose }: { onClose: () => void }) {
   const checks = [
     ["Five sequential units", curriculum.units.length === 5], ["Exercise count", total === 1000], ["Unique exercise IDs", ids.size === 1000], ["Ten items per worksheet", worksheets.every((w) => w.exercises.length === 10)], ["Explicit rule in every worksheet", worksheets.every((w) => w.rule.length > 30)], ["Full written Greek forms", !JSON.stringify(curriculum).includes("Κι ")],
   ] as const;
-  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" onClick={(event) => event.stopPropagation()}><header><h2>Curriculum quality checks</h2><button onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Five units generated and validated</strong><span>Version 0.5.0 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
+  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" onClick={(event) => event.stopPropagation()}><header><h2>Curriculum quality checks</h2><button onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Five units generated and validated</strong><span>Version 0.5.1 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
 }
