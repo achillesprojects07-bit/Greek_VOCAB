@@ -28,6 +28,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import curriculum from "@/data/a1-foundations.json";
 
 type Screen = "today" | "path" | "practice" | "vocabulary" | "review";
@@ -240,7 +241,7 @@ export default function HomePage() {
           ))}
         </nav>
         <button className="sidebar-status" onClick={() => setQaOpen(true)}>
-          <ShieldCheck /><span><strong>A1 FOUNDATIONS • v0.4.1</strong><small>5 units • 1,000 exercises</small></span>
+          <ShieldCheck /><span><strong>A1 FOUNDATIONS • v0.4.2</strong><small>5 units • 1,000 exercises</small></span>
         </button>
       </aside>
 
@@ -248,24 +249,24 @@ export default function HomePage() {
         <header className="topbar">
           <div className="mobile-brand"><Brand compact /></div>
           <div className="topbar-context"><span>{worksheet.unitTitle.toUpperCase()}</span><strong>{completedCount} of {worksheets.length} worksheets mastered</strong></div>
+          <CourseSelector
+            selectedUnit={selectedUnit}
+            currentWorksheet={worksheet}
+            progress={progress}
+            onUnitChange={(unitNumber) => {
+              setSelectedUnit(unitNumber);
+              setScreen("path");
+            }}
+            onWorksheetChange={(id) => {
+              const index = worksheets.findIndex((item) => item.id === id);
+              if (index < 0) return;
+              setProgress((previous) => ({ ...previous, currentIndex: index }));
+              setSelectedUnit(worksheets[index].unitNumber);
+              setScreen("today");
+            }}
+          />
           <button className="topbar-qa" onClick={() => setQaOpen(true)}><ShieldCheck /> Quality checks</button>
         </header>
-        <CourseSelector
-          selectedUnit={selectedUnit}
-          currentWorksheet={worksheet}
-          progress={progress}
-          onUnitChange={(unitNumber) => {
-            setSelectedUnit(unitNumber);
-            setScreen("path");
-          }}
-          onWorksheetChange={(id) => {
-            const index = worksheets.findIndex((item) => item.id === id);
-            if (index < 0) return;
-            setProgress((previous) => ({ ...previous, currentIndex: index }));
-            setSelectedUnit(worksheets[index].unitNumber);
-            setScreen("today");
-          }}
-        />
         <main className="content-wrap">
           {screen === "today" && <TodayScreen worksheet={worksheet} state={worksheetState} completed={completedCount} onStart={() => openWorksheet(progress.currentIndex)} />}
           {screen === "path" && <PathScreen progress={progress} selectedUnit={selectedUnit} onOpen={openWorksheet} />}
@@ -298,29 +299,38 @@ function CourseSelector({ selectedUnit, currentWorksheet, progress, onUnitChange
   onUnitChange: (unitNumber: number) => void;
   onWorksheetChange: (id: string) => void;
 }) {
+  const [open, setOpen] = useState(false);
   const unit = curriculum.units.find((item) => item.unitNumber === selectedUnit) || curriculum.units[0];
   const currentValue = currentWorksheet.unitNumber === selectedUnit ? currentWorksheet.id : undefined;
-  return <section className="course-selector" aria-label="Course menu">
-    <div className="course-selector-title"><BookOpen /><span><small>COURSE MENU</small><strong>Choose any available step</strong></span></div>
-    <label><span>Unit</span><Select value={String(selectedUnit)} onValueChange={(value) => onUnitChange(Number(value))}>
-      <SelectTrigger className="course-select-trigger" aria-label="Select unit"><SelectValue /></SelectTrigger>
-      <SelectContent position="popper" align="end">
-        {curriculum.units.map((item) => <SelectItem key={item.unitNumber} value={String(item.unitNumber)}>Unit {item.unitNumber}: {item.title}</SelectItem>)}
-      </SelectContent>
-    </Select></label>
-    <label><span>Worksheet</span><Select value={currentValue} onValueChange={onWorksheetChange}>
-      <SelectTrigger className="worksheet-select-trigger" aria-label="Select worksheet"><SelectValue placeholder="Choose worksheet" /></SelectTrigger>
-      <SelectContent position="popper" align="end">
-        <SelectGroup><SelectLabel>{unit.title}</SelectLabel>
-          {unit.worksheets.map((item) => {
-            const index = worksheets.findIndex((worksheet) => worksheet.id === item.id);
-            const unlocked = index === 0 || Boolean(progress.items[worksheets[index - 1].id]?.mastered);
-            return <SelectItem key={item.id} value={item.id} disabled={!unlocked}>{item.code}: {item.title}{unlocked ? "" : " — locked"}</SelectItem>;
-          })}
-        </SelectGroup>
-      </SelectContent>
-    </Select></label>
-  </section>;
+  return <Sheet open={open} onOpenChange={setOpen}>
+    <SheetTrigger asChild><button className="course-menu-button" aria-label="Open course menu"><BookOpen /><span><small>Course</small><strong>{currentWorksheet.code}</strong></span><ChevronRight /></button></SheetTrigger>
+    <SheetContent className="course-sheet" side="right">
+      <SheetHeader className="course-sheet-header"><span className="course-sheet-icon"><BookOpen /></span><SheetTitle>Your course</SheetTitle><SheetDescription>Return to Unit 1 or choose any worksheet you have unlocked.</SheetDescription></SheetHeader>
+      <div className="current-step-card"><small>CURRENT STEP</small><strong>{currentWorksheet.code} · {currentWorksheet.title}</strong><span>Unit {currentWorksheet.unitNumber}: {currentWorksheet.unitTitle}</span></div>
+      <div className="course-sheet-fields">
+        <label><span>Choose a unit</span><Select value={String(selectedUnit)} onValueChange={(value) => onUnitChange(Number(value))}>
+          <SelectTrigger className="course-select-trigger" aria-label="Select unit"><SelectValue /></SelectTrigger>
+          <SelectContent position="popper" align="end">
+            {curriculum.units.map((item) => <SelectItem key={item.unitNumber} value={String(item.unitNumber)}>Unit {item.unitNumber}: {item.title}</SelectItem>)}
+          </SelectContent>
+        </Select></label>
+        <label><span>Choose an available worksheet</span><Select value={currentValue} onValueChange={(id) => { onWorksheetChange(id); setOpen(false); }}>
+          <SelectTrigger className="worksheet-select-trigger" aria-label="Select worksheet"><SelectValue placeholder="Choose worksheet" /></SelectTrigger>
+          <SelectContent position="popper" align="end">
+            <SelectGroup><SelectLabel>{unit.title}</SelectLabel>
+              {unit.worksheets.map((item) => {
+                const index = worksheets.findIndex((worksheet) => worksheet.id === item.id);
+                const unlocked = index === 0 || Boolean(progress.items[worksheets[index - 1].id]?.mastered);
+                return <SelectItem key={item.id} value={item.id} disabled={!unlocked}>{item.code}: {item.title}{unlocked ? "" : " — locked"}</SelectItem>;
+              })}
+            </SelectGroup>
+          </SelectContent>
+        </Select></label>
+      </div>
+      <div className="course-sheet-help"><LockKeyhole /><p><strong>Mastery controls the path.</strong><span>Earlier work stays available. New worksheets unlock only after you master the previous step.</span></p></div>
+      <Button className="view-unit-button" onClick={() => { onUnitChange(selectedUnit); setOpen(false); }}>View Unit {selectedUnit} path<ArrowRight /></Button>
+    </SheetContent>
+  </Sheet>;
 }
 
 function PageIntro({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
@@ -443,5 +453,5 @@ function QualityModal({ onClose }: { onClose: () => void }) {
   const checks = [
     ["Five sequential units", curriculum.units.length === 5], ["Exercise count", total === 1000], ["Unique exercise IDs", ids.size === 1000], ["Ten items per worksheet", worksheets.every((w) => w.exercises.length === 10)], ["Explicit rule in every worksheet", worksheets.every((w) => w.rule.length > 30)], ["Full written Greek forms", !JSON.stringify(curriculum).includes("Κι ")],
   ] as const;
-  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" onClick={(event) => event.stopPropagation()}><header><h2>Curriculum quality checks</h2><button onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Five units generated and validated</strong><span>Version 0.4.1 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
+  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" onClick={(event) => event.stopPropagation()}><header><h2>Curriculum quality checks</h2><button onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Five units generated and validated</strong><span>Version 0.4.2 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
 }

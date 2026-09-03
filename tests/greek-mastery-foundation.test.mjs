@@ -11,8 +11,9 @@ test("all five purposeful navigation destinations exist", () => {
   for (const label of ["Today", "Path", "Practice", "Vocabulary", "Review"]) assert.match(page, new RegExp(`label: "${label}"`));
 });
 
-test("persistent course selectors make earlier units and worksheets reachable", () => {
-  assert.match(page, /aria-label="Course menu"/);
+test("compact course drawer keeps earlier units and worksheets reachable", () => {
+  assert.match(page, /aria-label="Open course menu"/);
+  assert.match(page, /<Sheet/);
   assert.match(page, /aria-label="Select unit"/);
   assert.match(page, /aria-label="Select worksheet"/);
   assert.match(page, /curriculum\.units\.filter\(\(unit\) => unit\.unitNumber === selectedUnit\)/);
@@ -24,6 +25,8 @@ test("deep-blue gradient theme keeps primary text dark and bold", () => {
   assert.match(styles, /--ink:#071425/);
   assert.match(styles, /background:linear-gradient\(180deg,#061f3f/);
   assert.match(styles, /h1,h2,h3,strong\{font-weight:800\}/);
+  assert.match(styles, /\.course-menu-button/);
+  assert.doesNotMatch(styles, /\.course-selector\{/);
 });
 
 test("five units contain 100 sequential worksheets and 1,000 exercises", () => {
