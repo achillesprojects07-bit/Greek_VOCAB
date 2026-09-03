@@ -21,6 +21,20 @@ test("compact course drawer keeps earlier units and worksheets reachable", () =>
   assert.match(page, /Units &amp; worksheets/);
   assert.match(page, /className="quality-link"/);
   assert.doesNotMatch(page, /className="topbar-qa"/);
+  assert.doesNotMatch(page, /className="sidebar-status"/);
+  assert.match(page, /onViewUnit/);
+});
+
+test("UX lock keeps navigation and lesson flow consistent and accessible", () => {
+  assert.match(page, /aria-current=\{screen === id \? "page"/);
+  assert.match(page, /aria-current=\{progress\.currentIndex === index \? "step"/);
+  assert.match(page, /const stageLabels = \["Learn", "Notice", "Practice", "Master"\]/);
+  assert.match(page, /className="lesson-header"/);
+  assert.match(page, /aria-label="Lesson stages"/);
+  assert.match(page, /role="dialog" aria-modal="true"/);
+  assert.match(page, /event\.key === "Escape"/);
+  assert.match(styles, /button:focus-visible/);
+  assert.match(styles, /\.lesson-header\{position:sticky/);
 });
 
 test("deep-blue gradient theme keeps primary text dark and bold", () => {

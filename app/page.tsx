@@ -235,14 +235,11 @@ export default function HomePage() {
         <Brand />
         <nav className="side-nav">
           {NAV.map(({ id, label, icon: Icon }) => (
-            <button key={id} className={`nav-item ${screen === id ? "active" : ""}`} onClick={() => setScreen(id)}>
+            <button key={id} aria-current={screen === id ? "page" : undefined} className={`nav-item ${screen === id ? "active" : ""}`} onClick={() => setScreen(id)}>
               <Icon /> <span>{label}</span>{id === "review" && dueWorksheets.length > 0 && <i />}
             </button>
           ))}
         </nav>
-        <button className="sidebar-status" onClick={() => setQaOpen(true)}>
-          <ShieldCheck /><span><strong>A1 FOUNDATIONS • v0.5.2</strong><small>5 units • 1,000 exercises</small></span>
-        </button>
       </aside>
 
       <div className="main-area">
@@ -256,6 +253,9 @@ export default function HomePage() {
                 currentWorksheet={worksheet}
                 progress={progress}
                 onUnitChange={(unitNumber) => {
+                  setSelectedUnit(unitNumber);
+                }}
+                onViewUnit={(unitNumber) => {
                   setSelectedUnit(unitNumber);
                   setScreen("path");
                 }}
@@ -282,7 +282,7 @@ export default function HomePage() {
 
       <nav className="mobile-nav">
         {NAV.map(({ id, label, icon: Icon }) => (
-          <button key={id} className={screen === id ? "active" : ""} onClick={() => setScreen(id)}>
+          <button key={id} aria-current={screen === id ? "page" : undefined} className={screen === id ? "active" : ""} onClick={() => setScreen(id)}>
             <Icon /><span>{label}</span>{id === "review" && dueWorksheets.length > 0 && <i className="mobile-dot" />}
           </button>
         ))}
@@ -296,11 +296,12 @@ function Brand({ compact = false }: { compact?: boolean }) {
   return <div className={`brand ${compact ? "compact" : ""}`}><span className="brand-mark">Ε</span><div><strong>Greek Mastery</strong><span>SMALL STEPS • REAL PROGRESS</span></div></div>;
 }
 
-function CourseSelector({ selectedUnit, currentWorksheet, progress, onUnitChange, onWorksheetChange, onOpenQuality }: {
+function CourseSelector({ selectedUnit, currentWorksheet, progress, onUnitChange, onViewUnit, onWorksheetChange, onOpenQuality }: {
   selectedUnit: number;
   currentWorksheet: Worksheet;
   progress: ProgressState;
   onUnitChange: (unitNumber: number) => void;
+  onViewUnit: (unitNumber: number) => void;
   onWorksheetChange: (id: string) => void;
   onOpenQuality: () => void;
 }) {
@@ -333,7 +334,7 @@ function CourseSelector({ selectedUnit, currentWorksheet, progress, onUnitChange
         </Select></label>
       </div>
       <div className="course-sheet-help"><LockKeyhole /><p><strong>Mastery controls the path.</strong><span>Earlier work stays available. New worksheets unlock only after you master the previous step.</span></p></div>
-      <Button className="view-unit-button" onClick={() => { onUnitChange(selectedUnit); setOpen(false); }}>View Unit {selectedUnit} path<ArrowRight /></Button>
+      <Button className="view-unit-button" onClick={() => { onViewUnit(selectedUnit); setOpen(false); }}>View Unit {selectedUnit} path<ArrowRight /></Button>
       <button className="quality-link" onClick={() => { setOpen(false); onOpenQuality(); }}><ShieldCheck /> Curriculum quality checks</button>
     </SheetContent>
   </Sheet>;
@@ -387,7 +388,7 @@ function PathScreen({ progress, selectedUnit, onOpen }: { progress: ProgressStat
     {curriculum.units.filter((unit) => unit.unitNumber === selectedUnit).map((unit) => <section className="unit-path" key={unit.unitNumber}><header><div><span>UNIT {unit.unitNumber}</span><h2>{unit.title}</h2><p>{unit.objective}</p></div><strong>{unit.worksheets.filter((w) => progress.items[w.id]?.mastered).length}/20</strong></header><div className="path-list">{unit.worksheets.map((item) => {
       const index = worksheets.findIndex((worksheet) => worksheet.id === item.id);
       const state = progress.items[item.id]; const unlocked = index === 0 || Boolean(progress.items[worksheets[index - 1].id]?.mastered);
-      return <button key={item.id} disabled={!unlocked} onClick={() => onOpen(index)} className={`path-row ${state?.mastered ? "complete" : ""} ${progress.currentIndex === index ? "current" : ""}`}>
+      return <button key={item.id} aria-current={progress.currentIndex === index ? "step" : undefined} disabled={!unlocked} onClick={() => onOpen(index)} className={`path-row ${state?.mastered ? "complete" : ""} ${progress.currentIndex === index ? "current" : ""}`}>
         <span className="path-number">{state?.mastered ? <Check /> : unlocked ? item.sequence : <LockKeyhole />}</span><div><strong>{item.code}. {item.title}</strong><span>{item.words.length} focus units • 10 exercises • mastery {item.masteryFirstAttempt}/10</span></div>{unlocked && <ChevronRight />}
       </button>;
     })}</div></section>)}
@@ -407,7 +408,7 @@ function VocabularyScreen({ active }: { active: Worksheet }) {
   const [query, setQuery] = useState("");
   const shown = allWords.filter((word) => `${word.greek} ${word.english}`.toLowerCase().includes(query.toLowerCase()));
   return <div className="screen-stack"><PageIntro eyebrow="VOCABULARY AND FORMS" title="Learn complete, reusable Greek units" text={`${active.code} focuses on ${active.words.length} units. The current five-unit course contains ${allWords.length} carefully reused forms and word units.`} />
-    <div className="search-field"><Search /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Greek or English" /></div>
+    <div className="search-field"><Search /><input aria-label="Search Greek or English vocabulary" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Greek or English" /></div>
     <div className="word-library">{shown.map((word) => <div className="word-row" key={word.greek}><div><strong>{word.greek}</strong><span>{word.english}</span></div><small>{word.family}</small><button aria-label={`Hear ${word.greek}`} onClick={() => speakGreek(word.greek)}><Volume2 /></button></div>)}</div>
   </div>;
 }
@@ -429,6 +430,7 @@ function LessonView({ worksheet, state, stage, setStage, questionIndex, setQuest
   const firstAttempt = exercises.filter((item, i) => state.submitted[i] && state.answers[i] === item.answer && state.attempts[i] === 1).length;
   const allCorrect = score === exercises.length;
   const stages: Stage[] = ["understand", "notice", "control", "use"];
+  const stageLabels = ["Learn", "Notice", "Practice", "Master"];
   const stageIndex = stage === "result" ? 4 : stages.indexOf(stage);
   const current = exercises[questionIndex];
   const globalIndex = worksheets.findIndex((item) => item.id === worksheet.id);
@@ -448,9 +450,11 @@ function LessonView({ worksheet, state, stage, setStage, questionIndex, setQuest
   const retry = () => updateState((old) => ({ ...old, answers: { ...old.answers, [questionIndex]: "" }, submitted: { ...old.submitted, [questionIndex]: false } }));
 
   return <div className="lesson-shell"><div className="lesson-view">
-    <div className="lesson-toolbar"><button onClick={onClose}><ArrowLeft /> Save and leave</button><span>{worksheet.code} • Unit {worksheet.unitNumber}</span><strong>Round {state.round}</strong></div>
-    <div className="lesson-progress-bar"><Progress value={stageIndex * 25 + (stage === "control" ? ((questionIndex + 1) / 10) * 25 : 0)} /></div>
-    <nav className="lesson-stage-nav">{stages.map((name, index) => <button key={name} className={index === stageIndex ? "active" : index < stageIndex ? "done" : ""} onClick={() => index < stageIndex && setStage(name)}><span>{index < stageIndex ? <Check /> : index + 1}</span>{name}</button>)}</nav>
+    <header className="lesson-header">
+      <div className="lesson-toolbar"><button onClick={onClose}><ArrowLeft /> Save and leave</button><span>{worksheet.code} • Unit {worksheet.unitNumber}</span><strong>Round {state.round}</strong></div>
+      <div className="lesson-progress-bar"><Progress value={stageIndex * 25 + (stage === "control" ? ((questionIndex + 1) / 10) * 25 : 0)} /></div>
+      <nav className="lesson-stage-nav" aria-label="Lesson stages">{stages.map((name, index) => <button key={name} aria-current={index === stageIndex ? "step" : undefined} className={index === stageIndex ? "active" : index < stageIndex ? "done" : ""} onClick={() => index < stageIndex && setStage(name)}><span>{index < stageIndex ? <Check /> : index + 1}</span>{stageLabels[index]}</button>)}</nav>
+    </header>
 
     {stage === "understand" && <section className="lesson-panel"><span className="eyebrow">ONE RULE ONLY</span><h1>{worksheet.title}</h1><p className="lesson-lead">{worksheet.rule}</p><div className="explanation-box"><BookOpen /><div><h2>How to use the rule</h2><ol className="rule-steps">{worksheet.ruleSteps.map((step) => <li key={step}>{step}</li>)}</ol></div></div><h2 className="subhead">Today’s complete word units</h2><div className="example-trio">{worksheet.words.map((word) => <div key={word.greek}><span>{word.family}</span><strong>{word.greek}</strong><small>{word.english}</small><button className="audio-button" onClick={() => speakGreek(word.greek)}><Volume2 /> Hear it</button></div>)}</div><div className="mistake-note"><CircleAlert /><div><strong>Do not memorize a bare noun.</strong><p>Store the article and noun together: for example, <b>{worksheet.words[0].greek}</b>.</p></div></div><LessonNext onClick={() => setStage("notice")} label="See the pattern" /></section>}
 
@@ -469,10 +473,15 @@ function LessonNext({ onClick, label }: { onClick: () => void; label: string }) 
 }
 
 function QualityModal({ onClose }: { onClose: () => void }) {
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => event.key === "Escape" && onClose();
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [onClose]);
   const total = worksheets.reduce((sum, worksheet) => sum + worksheet.exercises.length, 0);
   const ids = new Set(worksheets.flatMap((worksheet) => worksheet.exercises.map((exercise) => exercise.id)));
   const checks = [
     ["Five sequential units", curriculum.units.length === 5], ["Exercise count", total === 1000], ["Unique exercise IDs", ids.size === 1000], ["Ten items per worksheet", worksheets.every((w) => w.exercises.length === 10)], ["Explicit rule in every worksheet", worksheets.every((w) => w.rule.length > 30)], ["Full written Greek forms", !JSON.stringify(curriculum).includes("Κι ")],
   ] as const;
-  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" onClick={(event) => event.stopPropagation()}><header><h2>Curriculum quality checks</h2><button onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Five units generated and validated</strong><span>Version 0.5.2 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
+  return <div className="modal-backdrop" onClick={onClose}><section className="modal-card" role="dialog" aria-modal="true" aria-labelledby="quality-title" onClick={(event) => event.stopPropagation()}><header><h2 id="quality-title">Curriculum quality checks</h2><button aria-label="Close quality checks" onClick={onClose}>×</button></header><div className="qa-summary"><ShieldCheck /><div><strong>Five units generated and validated</strong><span>UX lock 1.0 • deterministic curriculum data</span></div></div><div className="check-list">{checks.map(([label, pass]) => <div key={label}><span>{label}</span><strong className={pass ? "check-pass" : "check-warn"}>{pass ? "PASS" : "CHECK"}</strong></div>)}</div><Button onClick={onClose}>Close</Button></section></div>;
 }
