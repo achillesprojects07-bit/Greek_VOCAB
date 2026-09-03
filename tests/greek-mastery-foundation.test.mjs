@@ -29,6 +29,17 @@ test("deep-blue gradient theme keeps primary text dark and bold", () => {
   assert.doesNotMatch(styles, /\.course-selector\{/);
 });
 
+test("today screen uses one aligned, responsive learning workspace", () => {
+  assert.match(page, /className="topbar-inner"/);
+  assert.match(page, /className="today-grid"/);
+  assert.match(page, /className="progress-card"/);
+  assert.match(page, /className="method-section"/);
+  assert.doesNotMatch(page, /worksheets mastered<\/strong>/);
+  assert.match(styles, /\.today-grid\{display:grid;grid-template-columns:/);
+  assert.match(styles, /\.topbar-inner\{width:min\(1160px/);
+  assert.match(styles, /@media\(max-width:760px\)\{\.today-grid\{grid-template-columns:1fr\}/);
+});
+
 test("five units contain 100 sequential worksheets and 1,000 exercises", () => {
   assert.equal(curriculum.totalUnits, 5);
   assert.equal(curriculum.totalWorksheets, 100);
